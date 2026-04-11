@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Azaan SHAFI — Portfolio BTS SIO SISR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue-deep: #0a1a6b;
+      --blue-mid: #1a35c8;
+      --blue-bright: #2952e3;
+      --blue-glow: #3d6fff;
+      --white: #ffffff;
+      --white-soft: #e8eeff;
+      --grid-color: rgba(255,255,255,0.06);
+      --accent: #5b8bff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--blue-deep);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(10, 26, 107, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      color: var(--white);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+
+    .nav-logo::before {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 8px;
+      background: var(--blue-glow);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--blue-glow);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--white-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 6rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Grid background */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Gradient orbs */
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(41, 82, 227, 0.35) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      pointer-events: none;
+    }
+
+    .orb2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(61, 111, 255, 0.2) 0%, transparent 70%);
+      bottom: 50px; left: 200px;
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    .hero-badge span { color: var(--accent); }
+
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      line-height: 1.0;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.25s;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: var(--white-soft);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.4s;
+    }
+
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.55s;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.25s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--blue-bright);
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(41, 82, 227, 0.5);
+    }
+    .btn-primary:hover { background: var(--blue-glow); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(61, 111, 255, 0.6); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white-soft);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.6); color: var(--white); transform: translateY(-2px); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SKILLS STRIP */
+    .skills-strip {
+      background: rgba(255,255,255,0.04);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 1.5rem 3rem;
+      display: flex; align-items: center; gap: 3rem;
+      overflow-x: auto;
+    }
+
+    .skill-tag {
+      display: flex; align-items: center; gap: 0.5rem;
+      white-space: nowrap;
+      font-size: 0.85rem;
+      color: var(--white-soft);
+      font-weight: 400;
+    }
+
+    .skill-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* SECTIONS */
+    section { padding: 5rem 3rem; }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .section-desc {
+      color: var(--white-soft);
+      font-weight: 300;
+      font-size: 1.05rem;
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    /* CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      text-decoration: none;
+      color: var(--white);
+      transition: all 0.3s;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+
+    .card:hover {
+      background: rgba(41, 82, 227, 0.15);
+      border-color: rgba(91, 139, 255, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(41, 82, 227, 0.25);
+    }
+
+    .card-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+    }
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--white-soft);
+      line-height: 1.6;
+      font-weight: 300;
+      flex: 1;
+    }
+
+    .card-arrow {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 2.5rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+
+    .stat-row {
+      display: flex; flex-direction: column; gap: 0.3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--white-soft);
+      font-weight: 300;
+    }
+
+    /* FOOTER */
+    footer {
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 5rem 1.5rem 3rem; }
+      section { padding: 3rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+      footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">AZAAN SHAFI</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="projets-e5.html">Projets E5</a></li>
+      <li><a href="veille.html">Veille Techno</a></li>
+      <li><a href="e6.html">Fiches E6</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="orb2"></div>
+    <div class="hero-content">
+      <div class="hero-badge">BTS SIO · Option <span>SISR</span> · Session 2026</div>
+      <h1 class="hero-title">
+        Bienvenue sur<br/>
+        mon <em>Portfolio</em>
+      </h1>
+      <p class="hero-sub">
+        Azaan SHAFI — Étudiant en BTS Services Informatiques aux Organisations,
+        spécialisé en Solutions d'Infrastructure, Systèmes et Réseaux.
+      </p>
+      <div class="hero-cta">
+        <a href="projets-e5.html" class="btn btn-primary">Voir mes projets</a>
+        <a href="e6.html" class="btn btn-outline">Fiches E6</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="skills-strip">
+    <div class="skill-tag">Cisco / VLANs</div>
+    <div class="skill-tag">Routage inter-VLAN</div>
+    <div class="skill-tag">pfSense / Proxmox</div>
+    <div class="skill-tag">Windows Server 2022</div>
+    <div class="skill-tag">Active Directory</div>
+    <div class="skill-tag">GPO</div>
+    <div class="skill-tag">SSH / Linux</div>
+    <div class="skill-tag">HSRP / Haute dispo</div>
+    <div class="skill-tag">ACL / Sécurité</div>
+  </div>
+
+  <!-- PROJETS -->
+  <section id="projets">
+    <p class="section-label">Situations professionnelles</p>
+    <h2 class="section-title">Mes Projets E5</h2>
+    <p class="section-desc">7 situations professionnelles couvrant la conception, le déploiement et la sécurisation d'infrastructures réseau et systèmes.</p>
+
+    <div class="cards-grid">
+      <a href="projets-e5.html#sp1" class="card">
+        <span class="card-number">SP 01</span>
+        <h3 class="card-title">Configuration VLAN avec DHCP et routage inter-VLAN</h3>
+        <p class="card-desc">Segmentation réseau en 4 VLANs avec Router-on-a-Stick et DHCP centralisé sur routeur Cisco.</p>
+        <span class="card-arrow">Voir le projet →</span>
+      </a>
+      <a href="projets-e5.html#sp2" class="card">
+        <span class="card-number">SP 02</span>
+        <h3 class="card-title">Déploiement d'un réseau avec filtrage ACL</h3>
+        <p class="card-desc">Sécurisation du réseau via des listes de contrôle d'accès sur routeur Cisco pour filtrer le trafic HTTP.</p>
+        <span class="card-arrow">Voir le projet →</span>
+      </a>
+      <a href="projets-e5.html#sp3" class="card">
+        <span class="card-number">SP 03</span>
+        <h3 class="card-title">Infrastructure physique avec pfSense et Proxmox</h3>
+        <p class="card-desc">Déploiement d'un pare-feu matériel pfSense et d'un hyperviseur Proxmox VE pour une PME.</p>
+        <span class="card-arrow">Voir le projet →</span>
+      </a>
+      <a href="projets-e5.html#sp4" class="card">
+        <span class="card-number">SP 04</span>
+        <h3 class="card-title">Déploiement AD DS, DNS et DHCP</h3>
+        <p class="card-desc">Contrôleur de domaine Windows Server 2022 avec gestion centralisée des utilisateurs et services réseau.</p>
+        <span class="card-arrow">Voir le projet →</span>
+      </a>
+      <a href="projets-e5.html#sp5" class="card">
+        <span class="card-number">SP 05</span>
+        <h3 class="card-title">Application de GPO pour la sécurisation des postes</h3>
+        <p class="card-desc">Stratégies de groupe pour mappage réseau, fond d'écran, blocage du panneau de configuration et CMD.</p>
+        <span class="card-arrow">Voir le projet →</span>
+      </a>
+      <a href="projets-e5.html#sp6" class="card">
+        <span class="card-number">SP 06</span>
+        <h3 class="card-title">Accès distant SSH avec clés asymétriques</h3>
+        <p class="card-desc">Sécurisation SSH sur Debian avec clés RSA 4096 bits, durcissement du service et pare-feu UFW.</p>
+        <span class="card-arrow">Voir le projet →</span>
+      </a>
+      <a href="projets-e5.html#sp7" class="card">
+        <span class="card-number">SP 07</span>
+        <h3 class="card-title">Redondance de passerelle via HSRP</h3>
+        <p class="card-desc">Haute disponibilité réseau avec HSRP Cisco, load balancing actif/actif entre deux VLANs.</p>
+        <span class="card-arrow">Voir le projet →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);">
+    <div class="about-grid">
+      <div>
+        <p class="section-label">À propos</p>
+        <h2 class="section-title">Profil & Compétences</h2>
+        <p class="section-desc">
+          Étudiant en BTS SIO option SISR, je me spécialise dans l'administration des systèmes et réseaux,
+          la virtualisation et la sécurité des infrastructures informatiques. Ce portfolio présente l'ensemble
+          de mes réalisations réalisées au cours de ma formation.
+        </p>
+        <a href="e6.html" class="btn btn-outline" style="display:inline-flex;">Voir mes fiches E6 →</a>
+      </div>
+      <div class="about-visual">
+        <div class="stat-row">
+          <span class="stat-num">7</span>
+          <span class="stat-label">Situations professionnelles documentées</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-num">2026</span>
+          <span class="stat-label">Session d'examen BTS SIO</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-num">SISR</span>
+          <span class="stat-label">Option — Solutions d'Infrastructure Systèmes et Réseaux</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Azaan SHAFI — Portfolio BTS SIO SISR</p>
+    <p>Tous droits réservés</p>
+  </footer>
+
+</body>
+</html>
