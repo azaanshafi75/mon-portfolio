@@ -40,16 +40,17 @@
       box-shadow: 0 0 10px var(--blue-glow); animation: pulse 2s ease-in-out infinite;
     }
     @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--white-soft); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--white); }
 
+    /* PAGE HEADER */
     .page-header {
       padding: 8rem 3rem 4rem;
       background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
       background-size: 60px 60px;
-      position: relative; border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: relative; border-bottom: 1px solid rgba(255,255,255,0.08); overflow: hidden;
     }
     .page-header::after {
       content: ''; position: absolute; top: 0; right: 0; width: 500px; height: 100%;
@@ -66,60 +67,193 @@
     }
     .page-sub {
       color: var(--white-soft); font-weight: 300; font-size: 1.05rem;
-      max-width: 580px; line-height: 1.7; position: relative; z-index: 1; margin-bottom: 2rem;
+      max-width: 580px; line-height: 1.7; position: relative; z-index: 1;
     }
 
-    .btn-pdf {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.85rem 2rem;
-      background: var(--blue-bright); color: var(--white);
-      border-radius: 6px; font-size: 0.95rem; font-weight: 500;
-      text-decoration: none; transition: all 0.25s; position: relative; z-index: 1;
-    }
-    .btn-pdf:hover { background: var(--blue-glow); transform: translateY(-2px); box-shadow: 0 6px 25px rgba(61,111,255,0.5); }
-
-    main { max-width: 1000px; margin: 0 auto; padding: 4rem 3rem; }
-
-    .topic-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 2rem 2.5rem;
-      margin-bottom: 1.5rem;
-      transition: border-color 0.3s;
-    }
-    .topic-card:hover { border-color: rgba(91, 139, 255, 0.3); }
-
-    .topic-number {
-      font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.2em; color: var(--accent); margin-bottom: 0.5rem;
-    }
-    .topic-title {
-      font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 0.8rem;
-    }
-    .topic-text {
-      font-size: 0.92rem; color: var(--white-soft); line-height: 1.7; font-weight: 300;
-    }
-
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem; margin: 3rem 0;
-    }
-    .stat-card {
-      background: rgba(41,82,227,0.12);
-      border: 1px solid rgba(91,139,255,0.2);
-      border-radius: 10px; padding: 1.5rem; text-align: center;
-    }
-    .stat-val {
-      font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--accent);
-      display: block; margin-bottom: 0.4rem;
-    }
-    .stat-lbl { font-size: 0.82rem; color: var(--white-soft); font-weight: 300; }
+    main { max-width: 1050px; margin: 0 auto; padding: 4rem 3rem; }
 
     .section-heading {
       font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700;
       letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
-      margin: 3rem 0 1.5rem;
+      margin: 3.5rem 0 1.5rem;
+    }
+
+    /* ── DÉFINITION ── */
+    .def-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .def-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 1.8rem;
+      transition: border-color 0.3s;
+    }
+    .def-card:hover { border-color: rgba(91,139,255,0.3); }
+    .def-card.full { grid-column: 1 / -1; }
+    .def-card.accent-card {
+      background: rgba(41,82,227,0.1);
+      border-color: rgba(91,139,255,0.25);
+    }
+    .def-icon { font-size: 2rem; margin-bottom: 0.8rem; display: block; }
+    .def-title {
+      font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
+    }
+    .def-text {
+      font-size: 0.92rem; color: var(--white-soft); line-height: 1.75; font-weight: 300;
+    }
+    .def-text strong { color: var(--white); font-weight: 500; }
+
+    /* TIMELINE ORIGINES */
+    .origines-row {
+      display: flex; gap: 0; overflow-x: auto; padding-bottom: 0.5rem;
+    }
+    .origine-step {
+      flex: 1; min-width: 130px;
+      display: flex; flex-direction: column; align-items: center; position: relative;
+    }
+    .origine-step::after {
+      content: ''; position: absolute; top: 18px; left: 50%; right: -50%;
+      height: 2px; background: rgba(91,139,255,0.3);
+      z-index: 0;
+    }
+    .origine-step:last-child::after { display: none; }
+    .origine-dot {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(41,82,227,0.3);
+      border: 2px solid rgba(91,139,255,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; position: relative; z-index: 1;
+      margin-bottom: 0.8rem; flex-shrink: 0;
+    }
+    .origine-year {
+      font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700;
+      color: var(--accent); margin-bottom: 0.4rem; text-align: center;
+    }
+    .origine-desc {
+      font-size: 0.78rem; color: var(--white-soft); font-weight: 300;
+      text-align: center; line-height: 1.5; padding: 0 0.3rem;
+    }
+
+    /* ── CHIFFRES CLÉS ── */
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    }
+    .stat-card {
+      background: rgba(41,82,227,0.1);
+      border: 1px solid rgba(91,139,255,0.2);
+      border-radius: 12px; padding: 1.5rem; text-align: center;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    .stat-card:hover { border-color: rgba(91,139,255,0.4); transform: translateY(-3px); }
+    .stat-val {
+      font-family: 'Syne', sans-serif; font-size: 1.7rem; font-weight: 800;
+      color: var(--accent); display: block; margin-bottom: 0.4rem;
+    }
+    .stat-lbl { font-size: 0.82rem; color: var(--white-soft); font-weight: 300; line-height: 1.4; }
+
+    /* ── 3 QUESTIONS ── */
+    .questions-stack { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .question-block {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .question-block:hover { border-color: rgba(91,139,255,0.35); }
+
+    .question-header {
+      display: flex; align-items: center; gap: 1.2rem;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: rgba(41,82,227,0.08);
+    }
+    .q-number {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--blue-bright);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 800;
+      flex-shrink: 0;
+      box-shadow: 0 0 16px rgba(41,82,227,0.5);
+    }
+    .q-title {
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .question-body { padding: 1.8rem 2rem; }
+
+    /* Pourquoi — cards raisons */
+    .raisons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .raison-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 1.2rem;
+      display: flex; align-items: flex-start; gap: 0.8rem;
+    }
+    .raison-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .raison-text { font-size: 0.88rem; color: var(--white-soft); line-height: 1.6; font-weight: 300; }
+    .raison-text strong { color: var(--white); font-weight: 500; display: block; margin-bottom: 0.2rem; }
+
+    /* Carrière — infographie */
+    .carriere-flow {
+      display: flex; align-items: center; gap: 0; flex-wrap: wrap;
+    }
+    .carriere-step {
+      flex: 1; min-width: 160px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 1.2rem;
+      text-align: center; position: relative;
+    }
+    .carriere-arrow {
+      font-size: 1.2rem; color: var(--accent); padding: 0 0.5rem; flex-shrink: 0;
+    }
+    .carriere-icon { font-size: 1.8rem; display: block; margin-bottom: 0.5rem; }
+    .carriere-label {
+      font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700;
+      color: var(--accent); margin-bottom: 0.3rem;
+    }
+    .carriere-desc { font-size: 0.8rem; color: var(--white-soft); font-weight: 300; line-height: 1.5; }
+
+    /* Automatisation — schéma flux */
+    .auto-schema {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .auto-row {
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .auto-label {
+      font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+      min-width: 80px; flex-shrink: 0;
+    }
+    .auto-sources { display: flex; gap: 0.6rem; flex-wrap: wrap; flex: 1; }
+    .auto-source {
+      background: rgba(41,82,227,0.15);
+      border: 1px solid rgba(91,139,255,0.25);
+      border-radius: 8px; padding: 0.5rem 0.9rem;
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.83rem; font-weight: 500; color: var(--white-soft);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .auto-source:hover { border-color: rgba(91,139,255,0.5); background: rgba(41,82,227,0.25); color: var(--white); }
+    .auto-source span { font-size: 1rem; }
+    .auto-arrow {
+      display: flex; align-items: center; gap: 0.5rem;
+      color: rgba(255,255,255,0.2); font-size: 1.2rem;
+    }
+    .auto-result {
+      background: rgba(91,139,255,0.15);
+      border: 1px solid rgba(91,139,255,0.35);
+      border-radius: 10px; padding: 1rem 1.5rem;
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.9rem; color: var(--white-soft); font-weight: 300;
+    }
+    .auto-result strong { color: var(--white); font-weight: 500; }
+    .divider {
+      height: 1px; background: rgba(255,255,255,0.07); margin: 0.5rem 0;
     }
 
     footer { background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
@@ -130,6 +264,10 @@
       .nav-links { display: none; }
       .page-header { padding: 6rem 1.5rem 3rem; }
       main { padding: 2rem 1.5rem; }
+      .def-grid, .stats-grid, .raisons-grid { grid-template-columns: 1fr; }
+      .def-card.full { grid-column: 1; }
+      .carriere-flow { flex-direction: column; }
+      .carriere-arrow { transform: rotate(90deg); }
     }
   </style>
 </head>
@@ -137,35 +275,91 @@
 
   <nav>
     <a class="nav-logo" href="index.html">AZAAN SHAFI</a>
-        <ul class="nav-links">
+    <ul class="nav-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="profil.html">Profil</a></li>
       <li><a href="parcours.html">Parcours</a></li>
       <li><a href="projets-e5.html">Projets E5</a></li>
-      <li><a href="veille.html">Veille Techno</a></li>
+      <li><a href="veille.html" class="active">Veille Techno</a></li>
       <li><a href="e6.html">Fiches E6</a></li>
     </ul>
   </nav>
 
   <div class="page-header">
-    <p class="page-label">Veille Technologique — IoT 2026</p>
-    <h1 class="page-title">L'Internet des Objets (IoT)</h1>
-    <p class="page-sub">Veille approfondie sur l'IoT en 2026 : évolution des protocoles réseaux (Matter, Bluetooth 6), architectures Edge Computing et défis critiques de cybersécurité liés à l'intégration IoT dans les infrastructures d'entreprise.</p>
-    <a href="docs/Veille_techno.pdf" class="btn-pdf" target="_blank">📄 Télécharger le document complet</a>
+    <p class="page-label">Veille Technologique — BTS SIO SISR</p>
+    <h1 class="page-title">Internet of Things (IoT)</h1>
+    <p class="page-sub">Sujet choisi en lien avec la certification Cisco NetAcademy "Introduction to IoT" — une technologie au cœur des enjeux réseau et sécurité de demain.</p>
   </div>
 
   <main>
 
-    <!-- CHIFFRES CLES -->
+    <!-- ══════════════════════════════════
+         DÉFINITION & ORIGINES
+    ══════════════════════════════════ -->
+    <p class="section-heading">Définition & Origines</p>
+
+    <div class="def-grid">
+      <div class="def-card accent-card full">
+        <span class="def-icon">📡</span>
+        <p class="def-title">Définition</p>
+        <p class="def-text">
+          L'<strong>Internet des Objets (IoT)</strong> désigne l'interconnexion de dispositifs physiques via Internet,
+          permettant à ces objets de collecter, échanger et analyser des données de manière autonome.
+          Cette technologie transforme des équipements du quotidien en <strong>"objets intelligents"</strong>,
+          capables de communiquer entre eux ou avec des systèmes distants sans intervention humaine.
+        </p>
+      </div>
+    </div>
+
+    <!-- Timeline origines -->
+    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:14px; padding:2rem;">
+      <p class="def-title" style="margin-bottom:1.5rem;">Chronologie</p>
+      <div class="origines-row">
+        <div class="origine-step">
+          <div class="origine-dot">🌐</div>
+          <p class="origine-year">1960-70</p>
+          <p class="origine-desc">ARPANET, précurseur d'Internet</p>
+        </div>
+        <div class="origine-step">
+          <div class="origine-dot">🥤</div>
+          <p class="origine-year">1980</p>
+          <p class="origine-desc">Premier objet connecté (distributeur Coca-Cola)</p>
+        </div>
+        <div class="origine-step">
+          <div class="origine-dot">💡</div>
+          <p class="origine-year">1999</p>
+          <p class="origine-desc">Kevin Ashton invente le terme "IoT"</p>
+        </div>
+        <div class="origine-step">
+          <div class="origine-dot">📶</div>
+          <p class="origine-year">2000s</p>
+          <p class="origine-desc">Wi-Fi, Bluetooth, capteurs abordables</p>
+        </div>
+        <div class="origine-step">
+          <div class="origine-dot">🏭</div>
+          <p class="origine-year">2010s</p>
+          <p class="origine-desc">Industrie 4.0, domotique, wearables</p>
+        </div>
+        <div class="origine-step">
+          <div class="origine-dot">🚀</div>
+          <p class="origine-year">2026</p>
+          <p class="origine-desc">21-30 milliards d'objets connectés</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         CHIFFRES CLÉS
+    ══════════════════════════════════ -->
     <p class="section-heading">Chiffres clés IoT — Estimations 2026</p>
 
-    <div class="stats-grid" style="grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));">
+    <div class="stats-grid">
       <div class="stat-card">
         <span class="stat-val">21-30 Md</span>
         <span class="stat-lbl">Objets connectés dans le monde</span>
       </div>
       <div class="stat-card">
-        <span class="stat-val">>450 M</span>
+        <span class="stat-val">&gt;450 M</span>
         <span class="stat-lbl">Objets connectés en France</span>
       </div>
       <div class="stat-card">
@@ -178,7 +372,7 @@
       </div>
       <div class="stat-card">
         <span class="stat-val">+12-23%</span>
-        <span class="stat-lbl">Croissance annuelle selon segment</span>
+        <span class="stat-lbl">Croissance annuelle</span>
       </div>
       <div class="stat-card">
         <span class="stat-val">5-10</span>
@@ -186,147 +380,148 @@
       </div>
     </div>
 
-    <!-- DEFINITION -->
-    <p class="section-heading">Définition et origines</p>
+    <!-- ══════════════════════════════════
+         3 QUESTIONS
+    ══════════════════════════════════ -->
+    <p class="section-heading">Présentation de ma veille</p>
 
-    <div class="topic-card">
-      <p class="topic-number">DÉFINITION</p>
-      <h2 class="topic-title">Qu'est-ce que l'IoT ?</h2>
-      <p class="topic-text">L'Internet des Objets (IoT) désigne l'interconnexion de dispositifs physiques via Internet, permettant à ces objets de collecter et d'échanger des données. Cette technologie transforme des objets du quotidien en "objets intelligents", capables de communiquer entre eux ou avec des utilisateurs à distance.</p>
-    </div>
+    <div class="questions-stack">
 
-    <div class="topic-card">
-      <p class="topic-number">HISTORIQUE</p>
-      <h2 class="topic-title">Origines de l'IoT</h2>
-      <p class="topic-text">
-        <strong style="color:var(--accent);">Années 1960-70 :</strong> Premières bases avec ARPANET, précurseur d'Internet.<br><br>
-        <strong style="color:var(--accent);">Années 1980 :</strong> Premiers objets connectés expérimentaux (distributeur Coca-Cola de Carnegie Mellon).<br><br>
-        <strong style="color:var(--accent);">1999 :</strong> Kevin Ashton introduit le terme "Internet of Things" — objets communicant via RFID.<br><br>
-        <strong style="color:var(--accent);">Années 2000 :</strong> Essor grâce au Wi-Fi, Bluetooth et capteurs à faible coût.<br><br>
-        <strong style="color:var(--accent);">Années 2010 :</strong> Explosion avec la domotique, les wearables et l'industrie 4.0.
-      </p>
-    </div>
+      <!-- Q1 : POURQUOI -->
+      <div class="question-block">
+        <div class="question-header">
+          <div class="q-number">1</div>
+          <p class="q-title">Pourquoi avoir choisi ce sujet de veille ?</p>
+        </div>
+        <div class="question-body">
+          <div class="raisons-grid">
+            <div class="raison-card">
+              <span class="raison-icon">🎓</span>
+              <p class="raison-text">
+                <strong>Certification Cisco NetAcademy</strong>
+                J'ai obtenu la certification "Introduction to IoT" sur Cisco NetAcademy, ce qui m'a permis de découvrir ce domaine et d'acquérir des bases solides sur le sujet.
+              </p>
+            </div>
+            <div class="raison-card">
+              <span class="raison-icon">🖧</span>
+              <p class="raison-text">
+                <strong>Lien direct avec le métier SISR</strong>
+                En tant que futur technicien réseau, l'IoT impacte directement les infrastructures que j'administrerai : plus d'équipements connectés = plus de complexité réseau à gérer.
+              </p>
+            </div>
+            <div class="raison-card">
+              <span class="raison-icon">🔒</span>
+              <p class="raison-text">
+                <strong>Enjeux de sécurité critiques</strong>
+                L'IoT est aujourd'hui le premier vecteur d'attaques réseau (botnets, intrusions). Un sujet de cybersécurité concret et d'actualité en 2026.
+              </p>
+            </div>
+            <div class="raison-card">
+              <span class="raison-icon">📈</span>
+              <p class="raison-text">
+                <strong>Sujet en pleine expansion</strong>
+                Avec 21 à 30 milliards d'objets connectés prévus en 2026, l'IoT est incontournable dans les entreprises et représente un marché en croissance constante.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <!-- APPLICATIONS -->
-    <p class="section-heading">Applications sectorielles</p>
+      <!-- Q2 : CARRIÈRE -->
+      <div class="question-block">
+        <div class="question-header">
+          <div class="q-number">2</div>
+          <p class="q-title">À quoi cela me servira dans ma carrière professionnelle ?</p>
+        </div>
+        <div class="question-body">
+          <div class="carriere-flow">
+            <div class="carriere-step">
+              <span class="carriere-icon">🏭</span>
+              <p class="carriere-label">Environnement IoT</p>
+              <p class="carriere-desc">Entreprises avec capteurs, caméras, terminaux connectés</p>
+            </div>
+            <div class="carriere-arrow">→</div>
+            <div class="carriere-step">
+              <span class="carriere-icon">🖧</span>
+              <p class="carriere-label">Réseau & Infra</p>
+              <p class="carriere-desc">Segmentation IT/OT, VLANs dédiés, gestion de la bande passante</p>
+            </div>
+            <div class="carriere-arrow">→</div>
+            <div class="carriere-step">
+              <span class="carriere-icon">🔒</span>
+              <p class="carriere-label">Sécurité</p>
+              <p class="carriere-desc">Isolation des objets, firewall, détection d'intrusion (IDS/IPS)</p>
+            </div>
+            <div class="carriere-arrow">→</div>
+            <div class="carriere-step">
+              <span class="carriere-icon">🛠️</span>
+              <p class="carriere-label">Supervision</p>
+              <p class="carriere-desc">Monitoring des équipements IoT, maintenance préventive</p>
+            </div>
+          </div>
+          <div style="margin-top:1.2rem;">
+            <div class="auto-result">
+              <span style="font-size:1.2rem;">💼</span>
+              <p>En tant que technicien SISR, je serai directement impliqué dans <strong>la conception, la sécurisation et la supervision</strong> des infrastructures intégrant des objets connectés.</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div class="topic-card">
-      <p class="topic-number">SMART HOME</p>
-      <h2 class="topic-title">Maison connectée</h2>
-      <p class="topic-text">Gestion intelligente de l'éclairage, sécurité, et énergie. Démocratisation grâce à des acteurs accessibles comme IKEA (gamme Dirigera/Matter). L'IoT résidentiel est désormais le segment le plus présent dans les foyers français avec 5 à 10 objets connectés en moyenne.</p>
-    </div>
+      <!-- Q3 : AUTOMATISATION -->
+      <div class="question-block">
+        <div class="question-header">
+          <div class="q-number">3</div>
+          <p class="q-title">Comment j'automatise ma veille technologique ?</p>
+        </div>
+        <div class="question-body">
+          <div class="auto-schema">
 
-    <div class="topic-card">
-      <p class="topic-number">INDUSTRIE 4.0 — IIOT</p>
-      <h2 class="topic-title">Smart Manufacturing & Logistique</h2>
-      <p class="topic-text">
-        <strong style="color:var(--accent);">Amazon :</strong> Capteurs IoT couplés à la robotique pour le suivi en temps réel et la maintenance prédictive. Économie visée de 10 milliards $ d'ici 2030.<br><br>
-        <strong style="color:var(--accent);">Auchan & IBM (France, 2025) :</strong> Déploiement de 50 000 palettes connectées (Smart Green Pallets). Capteurs IoT pour la géolocalisation, la température et la détection de chocs. Objectif : réduire le gaspillage alimentaire et l'empreinte carbone de -25% d'ici 2030. Illustration concrète de la "Logistique 4.0" alliant performance économique et RSE.
-      </p>
-    </div>
+            <div class="auto-row">
+              <p class="auto-label">Alertes</p>
+              <div class="auto-sources">
+                <div class="auto-source"><span>🔔</span> Google Alertes — "IoT security", "Internet of Things 2026"</div>
+              </div>
+            </div>
 
-    <div class="topic-card">
-      <p class="topic-number">SANTÉ & SMART CITY</p>
-      <h2 class="topic-title">e-Health et Villes intelligentes</h2>
-      <p class="topic-text">
-        <strong style="color:var(--accent);">Santé :</strong> Suivi en continu des constantes (diabète, rythme cardiaque) et télémédecine. Croissance forte du secteur "Santé connectée" en France.<br><br>
-        <strong style="color:var(--accent);">Smart City & Agriculture :</strong> Gestion intelligente des déchets, stationnement connecté, irrigation optimisée selon les données climatiques en temps réel.
-      </p>
-    </div>
+            <div class="divider"></div>
 
-    <!-- TECHNOLOGIES -->
-    <p class="section-heading">Technologies sous-jacentes (2026)</p>
+            <div class="auto-row">
+              <p class="auto-label">Réseaux</p>
+              <div class="auto-sources">
+                <div class="auto-source"><span>💼</span> LinkedIn — suivi d'experts IoT & cybersécurité</div>
+                <div class="auto-source"><span>🐦</span> X (Twitter) — hashtags #IoT #CyberSecurity</div>
+              </div>
+            </div>
 
-    <div class="topic-card">
-      <p class="topic-number">PROTOCOLES — NOUVEAUTÉS 2026</p>
-      <h2 class="topic-title">Bluetooth 6, Matter et Edge Computing</h2>
-      <p class="topic-text">
-        <strong style="color:var(--accent);">Bluetooth 6 (nouveauté) :</strong> Apporte une latence réduite et une gestion adaptative des interférences via le "Channel Sounding". Crucial pour les réseaux IoT denses.<br><br>
-        <strong style="color:var(--accent);">Matter :</strong> Nouveau standard d'interopérabilité adopté par Google, Apple et IKEA pour que tous les objets connectés communiquent entre eux, quelle que soit la marque. Déploiement massif en cours (intégré dans les produits IKEA Bilresa).<br><br>
-        <strong style="color:var(--accent);">Edge Computing :</strong> Traitement de la donnée directement sur l'objet pour réduire la latence, limiter la consommation de bande passante et sécuriser l'information en local. Tendance en forte croissance, notamment traitée par Edge en France.
-      </p>
-    </div>
+            <div class="divider"></div>
 
-    <!-- DEFIS -->
-    <p class="section-heading">Défis et enjeux critiques</p>
+            <div class="auto-row">
+              <p class="auto-label">Sites spécialisés</p>
+              <div class="auto-sources">
+                <div class="auto-source"><span>🛡️</span> The Hacker News</div>
+                <div class="auto-source"><span>🌐</span> Cisco Newsroom</div>
+                <div class="auto-source"><span>🎓</span> Cisco NetAcademy</div>
+                <div class="auto-source"><span>🇫🇷</span> ANSSI (sécurité IoT)</div>
+              </div>
+            </div>
 
-    <div class="topic-card">
-      <p class="topic-number">CYBERSÉCURITÉ — MENACE BOTNET</p>
-      <h2 class="topic-title">L'IoT, premier vecteur d'attaques</h2>
-      <p class="topic-text">
-        L'IoT représente aujourd'hui la principale surface d'attaque pour les cybercriminels. Les objets connectés sont souvent mal sécurisés, avec des mots de passe par défaut et l'absence de mises à jour régulières.<br><br>
-        <strong style="color:var(--accent);">Actualité — Botnet ShadowV2 :</strong> Ce botnet a exploité une panne AWS pour infecter des routeurs et caméras non sécurisés dans 28 pays. Une illustration concrète des risques liés aux infrastructures IoT.<br><br>
-        <strong style="color:var(--accent);">Solution industrielle :</strong> Adoption croissante de la norme <strong>IEC 62443</strong> et mise en place d'une segmentation des réseaux IT/OT (séparer le réseau bureautique du réseau industriel) pour limiter la propagation d'une attaque. Compétence directement liée au métier de technicien SISR.
-      </p>
-    </div>
+            <div class="divider"></div>
 
-    <div class="topic-card">
-      <p class="topic-number">INTEROPÉRABILITÉ & ÉTHIQUE</p>
-      <h2 class="topic-title">Standardisation et nouveaux défis sociétaux</h2>
-      <p class="topic-text">
-        <strong style="color:var(--accent);">Interopérabilité :</strong> En passe d'être résolue par le déploiement massif du protocole Matter. Les silos entre marques s'effacent progressivement.<br><br>
-        <strong style="color:var(--accent);">Éthique & Santé (nouveau défi 2026) :</strong> L'Académie nationale de Médecine alerte sur les risques des objets connectés pour les enfants (jouets IA). Deux risques identifiés : la dépendance émotionnelle aux chatbots et l'"orthosomnie" (anxiété de performance du sommeil liée aux montres connectées). Nécessité d'une régulation via le principe d'"Ethic by Design".
-      </p>
-    </div>
+            <div class="auto-row">
+              <p class="auto-label">Résultat</p>
+              <div style="flex:1;">
+                <div class="auto-result">
+                  <span style="font-size:1.2rem;">✅</span>
+                  <p>Veille <strong>régulière et structurée</strong> — informations filtrées par thème, centralisées et consultées chaque semaine pour rester à jour sur les évolutions du secteur.</p>
+                </div>
+              </div>
+            </div>
 
-    <!-- TENDANCES -->
-    <p class="section-heading">Tendances et évolutions</p>
+          </div>
+        </div>
+      </div>
 
-    <div class="topic-card">
-      <p class="topic-number">FUTUR DE L'IOT</p>
-      <h2 class="topic-title">6G, IA et durabilité environnementale</h2>
-      <p class="topic-text">
-        <strong style="color:var(--accent);">6G & IoT :</strong> La 6G (horizon 2030) permettra une connectivité ultra-rapide, une latence quasi nulle et la gestion simultanée d'un nombre massif d'appareils. Essentiel pour les voitures autonomes et les soins de santé à distance.<br><br>
-        <strong style="color:var(--accent);">IA & IoT :</strong> L'intelligence artificielle analyse les données IoT en temps réel pour des décisions automatisées, de la maintenance prédictive et l'optimisation des processus industriels.<br><br>
-        <strong style="color:var(--accent);">IoT & environnement :</strong> Surveillance de la qualité de l'air, gestion intelligente de l'énergie et de l'eau dans les bâtiments (Smart Buildings). L'IoT comme levier central de la transition écologique.
-      </p>
-    </div>
-
-    <!-- TABLE CHIFFRES -->
-    <p class="section-heading">Tableau comparatif Monde / France</p>
-
-    <div style="overflow-x:auto; border-radius:12px; border: 1px solid rgba(255,255,255,0.1);">
-      <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
-        <thead>
-          <tr style="background:rgba(41,82,227,0.2);">
-            <th style="padding:1rem 1.2rem; text-align:left; font-family:'Syne',sans-serif; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); border-bottom:1px solid rgba(255,255,255,0.1);">Indicateur</th>
-            <th style="padding:1rem 1.2rem; text-align:left; font-family:'Syne',sans-serif; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); border-bottom:1px solid rgba(255,255,255,0.1);">Monde (2026)</th>
-            <th style="padding:1rem 1.2rem; text-align:left; font-family:'Syne',sans-serif; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); border-bottom:1px solid rgba(255,255,255,0.1);">France (2026)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
-            <td style="padding:0.9rem 1.2rem; color:var(--white-soft); font-weight:500;">Objets connectés</td>
-            <td style="padding:0.9rem 1.2rem; color:var(--white);">~21,9 à 30 Milliards</td>
-            <td style="padding:0.9rem 1.2rem; color:var(--white);">&gt; 450 Millions</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
-            <td style="padding:0.9rem 1.2rem; color:var(--white-soft); font-weight:500;">Croissance annuelle</td>
-            <td style="padding:0.9rem 1.2rem; color:var(--white);">~12% à 23%</td>
-            <td style="padding:0.9rem 1.2rem; color:var(--white);">15% à 20%</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
-            <td style="padding:0.9rem 1.2rem; color:var(--white-soft); font-weight:500;">Valeur du marché</td>
-            <td style="padding:0.9rem 1.2rem; color:var(--white);">~902 à 1 055 milliards $</td>
-            <td style="padding:0.9rem 1.2rem; color:var(--white);">Dynamique européenne forte</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.06); background:rgba(255,255,255,0.02);">
-            <td style="padding:0.9rem 1.2rem; color:var(--white-soft); font-weight:500;">Volume de données</td>
-            <td style="padding:0.9rem 1.2rem; color:var(--white);">~73 Zettaoctets</td>
-            <td style="padding:0.9rem 1.2rem; color:var(--white);">Traitement via Edge Computing</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.06);">
-            <td style="padding:0.9rem 1.2rem; color:var(--white-soft); font-weight:500;">Secteurs dominants</td>
-            <td style="padding:0.9rem 1.2rem; color:var(--white);">IIoT · Santé · Smart Cities</td>
-            <td style="padding:0.9rem 1.2rem; color:var(--white);">Industrie 4.0 · Smart Home · Santé</td>
-          </tr>
-          <tr style="background:rgba(255,255,255,0.02);">
-            <td style="padding:0.9rem 1.2rem; color:var(--white-soft); font-weight:500;">Investissements</td>
-            <td style="padding:0.9rem 1.2rem; color:var(--white);">Services & logiciels > hardware</td>
-            <td style="padding:0.9rem 1.2rem; color:var(--white);">20% des entreprises investissent en IoT</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
 
   </main>
