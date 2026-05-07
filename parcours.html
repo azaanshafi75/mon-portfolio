@@ -69,7 +69,7 @@
       max-width: 580px; line-height: 1.7; position: relative; z-index: 1;
     }
 
-    main { max-width: 1050px; margin: 0 auto; padding: 4rem 3rem; }
+    main { max-width: 1100px; margin: 0 auto; padding: 4rem 3rem; }
 
     .section-heading {
       font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700;
@@ -77,123 +77,103 @@
       margin: 3.5rem 0 1.5rem;
     }
 
-    /* BTS SIO EXPLAINER */
-    .bts-card {
-      background: rgba(41,82,227,0.1);
-      border: 1px solid rgba(91,139,255,0.25);
-      border-radius: 16px;
-      padding: 2.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .bts-card h2 {
-      font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem;
-    }
-    .bts-card p {
-      font-size: 0.95rem; color: var(--white-soft); line-height: 1.75; font-weight: 300;
-    }
-    .bts-card strong { color: var(--white); font-weight: 500; }
-
-    .options-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem;
-    }
-    .option-block {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px; padding: 1.8rem;
-      transition: border-color 0.3s;
-    }
-    .option-block:hover { border-color: rgba(91,139,255,0.35); }
-    .option-block.active-option {
-      border-color: rgba(91,139,255,0.5);
-      background: rgba(41,82,227,0.12);
-    }
-    .option-label {
-      font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
-    }
-    .option-label.current::after {
-      content: ' — MON OPTION';
-      background: var(--accent);
-      color: var(--blue-deep);
-      border-radius: 3px;
-      padding: 0.1rem 0.4rem;
-      font-size: 0.65rem;
-      margin-left: 0.4rem;
-    }
-    .option-title {
-      font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.7rem;
-    }
-    .option-desc {
-      font-size: 0.88rem; color: var(--white-soft); line-height: 1.65; font-weight: 300;
-    }
-    .option-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
-    .option-tag {
-      background: rgba(255,255,255,0.06);
-      border-radius: 4px; padding: 0.2rem 0.6rem;
-      font-size: 0.76rem; color: var(--white-soft);
+    .two-col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
     }
 
-    /* TIMELINE */
-    .timeline { position: relative; padding-left: 2rem; }
+    .col-title {
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+      margin-bottom: 2rem;
+      display: flex; align-items: center; gap: 0.6rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .timeline { position: relative; padding-left: 1.8rem; }
     .timeline::before {
-      content: '';
-      position: absolute; left: 0; top: 8px; bottom: 8px;
+      content: ''; position: absolute; left: 0; top: 6px; bottom: 6px;
       width: 2px;
       background: linear-gradient(to bottom, var(--blue-bright), rgba(91,139,255,0.1));
       border-radius: 2px;
     }
-
-    .timeline-item {
-      position: relative; margin-bottom: 2.5rem;
-    }
+    .timeline-item { position: relative; margin-bottom: 2rem; }
     .timeline-item::before {
-      content: '';
-      position: absolute; left: -2.45rem; top: 8px;
+      content: ''; position: absolute; left: -2.2rem; top: 6px;
       width: 12px; height: 12px;
-      background: var(--blue-glow);
-      border-radius: 50%;
+      background: var(--blue-glow); border-radius: 50%;
       box-shadow: 0 0 12px rgba(61,111,255,0.6);
     }
-
     .timeline-card {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 14px; padding: 1.8rem 2rem;
+      border-radius: 14px; padding: 1.5rem 1.8rem;
       transition: border-color 0.3s, background 0.3s;
     }
-    .timeline-card:hover {
-      border-color: rgba(91,139,255,0.35);
-      background: rgba(41,82,227,0.08);
-    }
+    .timeline-card:hover { border-color: rgba(91,139,255,0.35); background: rgba(41,82,227,0.08); }
+    .timeline-card.current { border-color: rgba(91,139,255,0.4); background: rgba(41,82,227,0.1); }
 
     .timeline-period {
-      font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.5rem;
+      display: inline-block;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px; padding: 0.2rem 0.7rem;
+      font-family: 'Syne', sans-serif; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.05em; color: var(--white-soft); margin-bottom: 0.8rem;
+    }
+    .timeline-period.active {
+      background: rgba(91,139,255,0.2); border-color: rgba(91,139,255,0.4); color: var(--accent);
     }
     .timeline-title {
-      font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem;
+      font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+      margin-bottom: 0.3rem; line-height: 1.3;
     }
     .timeline-sub {
-      font-size: 0.9rem; color: var(--accent); font-weight: 500; margin-bottom: 1rem;
+      font-size: 0.88rem; color: var(--accent); font-weight: 500;
+      margin-bottom: 0.8rem; font-style: italic;
     }
-    .timeline-desc {
-      font-size: 0.9rem; color: var(--white-soft); line-height: 1.7; font-weight: 300;
+    .mention-badge {
+      display: inline-block;
+      background: rgba(91,139,255,0.15); border: 1px solid rgba(91,139,255,0.3);
+      border-radius: 4px; padding: 0.2rem 0.6rem;
+      font-size: 0.75rem; color: var(--accent); font-weight: 600; margin-bottom: 0.8rem;
     }
-    .timeline-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.8rem; }
+    .timeline-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
     .timeline-list li {
-      font-size: 0.9rem; color: var(--white-soft); line-height: 1.6; font-weight: 300;
+      font-size: 0.88rem; color: var(--white-soft); line-height: 1.55; font-weight: 300;
       padding-left: 1.2rem; position: relative;
     }
-    .timeline-list li::before {
-      content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: 600;
-    }
+    .timeline-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
 
-    .badge-stage {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: rgba(91,139,255,0.15); border: 1px solid rgba(91,139,255,0.3);
-      border-radius: 4px; padding: 0.25rem 0.7rem;
-      font-size: 0.75rem; font-weight: 600; color: var(--accent);
-      margin-bottom: 0.8rem;
+    /* BTS SIO */
+    .bts-intro {
+      background: rgba(41,82,227,0.08); border: 1px solid rgba(91,139,255,0.2);
+      border-radius: 16px; padding: 2rem 2.5rem; margin-bottom: 2rem;
+    }
+    .bts-intro p { font-size: 0.95rem; color: var(--white-soft); line-height: 1.8; font-weight: 300; }
+    .bts-intro strong { color: var(--white); font-weight: 500; }
+
+    .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .option-block {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 1.8rem; transition: border-color 0.3s;
+    }
+    .option-block.mine { border-color: rgba(91,139,255,0.45); background: rgba(41,82,227,0.1); }
+    .option-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
+    .option-label {
+      font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent);
+    }
+    .option-badge {
+      background: var(--accent); color: var(--blue-deep);
+      border-radius: 4px; padding: 0.15rem 0.5rem;
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 0.05em;
+    }
+    .option-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.7rem; line-height: 1.3; }
+    .option-desc { font-size: 0.88rem; color: var(--white-soft); line-height: 1.65; font-weight: 300; }
+    .option-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+    .option-tag {
+      background: rgba(255,255,255,0.06); border-radius: 4px; padding: 0.2rem 0.6rem;
+      font-size: 0.76rem; color: var(--white-soft);
     }
 
     footer { background: rgba(0,0,0,0.3); border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
@@ -204,7 +184,7 @@
       .nav-links { display: none; }
       .page-header { padding: 6rem 1.5rem 3rem; }
       main { padding: 2rem 1.5rem; }
-      .options-grid { grid-template-columns: 1fr; }
+      .two-col, .options-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -225,48 +205,150 @@
   <div class="page-header">
     <p class="page-label">Formation & Expériences</p>
     <h1 class="page-title">Mon Parcours</h1>
-    <p class="page-sub">Deux années de BTS SIO option SISR au CFA INSTA Paris, ponctuées de deux stages en entreprise et de certifications Cisco.</p>
+    <p class="page-sub">De mon Bac Pro Commerce au BTS SIO SISR, en passant par deux stages en entreprise — voici mon parcours scolaire et professionnel complet.</p>
   </div>
 
   <main>
 
-    <!-- QU'EST CE QUE LE BTS SIO -->
+    <p class="section-heading">Cursus scolaire & Expériences professionnelles</p>
+
+    <div class="two-col">
+
+      <!-- GAUCHE : CURSUS -->
+      <div>
+        <h3 class="col-title">🏫 Cursus scolaire</h3>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-card current">
+              <span class="timeline-period active">2024 — 2026</span>
+              <h3 class="timeline-title">BTS Services Informatiques aux Organisations</h3>
+              <p class="timeline-sub">BTS SIO — Option SISR · CFA INSTA (75 - Paris)</p>
+              <ul class="timeline-list">
+                <li>Spécialisation en infrastructure systèmes et réseaux</li>
+                <li>7 situations professionnelles documentées</li>
+                <li>8 certifications Cisco NetAcademy</li>
+                <li>2 stages en entreprise</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <span class="timeline-period">2023 — 2024</span>
+              <h3 class="timeline-title">BTS Comptabilité et Gestion</h3>
+              <p class="timeline-sub">Lycée professionnel Jean-Lurçat (75 - Paris)</p>
+              <ul class="timeline-list">
+                <li>Formation en comptabilité, gestion et fiscalité</li>
+                <li>Maîtrise du progiciel Sage 50</li>
+                <li>Rapprochements bancaires et tableaux de suivi</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <span class="timeline-period">2018 — 2021</span>
+              <h3 class="timeline-title">Lycée Professionnel</h3>
+              <p class="timeline-sub">Lycée professionnel Jean-Lurçat (75 - Paris)</p>
+              <span class="mention-badge">BAC PRO Commerce — Mention ASSEZ-BIEN</span>
+              <ul class="timeline-list">
+                <li>Option Commerce</li>
+                <li>Obtenu avec mention Assez-Bien</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DROITE : EXPERIENCES -->
+      <div>
+        <h3 class="col-title">💼 Parcours professionnel</h3>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-card current">
+              <span class="timeline-period active">Avril 2026 — Mai 2026</span>
+              <h3 class="timeline-title">Technicien Déploiement IT — Stage Itinérant</h3>
+              <p class="timeline-sub">Pizza Hut France · Itinérance multi-sites</p>
+              <ul class="timeline-list">
+                <li>Déploiement d'un nouveau système de commande/paiement dans plusieurs restaurants</li>
+                <li>Configuration et mise en service des équipements réseau et terminaux</li>
+                <li>Diagnostic réseau sur site et résolution d'incidents</li>
+                <li>Rédaction de comptes rendus d'intervention</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <span class="timeline-period">Janvier 2025 — Mars 2025</span>
+              <h3 class="timeline-title">Technicien Informatique</h3>
+              <p class="timeline-sub">Boulanger Passy · 75016 Paris</p>
+              <ul class="timeline-list">
+                <li>Installation et mise en service de produits informatiques</li>
+                <li>Transfert et sauvegarde de données clients</li>
+                <li>Réinitialisation et optimisation des systèmes</li>
+                <li>Diagnostic et réparation d'appareils informatiques</li>
+                <li>Accueil, conseil et assistance clientèle</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-card">
+              <span class="timeline-period">Mai 2024 — Juin 2024</span>
+              <h3 class="timeline-title">Assistant Comptable</h3>
+              <p class="timeline-sub">Association Le Souvenir Français · 75017 Paris</p>
+              <ul class="timeline-list">
+                <li>Saisie des écritures et contrôle des factures sur Sage 50</li>
+                <li>Réalisation de rapprochements bancaires</li>
+                <li>Tableaux de suivi via l'analyse de données Excel</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BTS SIO EXPLICATION -->
     <p class="section-heading">Qu'est-ce que le BTS SIO ?</p>
 
-    <div class="bts-card">
-      <h2>BTS Services Informatiques aux Organisations</h2>
+    <div class="bts-intro">
       <p>
         Le <strong>BTS SIO</strong> (Services Informatiques aux Organisations) est un diplôme d'État de niveau Bac+2
         qui forme des techniciens capables de répondre aux besoins informatiques des entreprises.
-        La formation dure <strong>2 ans</strong> et alterne cours théoriques, travaux pratiques et stages en entreprise.<br><br>
-        Le BTS SIO se divise en <strong>deux options</strong> selon le domaine de spécialisation choisi :
+        La formation dure <strong>2 ans</strong> et alterne cours théoriques, travaux pratiques et stages en entreprise.
+        Il se décline en <strong>deux options</strong> selon la spécialisation choisie.
       </p>
     </div>
 
     <div class="options-grid">
-      <div class="option-block active-option">
-        <p class="option-label current">Option A</p>
-        <h3 class="option-title">SISR — Solutions d'Infrastructure, Systèmes et Réseaux</h3>
-        <p class="option-desc">
-          Spécialisation dans la conception, le déploiement et l'administration des infrastructures réseau et systèmes d'une organisation.
-          Le technicien SISR installe, configure et maintient les équipements réseau, les serveurs et les systèmes de sécurité.
-        </p>
+      <div class="option-block mine">
+        <div class="option-top">
+          <span class="option-label">Option SISR</span>
+          <span class="option-badge">MON OPTION</span>
+        </div>
+        <h3 class="option-title">Solutions d'Infrastructure, Systèmes et Réseaux</h3>
+        <p class="option-desc">Conception, déploiement et administration des infrastructures réseau et systèmes. Installation, configuration et sécurisation des équipements réseau, serveurs et systèmes d'entreprise.</p>
         <div class="option-tags">
-          <span class="option-tag">Réseaux</span>
-          <span class="option-tag">Serveurs</span>
+          <span class="option-tag">Réseaux Cisco</span>
+          <span class="option-tag">Serveurs Windows</span>
           <span class="option-tag">Cybersécurité</span>
           <span class="option-tag">Virtualisation</span>
-          <span class="option-tag">Administration système</span>
+          <span class="option-tag">Linux</span>
         </div>
       </div>
 
       <div class="option-block">
-        <p class="option-label">Option B</p>
-        <h3 class="option-title">SLAM — Solutions Logicielles et Applications Métiers</h3>
-        <p class="option-desc">
-          Spécialisation dans le développement d'applications, la programmation et la gestion de bases de données.
-          Le technicien SLAM conçoit, développe et maintient des solutions logicielles adaptées aux besoins métiers.
-        </p>
+        <div class="option-top">
+          <span class="option-label">Option SLAM</span>
+        </div>
+        <h3 class="option-title">Solutions Logicielles et Applications Métiers</h3>
+        <p class="option-desc">Développement d'applications et gestion de bases de données. Conception, développement et maintenance de solutions logicielles adaptées aux besoins métiers des organisations.</p>
         <div class="option-tags">
           <span class="option-tag">Développement</span>
           <span class="option-tag">Bases de données</span>
@@ -274,91 +356,6 @@
           <span class="option-tag">SQL</span>
           <span class="option-tag">Programmation</span>
         </div>
-      </div>
-    </div>
-
-    <!-- PARCOURS SCOLAIRE -->
-    <p class="section-heading">Parcours scolaire</p>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-card">
-          <p class="timeline-period">2024 — 2026</p>
-          <h3 class="timeline-title">BTS SIO — Option SISR</h3>
-          <p class="timeline-sub">CFA INSTA · Paris 75005</p>
-          <p class="timeline-desc">
-            Formation en 2 ans spécialisée dans l'administration des systèmes et des réseaux.
-            Acquisition de compétences en infrastructure réseau Cisco, virtualisation (Proxmox, VMware),
-            sécurité (pfSense, ACL, SSH), et gestion des services d'annuaire (Active Directory, DNS, DHCP).
-          </p>
-          <ul class="timeline-list" style="margin-top:1rem;">
-            <li>7 situations professionnelles documentées (E5)</li>
-            <li>2 fiches de réalisation professionnelle (E6)</li>
-            <li>Veille technologique sur l'IoT</li>
-            <li>8 certifications Cisco NetAcademy obtenues</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- EXPERIENCES PRO -->
-    <p class="section-heading">Expériences professionnelles</p>
-
-    <div class="timeline">
-
-      <!-- STAGE 2 -->
-      <div class="timeline-item">
-        <div class="timeline-card">
-          <span class="badge-stage">🏢 Stage — 2ème année</span>
-          <p class="timeline-period">Avril 2026 — Mai 2026</p>
-          <h3 class="timeline-title">Technicien Déploiement IT — Stage Itinérant</h3>
-          <p class="timeline-sub">Pizza Hut France · Itinérance multi-sites</p>
-          <p class="timeline-desc">
-            Mission de déploiement terrain d'un nouveau système de commande et de paiement dans plusieurs restaurants Pizza Hut en itinérance sur toute la France.
-          </p>
-          <ul class="timeline-list">
-            <li>Déploiement d'un nouveau système de commande/paiement dans plusieurs restaurants en itinérance</li>
-            <li>Configuration et mise en service des équipements réseau, terminaux et interconnexions inter-sites</li>
-            <li>Diagnostic réseau sur site et résolution d'incidents techniques</li>
-            <li>Rédaction de comptes rendus d'intervention pour chaque site</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- STAGE 1 -->
-      <div class="timeline-item">
-        <div class="timeline-card">
-          <span class="badge-stage">🏢 Stage — 1ère année</span>
-          <p class="timeline-period">Janvier 2025 — Mars 2025</p>
-          <h3 class="timeline-title">Technicien Informatique</h3>
-          <p class="timeline-sub">Boulanger Passy · Paris</p>
-          <p class="timeline-desc">
-            Stage en environnement retail spécialisé dans le matériel informatique et électronique grand public.
-            Intervention technique auprès de la clientèle et gestion du matériel en atelier.
-          </p>
-          <ul class="timeline-list">
-            <li>Installation, configuration et réparation de matériels informatiques</li>
-            <li>Transfert, sauvegarde et sécurisation des données clientèle</li>
-            <li>Accueil, conseil et assistance technique auprès de la clientèle</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- ETABLISSEMENT -->
-    <p class="section-heading">Mon établissement</p>
-    <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:2rem 2.5rem; display:flex; gap:2rem; align-items:flex-start; flex-wrap:wrap;">
-      <div style="font-size:3rem; flex-shrink:0;">🏫</div>
-      <div>
-        <h3 style="font-family:'Syne',sans-serif; font-size:1.15rem; font-weight:700; margin-bottom:0.4rem;">CFA INSTA</h3>
-        <p style="color:var(--accent); font-weight:500; font-size:0.9rem; margin-bottom:0.8rem;">Institut National des Sciences et Techniques Avancées · Paris 75005</p>
-        <p style="font-size:0.9rem; color:var(--white-soft); line-height:1.7; font-weight:300; max-width:560px;">
-          L'INSTA est un établissement d'enseignement supérieur privé parisien spécialisé dans les formations aux métiers de l'informatique, des réseaux et des nouvelles technologies. 
-          La formation BTS SIO y est dispensée en alternance, alliant théorie et mise en pratique en entreprise.
-        </p>
       </div>
     </div>
 
