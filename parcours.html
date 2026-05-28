@@ -186,21 +186,86 @@
       main { padding: 2rem 1.5rem; }
       .two-col, .options-grid { grid-template-columns: 1fr; }
     }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 65px;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      background: rgba(10, 26, 107, 0.98);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 1rem 0;
+      flex-direction: column;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 0.9rem 2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--white-soft);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: color 0.2s, background 0.2s;
+    }
+    .mobile-menu a:hover, .mobile-menu a.active {
+      color: var(--white);
+      background: rgba(255,255,255,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none !important; }
+      .hamburger { display: flex; }
+    }
   </style>
 </head>
 <body>
 
   <nav>
     <a class="nav-logo" href="index.html">AZAAN SHAFI</a>
-    <ul class="nav-links">
+        <ul class="nav-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="profil.html">Profil</a></li>
-      <li><a href="parcours.html" class="active">Parcours</a></li>
+      <li><a href="parcours.html">Parcours</a></li>
       <li><a href="projets-e5.html">Projets E5</a></li>
       <li><a href="veille.html">Veille Techno</a></li>
       <li><a href="e6.html">Fiches E6</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Accueil</a>
+    <a href="profil.html">Profil</a>
+    <a href="parcours.html" class="active">Parcours</a>
+    <a href="projets-e5.html">Projets E5</a>
+    <a href="veille.html">Veille Techno</a>
+    <a href="e6.html">Fiches E6</a>
+  </div>
 
   <div class="page-header">
     <p class="page-label">Formation & Expériences</p>
@@ -362,9 +427,26 @@
   </main>
 
   <footer>
-    <p>© 2025 Azaan SHAFI — Portfolio BTS SIO SISR</p>
+    <p>© 2026 Azaan SHAFI — Portfolio BTS SIO SISR</p>
     <p>Tous droits réservés</p>
   </footer>
 
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('hamburger');
+      menu.classList.toggle('open');
+      btn.classList.toggle('open');
+    }
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('hamburger');
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.remove('open');
+        btn.classList.remove('open');
+      }
+    });
+  </script>
 </body>
 </html>
