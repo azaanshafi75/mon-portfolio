@@ -47,17 +47,16 @@
     }
 
     .home-hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
-      gap: clamp(2.5rem, 7vw, 7rem);
-      align-items: center;
+      max-width: 980px;
+      margin: 0 auto;
       position: relative;
       z-index: 1;
+      text-align: center;
     }
 
     .home-hero h1 {
       max-width: 840px;
-      margin: 1rem 0 1.35rem;
+      margin: 1rem auto 1.35rem;
       font-family: "Space Grotesk", sans-serif;
       font-size: clamp(3.15rem, 7.4vw, 6.7rem);
       line-height: .98;
@@ -75,7 +74,8 @@
     }
 
     .home-hero-copy {
-      max-width: 750px;
+      max-width: 790px;
+      margin: 0 auto;
       color: var(--muted);
       font-size: clamp(1rem, 1.4vw, 1.14rem);
       line-height: 1.85;
@@ -86,11 +86,17 @@
       font-weight: 800;
     }
 
+    .home-hero .hero-actions {
+      justify-content: center;
+    }
+
     .home-highlight {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: .75rem;
-      margin-top: 2rem;
+      max-width: 760px;
+      margin: 2rem auto 0;
+      text-align: left;
     }
 
     .home-highlight-item {
@@ -114,39 +120,6 @@
       color: var(--muted);
       font-size: .8rem;
       line-height: 1.5;
-    }
-
-    .home-visual-card {
-      position: relative;
-      padding: 1.2rem;
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      background: linear-gradient(145deg, rgba(255, 255, 255, .94), rgba(239, 245, 253, .9));
-      box-shadow: 0 30px 80px rgba(48, 70, 96, .14);
-    }
-
-    .home-visual-card::before {
-      content: "Infrastructure · Réseau · Support";
-      position: absolute;
-      left: 1.3rem;
-      top: 1.3rem;
-      z-index: 2;
-      padding: .48rem .75rem;
-      border: 1px solid rgba(37, 99, 235, .17);
-      border-radius: 999px;
-      color: var(--accent-strong);
-      background: rgba(255, 255, 255, .88);
-      font-size: .68rem;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .home-visual-card img {
-      width: 100%;
-      min-height: 390px;
-      object-fit: contain;
-      filter: drop-shadow(0 25px 35px rgba(39, 63, 91, .13));
     }
 
     .home-section {
@@ -340,10 +313,7 @@
 
     @media (max-width: 900px) {
       .home-hero { min-height: auto; }
-      .home-hero-grid,
       .home-section-head { grid-template-columns: 1fr; }
-      .home-visual-card { max-width: 680px; }
-      .home-visual-card img { min-height: 300px; }
     }
 
     @media (max-width: 680px) {
@@ -353,7 +323,6 @@
       .home-section, .home-cta { padding: 76px 0; }
       .technology-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .technology-item { min-height: 118px; }
-      .home-visual-card::before { font-size: .58rem; }
     }
   </style>
 
@@ -437,9 +406,6 @@
           </div>
         </div>
 
-        <div class="home-visual-card" data-reveal aria-hidden="true">
-          <img src="assets/images/hero-network.svg" alt="" width="960" height="600">
-        </div>
       </div>
     </section>
 
