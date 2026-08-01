@@ -60,3 +60,8 @@ Dans GitHub : **Settings → Pages → Deploy from a branch → main / root**.
 ## Anciennes URL
 
 Les anciennes pages `parcours.html`, `projets-e5.html`, `e6.html` et `veille.html` redirigent vers les nouvelles rubriques pour éviter les liens cassés.
+
+
+## Thème visuel
+
+Cette version utilise un thème clair premium : blanc cassé, gris bleuté et bleu profond.

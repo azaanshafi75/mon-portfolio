@@ -3,8 +3,8 @@
   "short_name": "Azaan Shafi",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#05070d",
-  "theme_color": "#05070d",
+  "background_color": "#f6f8fc",
+  "theme_color": "#f6f8fc",
   "lang": "fr",
   "icons": [
     {
