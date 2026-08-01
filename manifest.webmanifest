@@ -1,0 +1,16 @@
+{
+  "name": "Portfolio professionnel — Azaan Shafi",
+  "short_name": "Azaan Shafi",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#05070d",
+  "theme_color": "#05070d",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "assets/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

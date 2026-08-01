@@ -1,0 +1,17 @@
+
+@media print {
+  :root { --text: #0f172a; --muted: #334155; --accent: #1d4ed8; --line: #dbe3ee; }
+  @page { size: A4; margin: 12mm; }
+  body { background: white !important; color: #0f172a !important; font-size: 10pt; }
+  body::before, body::after, .site-header, .site-footer, .scroll-progress, .back-to-top, .page-hero, .cv-toolbar { display: none !important; }
+  main { min-height: auto; }
+  .section { padding: 0 !important; }
+  .cv-sheet { border: 0; box-shadow: none; background: white; padding: 0; }
+  .cv-head { border-color: #dbe3ee; }
+  .cv-head h1 { font-size: 28pt; color: #0f172a; }
+  .cv-head p, .cv-entry .meta, .cv-section h2 { color: #1d4ed8; }
+  .cv-contact, .cv-section p, .cv-section li { color: #334155; }
+  .cv-columns { gap: 14mm; }
+  .cv-entry { break-inside: avoid; }
+  a { text-decoration: none; color: inherit; }
+}
