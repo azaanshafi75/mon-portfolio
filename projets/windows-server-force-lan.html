@@ -1,87 +1,121 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Windows Server FORCE.LAN — Azaan Shafi</title>
-<meta name="description" content="Projet Windows Server FORCE.LAN : Active Directory, DNS, DHCP, GPO, PowerShell, sauvegarde, supervision et continuité de service.">
-<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
-<link rel="manifest" href="../manifest.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="description" content="Laboratoire Windows Server FORCE.LAN : Active Directory, DNS, DHCP, GPO, PowerShell, sauvegarde, supervision et continuité de service.">
+<link rel="canonical" href="https://azaanshafi75.github.io/mon-portfolio/projets/windows-server-force-lan.html">
+<meta name="theme-color" content="#f6f8fc">
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/style.css">
 <style>
-.work-panel{max-width:900px;margin:0 auto;padding:clamp(2rem,6vw,4rem);border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,#fff,#f3f7fd);box-shadow:0 22px 70px rgba(48,70,96,.09)}
-.work-status{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.2rem;padding:.5rem .8rem;border-radius:999px;background:var(--accent-soft);color:var(--accent-strong);font-size:.78rem;font-weight:800}
-.work-status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
-.work-panel h1{margin:0 0 1rem;font-family:"Space Grotesk",sans-serif;font-size:clamp(2.4rem,6vw,4.8rem);line-height:1.02;letter-spacing:-.05em}
-.work-panel p{color:var(--muted);font-size:1.02rem;line-height:1.8}
-.work-tags{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.5rem 0 2rem}
+.project-hero{padding:calc(var(--nav-h) + 78px) 0 72px;border-bottom:1px solid var(--line)}
+.project-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center}
+.project-hero h1{margin:.8rem 0 1.2rem;font-family:"Space Grotesk",sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);line-height:1;letter-spacing:-.055em}
+.project-lead{color:var(--muted);font-size:1.05rem;line-height:1.8}
+.project-status{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .78rem;border-radius:999px;background:rgba(20,150,90,.08);color:#176440;font-size:.76rem;font-weight:800}
+.project-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#16a05d}
+.hero-visual img,.project-shot img{width:100%;display:block;border:1px solid var(--line);border-radius:20px;box-shadow:0 22px 60px rgba(48,70,96,.10)}
+.project-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin-top:2rem}
+.project-metric{padding:1rem;border:1px solid var(--line);border-radius:16px;background:#fff}
+.project-metric strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:1.15rem}
+.project-metric span{color:var(--muted);font-size:.76rem}
+.project-section{padding:86px 0;border-bottom:1px solid var(--line)}
+.project-section h2{margin:0 0 1rem;font-family:"Space Grotesk",sans-serif;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.045em}
+.project-section .intro{max-width:800px;color:var(--muted);line-height:1.8}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.feature-card{padding:1.4rem;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#fff,#f5f8fc)}
+.feature-card h3{margin:0 0 .6rem;font-family:"Space Grotesk",sans-serif;font-size:1.08rem}
+.feature-card p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.65}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:2rem}
+.project-shot figcaption{padding:.75rem .2rem 0;color:var(--muted);font-size:.8rem;line-height:1.5}
+.validation{padding:1.4rem 1.5rem;border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 16px 16px 0;line-height:1.75}
+.cta-panel{padding:clamp(2rem,5vw,4rem);border:1px solid rgba(37,99,235,.2);border-radius:28px;background:linear-gradient(145deg,rgba(226,237,254,.97),#fff);text-align:center}
+.cta-panel h2{margin:0 0 .8rem}
+.button-row{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}
+@media(max-width:900px){.project-hero-grid{grid-template-columns:1fr}.project-metrics{grid-template-columns:repeat(2,1fr)}.feature-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}}
+@media(max-width:580px){.project-metrics{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<a class="skip-link" href="#contenu">Aller au contenu</a>
-<div class="scroll-progress" aria-hidden="true"></div>
-
-<header class="site-header">
-  <div class="container nav-wrap">
-    <a class="brand" href="../index.html"><span class="brand-mark">AS</span><span class="brand-name">Azaan Shafi</span></a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu"><span></span></button>
-    <ul class="nav-links" id="main-nav">
-      <li><a href="../index.html">Accueil</a></li>
-      <li><a href="../profil.html">Profil</a></li>
-      <li><a href="../competences.html">Compétences</a></li>
-      <li><a href="../projets-pro.html">Projets Pro</a></li>
-      <li><a class="active" href="../projets-scolaires.html">Projets techniques</a></li>
-      <li><a href="../cv.html">CV</a></li>
-      <li class="nav-cta"><a href="../contact.html">Contact</a></li>
-    </ul>
-  </div>
-</header>
+<a class="skip-link" href="#contenu">Aller au contenu</a><div class="scroll-progress" aria-hidden="true"></div>
+<header class="site-header"><div class="container nav-wrap">
+<a class="brand" href="../index.html"><span class="brand-mark">AS</span><span class="brand-name">Azaan Shafi</span></a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu"><span></span></button>
+<ul class="nav-links" id="main-nav"><li><a href="../index.html">Accueil</a></li><li><a href="../profil.html">Profil</a></li><li><a href="../competences.html">Compétences</a></li><li><a href="../projets-pro.html">Projets Pro</a></li><li><a class="active" href="../projets-scolaires.html">Projets techniques</a></li><li><a href="../cv.html">CV</a></li><li class="nav-cta"><a href="../contact.html">Contact</a></li></ul>
+</div></header>
 
 <main id="contenu">
-<section class="page-hero">
-  <div class="container">
-    <div class="breadcrumbs"><a href="../index.html">Accueil</a><span>/</span><a href="../projets-scolaires.html">Projets techniques</a><span>/</span><span>Windows Server</span></div>
-  </div>
-</section>
+<section class="project-hero"><div class="container">
+<div class="breadcrumbs"><a href="../index.html">Accueil</a><span>/</span><a href="../projets-scolaires.html">Projets techniques</a><span>/</span><span>Windows Server</span></div>
+<div class="project-hero-grid">
+<div>
+<div class="project-status">Projet terminé</div>
+<h1>Administration Windows Server & services d’infrastructure</h1>
+<p class="project-lead">Conception et validation d’un laboratoire d’entreprise FORCE.LAN sous Windows Server 2022 : identité, réseau, fichiers, automatisation, sauvegarde, services, supervision et continuité de service.</p>
+<div class="tags"><span class="tag">Windows Server 2022</span><span class="tag">AD DS</span><span class="tag">DNS / DHCP</span><span class="tag">GPO</span><span class="tag">PowerShell</span><span class="tag">Hyper-V</span></div>
+<div class="button-row" style="justify-content:flex-start">
+<a class="button button-primary" href="../assets/docs/Projet_Windows_Server_FORCE_LAN.pdf" target="_blank" rel="noopener">Voir la documentation complète</a>
+<a class="button button-secondary" href="../projets-scolaires.html">Retour aux projets</a>
+</div>
+</div>
+<div class="hero-visual"><img src="../assets/images/projects/windows-server/architecture-force-lan.png" alt="Architecture logique du laboratoire FORCE.LAN"></div>
+</div>
 
-<section class="section">
-  <div class="container">
-    <div class="work-panel" data-reveal>
-      <span class="work-status">Projet terminé · présentation en préparation</span>
-      <h1>Administration Windows Server & services d’infrastructure</h1>
-      <p>
-        Le laboratoire FORCE.LAN est terminé. La page détaillée est actuellement en cours
-        d’intégration au portfolio afin de présenter l’architecture, les principales réalisations,
-        les tests fonctionnels et la documentation technique complète.
-      </p>
-      <div class="work-tags">
-        <span class="tag">Windows Server 2022</span>
-        <span class="tag">AD DS</span>
-        <span class="tag">DNS</span>
-        <span class="tag">DHCP</span>
-        <span class="tag">GPO</span>
-        <span class="tag">PowerShell</span>
-        <span class="tag">FSRM</span>
-        <span class="tag">IIS</span>
-        <span class="tag">RDS</span>
-        <span class="tag">Hyper-V</span>
-      </div>
-      <a class="button button-secondary" href="../projets-scolaires.html">← Retour aux projets techniques</a>
-    </div>
-  </div>
-</section>
+<div class="project-metrics">
+<div class="project-metric"><strong>2 DC</strong><span>AD / DNS redondants</span></div>
+<div class="project-metric"><strong>6 serveurs</strong><span>rôles spécialisés</span></div>
+<div class="project-metric"><strong>Hot Standby</strong><span>DHCP Failover</span></div>
+<div class="project-metric"><strong>Tests réels</strong><span>panne & restauration</span></div>
+</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Périmètre</div><h2>Une infrastructure Windows complète</h2>
+<p class="intro">Le laboratoire a été construit pour reproduire les principaux services d’une petite infrastructure d’entreprise, avec séparation des rôles et validation depuis un poste Windows 11 joint au domaine.</p>
+<div class="feature-grid">
+<div class="feature-card"><h3>Identité & accès</h3><p>Active Directory, OU, utilisateurs, groupes, AGDLP, GPO, lecteur réseau et cycle de vie des comptes.</p></div>
+<div class="feature-card"><h3>Réseau & fichiers</h3><p>DNS, DHCP, SMB, NTFS, Access-Based Enumeration et FSRM avec quotas et filtrage de fichiers.</p></div>
+<div class="feature-card"><h3>Automatisation</h3><p>Onboarding CSV et offboarding PowerShell avec retrait des groupes, désactivation, quarantaine et journalisation.</p></div>
+<div class="feature-card"><h3>Services</h3><p>Intranet IIS, FTPS sécurisé, Remote Desktop Services et virtualisation Hyper-V imbriquée.</p></div>
+<div class="feature-card"><h3>Sauvegarde & supervision</h3><p>Windows Server Backup, restauration, System State, PerfMon et Morning Check Dashboard publié sur l’intranet.</p></div>
+<div class="feature-card"><h3>Continuité de service</h3><p>DC02, réplication AD/DNS, DHCP Hot Standby et test de panne réel de DC01.</p></div>
+</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Preuves techniques</div><h2>Configuration et résultats</h2>
+<div class="gallery">
+<figure class="project-shot"><img src="../assets/images/projects/windows-server/active-directory-ou.png" alt="Organisation des OU Active Directory"><figcaption>Structure Active Directory du domaine force.lan avec séparation des utilisateurs, postes, serveurs et groupes.</figcaption></figure>
+<figure class="project-shot"><img src="../assets/images/projects/windows-server/powershell-offboarding.png" alt="Offboarding PowerShell"><figcaption>Offboarding automatisé : réinitialisation du mot de passe, retrait de GG_COMMERCIAL, désactivation et déplacement en quarantaine.</figcaption></figure>
+<figure class="project-shot"><img src="../assets/images/projects/windows-server/intranet-iis.png" alt="Intranet IIS FORCE"><figcaption>Intranet FORCE hébergé sur WEB01 et accessible via le nom DNS intranet.force.lan.</figcaption></figure>
+<figure class="project-shot"><img src="../assets/images/projects/windows-server/morning-check.png" alt="Morning Check Dashboard"><figcaption>Morning Check : contrôle automatique des serveurs, services, ports, disponibilité et stockage.</figcaption></figure>
+</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Haute disponibilité</div><h2>Un scénario de panne réellement testé</h2>
+<p class="intro">Un second contrôleur de domaine DC02 a été ajouté afin de réduire la dépendance à DC01. La réplication AD/DNS a été validée, puis le DHCP a été configuré en Hot Standby.</p>
+<div class="validation"><strong>Test effectué :</strong> DC01 a été volontairement arrêté. CLT01 a renouvelé son bail auprès de DC02. Un nouvel utilisateur a ensuite été créé sur DC02 pendant la panne et a réussi à ouvrir une session de domaine sur CLT01, avec DC02 comme LOGONSERVER et un canal sécurisé NERR_Success.</div>
+<div class="gallery">
+<figure class="project-shot"><img src="../assets/images/projects/windows-server/failover-ad-dc02.png" alt="Authentification via DC02 pendant la panne de DC01"><figcaption>Authentification du compte test.failover via DC02 pendant l’indisponibilité de DC01.</figcaption></figure>
+<figure class="project-shot"><img src="../assets/images/projects/windows-server/architecture-force-lan.png" alt="Architecture FORCE.LAN avec DC01 et DC02"><figcaption>Architecture finale : DC01 et DC02 assurent les services d’identité et de réseau, tandis que les autres rôles sont répartis sur des serveurs dédiés.</figcaption></figure>
+</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="cta-panel">
+<div class="eyebrow">Dossier technique</div>
+<h2>Consulter le projet en détail</h2>
+<p class="intro" style="margin:0 auto">La documentation complète présente l’architecture, les configurations, les validations fonctionnelles, les sauvegardes et les scénarios de panne du laboratoire FORCE.LAN.</p>
+<div class="button-row"><a class="button button-primary" href="../assets/docs/Projet_Windows_Server_FORCE_LAN.pdf" target="_blank" rel="noopener">Ouvrir le PDF complet</a></div>
+</div>
+</div></section>
 </main>
 
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div>© <span data-year>2026</span> Azaan Shafi. Portfolio professionnel.</div>
-    <div class="footer-links"><a href="../mentions-legales.html">Mentions légales</a><a href="https://github.com/azaanshafi75" target="_blank" rel="noopener">GitHub</a></div>
-  </div>
-</footer>
-<script src="../assets/js/site-config.js" defer></script>
-<script src="../assets/js/main.js" defer></script>
-</body>
-</html>
+<footer class="site-footer"><div class="container footer-grid"><div>© <span data-year>2026</span> Azaan Shafi. Portfolio professionnel.</div><div class="footer-links"><a href="../mentions-legales.html">Mentions légales</a><a href="https://github.com/azaanshafi75" target="_blank" rel="noopener">GitHub</a></div></div></footer>
+<button class="back-to-top" type="button" aria-label="Retour en haut"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></svg></button>
+<script src="../assets/js/site-config.js" defer></script><script src="../assets/js/main.js" defer></script>
+</body></html>
