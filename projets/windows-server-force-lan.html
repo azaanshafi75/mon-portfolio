@@ -12,19 +12,19 @@
 <link rel="stylesheet" href="../assets/css/style.css">
 <style>
 .project-hero{padding:calc(var(--nav-h) + 78px) 0 72px;border-bottom:1px solid var(--line)}
-.project-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:3rem;align-items:center}
+.project-hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:3rem;align-items:center}
 .project-hero h1{margin:.8rem 0 1.2rem;font-family:"Space Grotesk",sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);line-height:1;letter-spacing:-.055em}
 .project-lead{color:var(--muted);font-size:1.05rem;line-height:1.8}
 .project-status{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .78rem;border-radius:999px;background:rgba(20,150,90,.08);color:#176440;font-size:.76rem;font-weight:800}
 .project-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#16a05d}
-.hero-visual img,.project-shot img{width:100%;display:block;border:1px solid var(--line);border-radius:20px;box-shadow:0 22px 60px rgba(48,70,96,.10)}
+.hero-visual img,.project-shot img,.proof-image img{width:100%;display:block;border:1px solid var(--line);border-radius:20px;box-shadow:0 22px 60px rgba(48,70,96,.10)}
 .project-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin-top:2rem}
 .project-metric{padding:1rem;border:1px solid var(--line);border-radius:16px;background:#fff}
 .project-metric strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:1.15rem}
 .project-metric span{color:var(--muted);font-size:.76rem}
 .project-section{padding:86px 0;border-bottom:1px solid var(--line)}
 .project-section h2{margin:0 0 1rem;font-family:"Space Grotesk",sans-serif;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.045em}
-.project-section .intro{max-width:800px;color:var(--muted);line-height:1.8}
+.project-section .intro{max-width:860px;color:var(--muted);line-height:1.8}
 .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
 .feature-card{padding:1.4rem;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#fff,#f5f8fc)}
 .feature-card h3{margin:0 0 .6rem;font-family:"Space Grotesk",sans-serif;font-size:1.08rem}
@@ -35,8 +35,39 @@
 .cta-panel{padding:clamp(2rem,5vw,4rem);border:1px solid rgba(37,99,235,.2);border-radius:28px;background:linear-gradient(145deg,rgba(226,237,254,.97),#fff);text-align:center}
 .cta-panel h2{margin:0 0 .8rem}
 .button-row{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}
-@media(max-width:900px){.project-hero-grid{grid-template-columns:1fr}.project-metrics{grid-template-columns:repeat(2,1fr)}.feature-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}}
-@media(max-width:580px){.project-metrics{grid-template-columns:1fr}}
+
+.proof-hint{margin-top:1rem;padding:1rem 1.2rem;border:1px solid rgba(37,99,235,.15);background:#f8fbff;border-radius:16px;color:var(--muted);font-size:.95rem}
+.proof-groups{display:grid;gap:1rem;margin-top:2rem}
+.proof-group{border:1px solid var(--line);border-radius:24px;background:#fff;overflow:hidden;box-shadow:0 16px 44px rgba(48,70,96,.06)}
+.proof-group > summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;list-style:none;padding:1.2rem 1.3rem;cursor:pointer;font-weight:800;font-family:"Space Grotesk",sans-serif;font-size:1.05rem;background:linear-gradient(145deg,#fff,#f8fbff)}
+.proof-group > summary::-webkit-details-marker{display:none}
+.proof-group > summary .group-meta{font-family:Manrope,sans-serif;font-weight:700;color:var(--muted);font-size:.85rem}
+.proof-group[open] > summary{border-bottom:1px solid var(--line)}
+.proof-stack{display:grid;gap:1.4rem;padding:1.3rem}
+.proof-card{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:1.35rem;align-items:start;padding:1rem;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#ffffff,#fbfcff)}
+.proof-image{display:grid;gap:.7rem}
+.proof-image button{padding:0;border:0;background:none;cursor:zoom-in}
+.proof-image img{border-radius:18px;transition:transform .25s ease, box-shadow .25s ease}
+.proof-image button:hover img{transform:translateY(-2px);box-shadow:0 18px 40px rgba(48,70,96,.13)}
+.proof-links{display:flex;justify-content:flex-end}
+.proof-link{display:inline-flex;align-items:center;gap:.35rem;padding:.65rem .95rem;border:1px solid var(--line);border-radius:999px;background:#fff;font-weight:700;font-size:.82rem;color:var(--text);text-decoration:none}
+.proof-content h3{margin:0 0 .7rem;font-family:"Space Grotesk",sans-serif;font-size:1.4rem;line-height:1.15}
+.proof-index{display:inline-flex;align-items:center;justify-content:center;width:2.15rem;height:2.15rem;border-radius:999px;background:rgba(37,99,235,.10);color:var(--accent);font-size:.85rem;font-weight:900;margin-bottom:.85rem}
+.proof-content p{margin:0 0 .8rem;color:var(--muted);line-height:1.75}
+.proof-list{margin:0;padding-left:1.1rem;color:var(--text);display:grid;gap:.45rem;font-size:.94rem}
+.proof-list li{line-height:1.65}
+.proof-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.proof-tag{padding:.38rem .65rem;border-radius:999px;background:#f3f6fb;border:1px solid var(--line);font-size:.75rem;font-weight:700;color:var(--muted)}
+.lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:2rem;background:rgba(8,15,28,.84);z-index:1000}
+.lightbox.is-open{display:flex}
+.lightbox-inner{position:relative;max-width:min(1400px,96vw);max-height:92vh}
+.lightbox img{display:block;max-width:100%;max-height:92vh;border-radius:20px;box-shadow:0 24px 70px rgba(0,0,0,.35)}
+.lightbox-close{position:absolute;top:.9rem;right:.9rem;width:42px;height:42px;border:0;border-radius:999px;background:rgba(255,255,255,.95);font-size:1.5rem;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.lightbox-caption{margin-top:.85rem;color:#fff;text-align:center;font-size:.95rem;line-height:1.5}
+
+@media(max-width:1100px){.proof-card{grid-template-columns:1fr}.proof-content h3{font-size:1.25rem}}
+@media(max-width:900px){.project-hero-grid{grid-template-columns:1fr}.project-metrics{grid-template-columns:repeat(2,1fr)}.feature-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.proof-group > summary{align-items:flex-start;flex-direction:column}}
+@media(max-width:580px){.project-metrics{grid-template-columns:1fr}.proof-stack{padding:1rem}.proof-card{padding:.8rem}.project-hero{padding-top:calc(var(--nav-h) + 60px)}}
 </style>
 </head>
 <body>
@@ -86,12 +117,145 @@
 </div></section>
 
 <section class="project-section"><div class="container">
-<div class="eyebrow">Preuves techniques</div><h2>Configuration et résultats</h2>
-<div class="gallery">
-<figure class="project-shot"><img src="../assets/images/projects/windows-server/active-directory-ou.png" alt="Organisation des OU Active Directory"><figcaption>Structure Active Directory du domaine force.lan avec séparation des utilisateurs, postes, serveurs et groupes.</figcaption></figure>
-<figure class="project-shot"><img src="../assets/images/projects/windows-server/powershell-offboarding.png" alt="Offboarding PowerShell"><figcaption>Offboarding automatisé : réinitialisation du mot de passe, retrait de GG_COMMERCIAL, désactivation et déplacement en quarantaine.</figcaption></figure>
-<figure class="project-shot"><img src="../assets/images/projects/windows-server/intranet-iis.png" alt="Intranet IIS FORCE"><figcaption>Intranet FORCE hébergé sur WEB01 et accessible via le nom DNS intranet.force.lan.</figcaption></figure>
-<figure class="project-shot"><img src="../assets/images/projects/windows-server/morning-check.png" alt="Morning Check Dashboard"><figcaption>Morning Check : contrôle automatique des serveurs, services, ports, disponibilité et stockage.</figcaption></figure>
+<div class="eyebrow">Preuves techniques</div><h2>Des preuves réorganisées et lisibles</h2>
+<p class="intro">J’ai regroupé les captures par thème pour éviter l’effet “capture dans tous les sens”. Chaque preuve est maintenant plus grande, accompagnée d’un contexte clair, et tu peux cliquer sur l’image pour l’ouvrir en plein écran.</p>
+<div class="proof-hint"><strong>Astuce :</strong> clique sur une capture pour l’agrandir et lire précisément les commandes, sorties PowerShell et éléments d’interface.</div>
+
+<div class="proof-groups">
+
+<details class="proof-group" open>
+<summary><span>1. Active Directory, groupes et stratégies</span><span class="group-meta">5 preuves</span></summary>
+<div class="proof-stack">
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/active-directory-ou.png" data-lightbox-caption="Structure Active Directory du domaine force.lan"><img src="../assets/images/projects/windows-server/active-directory-ou.png" alt="Structure des OU Active Directory"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/active-directory-ou.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">01</span><h3>Structure des OU</h3><p>L’annuaire a été organisé pour séparer clairement les utilisateurs, les serveurs, les groupes et les postes. Cette hiérarchie facilite l’administration et l’application ciblée des GPO.</p><ul class="proof-list"><li>OU dédiées aux utilisateurs par service</li><li>OU distinctes pour les ordinateurs et les serveurs</li><li>OU de quarantaine pour les comptes désactivés</li></ul><div class="proof-tags"><span class="proof-tag">AD DS</span><span class="proof-tag">Organisation</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/ad-utilisateur-groupes.png" data-lightbox-caption="Exemple d'utilisateur rattaché à son groupe métier"><img src="../assets/images/projects/windows-server/ad-utilisateur-groupes.png" alt="Utilisateur de domaine et groupe métier"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/ad-utilisateur-groupes.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">02</span><h3>Rattachement d’un utilisateur à son groupe global</h3><p>Cette capture montre un exemple concret d’utilisateur métier affecté à son groupe global de service avant l’application du modèle AGDLP.</p><ul class="proof-list"><li>Exemple : Emma Dubois rattachée au groupe GG_DIRECTION</li><li>Base indispensable avant délégation des droits</li><li>Administration plus cohérente par service</li></ul><div class="proof-tags"><span class="proof-tag">Utilisateurs</span><span class="proof-tag">Groupes globaux</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/agdlp-groupes.png" data-lightbox-caption="Application du modèle AGDLP pour les accès aux partages"><img src="../assets/images/projects/windows-server/agdlp-groupes.png" alt="Modèle AGDLP appliqué"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/agdlp-groupes.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">03</span><h3>Application du modèle AGDLP</h3><p>Les autorisations n’ont pas été attribuées directement aux utilisateurs. Elles transitent par des groupes globaux puis des groupes locaux de domaine, conformément aux bonnes pratiques d’entreprise.</p><ul class="proof-list"><li>GG_DIRECTION ajouté à DL_PARTAGE_DIRECTION_MODIFICATION</li><li>Droits centralisés au niveau des groupes locaux</li><li>Meilleure évolutivité des permissions</li></ul><div class="proof-tags"><span class="proof-tag">AGDLP</span><span class="proof-tag">Sécurité</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/gpo-clt01.png" data-lightbox-caption="GPO appliquées sur le poste client CLT01"><img src="../assets/images/projects/windows-server/gpo-clt01.png" alt="Résultat GPResult sur CLT01"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/gpo-clt01.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">04</span><h3>Validation des GPO sur le poste client</h3><p>Le poste CLT01 reçoit bien les stratégies attendues, notamment le déploiement applicatif et les paramètres de sécurité liés au domaine.</p><ul class="proof-list"><li>GPO de déploiement d’application détectée</li><li>GPO de sécurité poste appliquée</li><li>Preuve de la bonne intégration du poste au domaine</li></ul><div class="proof-tags"><span class="proof-tag">GPO</span><span class="proof-tag">gpresult</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/dns-zone-force.png" data-lightbox-caption="Zone DNS force.lan et enregistrements du laboratoire"><img src="../assets/images/projects/windows-server/dns-zone-force.png" alt="Zone DNS force.lan"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/dns-zone-force.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">05</span><h3>Résolution DNS du domaine</h3><p>Le DNS interne centralise les enregistrements du laboratoire : contrôleurs de domaine, serveurs métiers, client de test et nom intranet.force.lan.</p><ul class="proof-list"><li>Zone directe force.lan créée et peuplée</li><li>Enregistrements A pour DC01, DC02, FS01, WEB01, etc.</li><li>Base technique pour l’accès aux services par nom</li></ul><div class="proof-tags"><span class="proof-tag">DNS</span><span class="proof-tag">Résolution interne</span></div></figcaption>
+</figure>
+
+</div>
+</details>
+
+<details class="proof-group">
+<summary><span>2. Réseau, partages et sécurité des fichiers</span><span class="group-meta">5 preuves</span></summary>
+<div class="proof-stack">
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/dhcp-lan-corp.png" data-lightbox-caption="Étendue DHCP LAN-CORP"><img src="../assets/images/projects/windows-server/dhcp-lan-corp.png" alt="Étendue DHCP LAN-CORP"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/dhcp-lan-corp.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">06</span><h3>Distribution des adresses par DHCP</h3><p>Le service DHCP délivre les adresses du réseau LAN-CORP dans une plage définie, avec passerelle et DNS du domaine.</p><ul class="proof-list"><li>Étendue 192.168.89.100 à 192.168.89.150</li><li>Centralisation de l’adressage client</li><li>Préparation du failover Hot Standby avec DC02</li></ul><div class="proof-tags"><span class="proof-tag">DHCP</span><span class="proof-tag">Adressage</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/lecteur-reseau-abe.png" data-lightbox-caption="Lecteur réseau P: et accès basé sur les autorisations"><img src="../assets/images/projects/windows-server/lecteur-reseau-abe.png" alt="Lecteur réseau P et partage FS01"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/lecteur-reseau-abe.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">07</span><h3>Montage automatique du lecteur réseau</h3><p>Le partage principal est monté automatiquement sur le poste client et l’Access-Based Enumeration masque les dossiers non autorisés.</p><ul class="proof-list"><li>Lecteur P: visible sur le poste domaine</li><li>Accès au partage \FS01\Partages</li><li>Seulement les répertoires autorisés apparaissent</li></ul><div class="proof-tags"><span class="proof-tag">SMB</span><span class="proof-tag">ABE</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/permissions-ntfs-direction.png" data-lightbox-caption="Permissions NTFS sur le dossier Direction"><img src="../assets/images/projects/windows-server/permissions-ntfs-direction.png" alt="Permissions NTFS sur Direction"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/permissions-ntfs-direction.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">08</span><h3>Contrôle d’accès NTFS</h3><p>Les permissions NTFS ont été nettoyées puis attribuées proprement au groupe local de domaine adéquat, avec contrôle total pour les administrateurs et le système.</p><ul class="proof-list"><li>DL_PARTAGE_DIRECTION_MODIFICATION autorisé</li><li>Suppression de l’héritage inutile</li><li>Application sur ce dossier, sous-dossiers et fichiers</li></ul><div class="proof-tags"><span class="proof-tag">NTFS</span><span class="proof-tag">Droits</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/fsrm-quota-filtrage.png" data-lightbox-caption="FSRM : quota et blocage de fichiers exécutables"><img src="../assets/images/projects/windows-server/fsrm-quota-filtrage.png" alt="FSRM quota et filtrage"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/fsrm-quota-filtrage.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">09</span><h3>Quota et filtrage FSRM</h3><p>Le serveur de fichiers impose des règles de capacité et empêche le dépôt de fichiers exécutables dans les partages métiers.</p><ul class="proof-list"><li>Filtrage actif sur E:\Partages</li><li>Blocage des extensions .exe, .msi, .bat, .cmd, etc.</li><li>Protection du stockage partagé contre les exécutables</li></ul><div class="proof-tags"><span class="proof-tag">FSRM</span><span class="proof-tag">Quota</span><span class="proof-tag">Filtrage</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/backup-fs01.png" data-lightbox-caption="Sauvegarde Windows Server du serveur de fichiers"><img src="../assets/images/projects/windows-server/backup-fs01.png" alt="Sauvegarde FS01"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/backup-fs01.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">10</span><h3>Sauvegarde des données du serveur de fichiers</h3><p>Les données partagées ont été sauvegardées via Windows Server Backup, puis restaurées dans le cadre du test de continuité.</p><ul class="proof-list"><li>Sauvegarde planifiée et réussie</li><li>Historique visible dans la console</li><li>Base de restauration pour les partages utilisateurs</li></ul><div class="proof-tags"><span class="proof-tag">Backup</span><span class="proof-tag">FS01</span></div></figcaption>
+</figure>
+
+</div>
+</details>
+
+<details class="proof-group">
+<summary><span>3. Automatisation, services et exploitation</span><span class="group-meta">8 preuves</span></summary>
+<div class="proof-stack">
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/powershell-offboarding.png" data-lightbox-caption="Script d'offboarding PowerShell"><img src="../assets/images/projects/windows-server/powershell-offboarding.png" alt="Offboarding PowerShell"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/powershell-offboarding.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">11</span><h3>Offboarding automatisé en PowerShell</h3><p>Le script de sortie d’un collaborateur réalise plusieurs actions en chaîne afin de sécuriser immédiatement le compte compromis ou sortant.</p><ul class="proof-list"><li>Réinitialisation du mot de passe</li><li>Retrait des groupes métier</li><li>Désactivation et déplacement dans l’OU Comptes-Desactives</li><li>Traçabilité dans un journal horodaté</li></ul><div class="proof-tags"><span class="proof-tag">PowerShell</span><span class="proof-tag">Cycle de vie</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/backup-systemstate-dc01.png" data-lightbox-caption="Sauvegarde de l'état du système de DC01"><img src="../assets/images/projects/windows-server/backup-systemstate-dc01.png" alt="System State DC01"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/backup-systemstate-dc01.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">12</span><h3>Sauvegarde de l’état système du contrôleur de domaine</h3><p>En plus des données, l’état système de DC01 a été sauvegardé afin de protéger Active Directory et les composants critiques du domaine.</p><ul class="proof-list"><li>Version de sauvegarde identifiable</li><li>Possibilité de récupération du System State</li><li>Approche adaptée à un contrôleur de domaine</li></ul><div class="proof-tags"><span class="proof-tag">wbadmin</span><span class="proof-tag">System State</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/iis-intranet.png" data-lightbox-caption="Intranet IIS disponible via intranet.force.lan"><img src="../assets/images/projects/windows-server/iis-intranet.png" alt="Intranet IIS"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/iis-intranet.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">13</span><h3>Publication de l’intranet IIS</h3><p>Un site intranet métier a été déployé sur WEB01 et rendu accessible par un nom DNS dédié depuis le poste client du domaine.</p><ul class="proof-list"><li>Nom d’accès : intranet.force.lan</li><li>Page d’accueil personnalisée</li><li>Intégration du tableau de bord de supervision</li></ul><div class="proof-tags"><span class="proof-tag">IIS</span><span class="proof-tag">Intranet</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/ftps-winscp.png" data-lightbox-caption="Test FTPS avec WinSCP"><img src="../assets/images/projects/windows-server/ftps-winscp.png" alt="FTPS via WinSCP"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/ftps-winscp.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">14</span><h3>Transfert de fichiers en FTPS</h3><p>Le dépôt FTP a été sécurisé et testé avec WinSCP, ce qui valide le dépôt de fichiers via un protocole chiffré plutôt qu’un FTP en clair.</p><ul class="proof-list"><li>Connexion authentifiée au dépôt</li><li>Transfert de fichier visible côté client</li><li>Preuve fonctionnelle du service FTPS</li></ul><div class="proof-tags"><span class="proof-tag">FTPS</span><span class="proof-tag">WinSCP</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/rds-session-domaine.png" data-lightbox-caption="Session RDS ouverte avec un compte du domaine"><img src="../assets/images/projects/windows-server/rds-session-domaine.png" alt="Session RDS domaine"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/rds-session-domaine.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">15</span><h3>Accès Bureau à distance</h3><p>Le rôle RDS a été testé avec succès depuis un compte de domaine, ce qui confirme l’accès distant contrôlé à un serveur membre.</p><ul class="proof-list"><li>Connexion sur RDS01</li><li>Utilisateur domaine identifié dans la session</li><li>Vérification de l’usage d’un environnement RDS</li></ul><div class="proof-tags"><span class="proof-tag">RDS</span><span class="proof-tag">Accès distant</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/hyperv-debian.png" data-lightbox-caption="Machine virtuelle Debian exécutée sous Hyper-V"><img src="../assets/images/projects/windows-server/hyperv-debian.png" alt="Hyper-V avec VM Debian"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/hyperv-debian.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">16</span><h3>Virtualisation Hyper-V imbriquée</h3><p>Un hôte Hyper-V dédié a été déployé, puis une machine virtuelle Debian de test a été créée et démarrée pour valider la virtualisation dans le laboratoire.</p><ul class="proof-list"><li>VM visible dans Hyper-V Manager</li><li>Démarrage réussi de Debian</li><li>Validation du rôle Hyper-V en environnement de lab</li></ul><div class="proof-tags"><span class="proof-tag">Hyper-V</span><span class="proof-tag">VM Linux</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/morning-check.png" data-lightbox-caption="Morning Check Dashboard publié sur l'intranet"><img src="../assets/images/projects/windows-server/morning-check.png" alt="Morning Check Dashboard"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/morning-check.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">17</span><h3>Tableau de bord Morning Check</h3><p>Un script d’audit a été développé pour produire une page HTML lisible par l’équipe IT, avec l’état des serveurs, ports, services et volumes.</p><ul class="proof-list"><li>Publication sur l’intranet</li><li>Vue synthétique de l’état des serveurs</li><li>Utilisable comme contrôle quotidien d’exploitation</li></ul><div class="proof-tags"><span class="proof-tag">Supervision</span><span class="proof-tag">HTML</span><span class="proof-tag">PowerShell</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/perfmon-surveillance-fs01.png" data-lightbox-caption="Surveillance des performances de FS01 avec PerfMon"><img src="../assets/images/projects/windows-server/perfmon-surveillance-fs01.png" alt="PerfMon sur FS01"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/perfmon-surveillance-fs01.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">18</span><h3>Surveillance de performance avec PerfMon</h3><p>Le serveur de fichiers a été observé à l’aide d’un ensemble de collecteurs, afin de suivre CPU, mémoire, réseau et activité disque.</p><ul class="proof-list"><li>Collecte structurée sur FS01</li><li>Compteurs système et réseau visibles</li><li>Approche orientée exploitation et diagnostic</li></ul><div class="proof-tags"><span class="proof-tag">PerfMon</span><span class="proof-tag">Monitoring</span></div></figcaption>
+</figure>
+
+</div>
+</details>
+
+<details class="proof-group">
+<summary><span>4. Continuité de service et haute disponibilité</span><span class="group-meta">3 preuves</span></summary>
+<div class="proof-stack">
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/replication-ad-dc01-dc02.png" data-lightbox-caption="Réplication Active Directory sans erreur entre DC01 et DC02"><img src="../assets/images/projects/windows-server/replication-ad-dc01-dc02.png" alt="Réplication AD DC01 DC02"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/replication-ad-dc01-dc02.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">19</span><h3>Réplication Active Directory validée</h3><p>Le second contrôleur de domaine DC02 réplique correctement les partitions AD et DNS avec DC01, ce qui permet une continuité d’authentification et de résolution de noms.</p><ul class="proof-list"><li>repadmin /replsummary sans erreur finale</li><li>Synchronisation des contextes de nom réussie</li><li>Base de redondance de l’annuaire</li></ul><div class="proof-tags"><span class="proof-tag">DC02</span><span class="proof-tag">Réplication</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/failover-dhcp-dc02.png" data-lightbox-caption="Le poste reçoit son bail DHCP depuis DC02"><img src="../assets/images/projects/windows-server/failover-dhcp-dc02.png" alt="DHCP Failover vers DC02"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/failover-dhcp-dc02.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">20</span><h3>Failover DHCP en Hot Standby</h3><p>Lors du test de panne de DC01, le client CLT01 a obtenu son bail auprès de DC02, ce qui prouve le fonctionnement du basculement DHCP.</p><ul class="proof-list"><li>Serveur DHCP vu : 192.168.89.11</li><li>Bail client renouvelé pendant l’indisponibilité de DC01</li><li>Service maintenu malgré la panne du serveur principal</li></ul><div class="proof-tags"><span class="proof-tag">DHCP Failover</span><span class="proof-tag">Hot Standby</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/windows-server/failover-auth-dc02.png" data-lightbox-caption="Authentification de domaine assurée par DC02"><img src="../assets/images/projects/windows-server/failover-auth-dc02.png" alt="Authentification via DC02"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/windows-server/failover-auth-dc02.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">21</span><h3>Ouverture de session assurée par DC02</h3><p>La continuité a aussi été vérifiée côté authentification : le poste client ouvre une session de domaine et indique DC02 comme LOGONSERVER pendant la panne de DC01.</p><ul class="proof-list"><li>Utilisateur test.failover authentifié</li><li>LOGONSERVER = \\DC02</li><li>Canal sécurisé Netlogon valide (NERR_Success)</li></ul><div class="proof-tags"><span class="proof-tag">Authentification</span><span class="proof-tag">Continuité</span></div></figcaption>
+</figure>
+
+</div>
+</details>
+
 </div>
 </div></section>
 
@@ -99,10 +263,6 @@
 <div class="eyebrow">Haute disponibilité</div><h2>Un scénario de panne réellement testé</h2>
 <p class="intro">Un second contrôleur de domaine DC02 a été ajouté afin de réduire la dépendance à DC01. La réplication AD/DNS a été validée, puis le DHCP a été configuré en Hot Standby.</p>
 <div class="validation"><strong>Test effectué :</strong> DC01 a été volontairement arrêté. CLT01 a renouvelé son bail auprès de DC02. Un nouvel utilisateur a ensuite été créé sur DC02 pendant la panne et a réussi à ouvrir une session de domaine sur CLT01, avec DC02 comme LOGONSERVER et un canal sécurisé NERR_Success.</div>
-<div class="gallery">
-<figure class="project-shot"><img src="../assets/images/projects/windows-server/failover-ad-dc02.png" alt="Authentification via DC02 pendant la panne de DC01"><figcaption>Authentification du compte test.failover via DC02 pendant l’indisponibilité de DC01.</figcaption></figure>
-<figure class="project-shot"><img src="../assets/images/projects/windows-server/architecture-force-lan.png" alt="Architecture FORCE.LAN avec DC01 et DC02"><figcaption>Architecture finale : DC01 et DC02 assurent les services d’identité et de réseau, tandis que les autres rôles sont répartis sur des serveurs dédiés.</figcaption></figure>
-</div>
 </div></section>
 
 <section class="project-section"><div class="container">
@@ -117,5 +277,39 @@
 
 <footer class="site-footer"><div class="container footer-grid"><div>© <span data-year>2026</span> Azaan Shafi. Portfolio professionnel.</div><div class="footer-links"><a href="../mentions-legales.html">Mentions légales</a><a href="https://github.com/azaanshafi75" target="_blank" rel="noopener">GitHub</a></div></div></footer>
 <button class="back-to-top" type="button" aria-label="Retour en haut"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></svg></button>
+<div class="lightbox" id="proofLightbox" aria-hidden="true"><div class="lightbox-inner"><button class="lightbox-close" type="button" aria-label="Fermer">×</button><img src="" alt=""><div class="lightbox-caption"></div></div></div>
 <script src="../assets/js/site-config.js" defer></script><script src="../assets/js/main.js" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const lightbox = document.getElementById('proofLightbox');
+  if (!lightbox) return;
+  const img = lightbox.querySelector('img');
+  const caption = lightbox.querySelector('.lightbox-caption');
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  const openers = document.querySelectorAll('[data-lightbox-src]');
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    img.src = '';
+    caption.textContent = '';
+  };
+
+  openers.forEach(opener => {
+    opener.addEventListener('click', () => {
+      img.src = opener.getAttribute('data-lightbox-src');
+      img.alt = opener.querySelector('img')?.alt || '';
+      caption.textContent = opener.getAttribute('data-lightbox-caption') || '';
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+});
+</script>
 </body></html>
