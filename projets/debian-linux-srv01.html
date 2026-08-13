@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Administration Linux Debian — Azaan Shafi</title>
+<meta name="description" content="Laboratoire Debian 13 : administration Linux, LVM, LUKS, SSH, Samba, NFS, nftables, Fail2ban, Nginx, Bash, systemd et sauvegarde/restauration.">
+<link rel="canonical" href="https://azaanshafi75.github.io/mon-portfolio/projets/debian-linux-srv01.html">
+<meta name="theme-color" content="#f6f8fc">
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+.project-hero{padding:calc(var(--nav-h) + 78px) 0 72px;border-bottom:1px solid var(--line)}
+.project-hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:3rem;align-items:center}
+.project-hero h1{margin:.8rem 0 1.2rem;font-family:"Space Grotesk",sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);line-height:1;letter-spacing:-.055em}
+.project-lead{color:var(--muted);font-size:1.05rem;line-height:1.8}
+.project-status{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .78rem;border-radius:999px;background:rgba(20,150,90,.08);color:#176440;font-size:.76rem;font-weight:800}
+.project-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#16a05d}
+.hero-visual img,.proof-image img{width:100%;display:block;border:1px solid var(--line);border-radius:20px;box-shadow:0 22px 60px rgba(48,70,96,.10)}
+.project-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin-top:2rem}
+.project-metric{padding:1rem;border:1px solid var(--line);border-radius:16px;background:#fff}
+.project-metric strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:1.15rem}.project-metric span{color:var(--muted);font-size:.76rem}
+.project-section{padding:86px 0;border-bottom:1px solid var(--line)}
+.project-section h2{margin:0 0 1rem;font-family:"Space Grotesk",sans-serif;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.045em}
+.project-section .intro{max-width:860px;color:var(--muted);line-height:1.8}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.feature-card{padding:1.4rem;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#fff,#f5f8fc)}
+.feature-card h3{margin:0 0 .6rem;font-family:"Space Grotesk",sans-serif;font-size:1.08rem}
+.feature-card p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.65}
+.validation{margin-top:1.5rem;padding:1.4rem 1.5rem;border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 16px 16px 0;line-height:1.75}
+.cta-panel{padding:clamp(2rem,5vw,4rem);border:1px solid rgba(37,99,235,.2);border-radius:28px;background:linear-gradient(145deg,rgba(226,237,254,.97),#fff);text-align:center}
+.cta-panel h2{margin:0 0 .8rem}.button-row{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}
+.proof-hint{margin-top:1rem;padding:1rem 1.2rem;border:1px solid rgba(37,99,235,.15);background:#f8fbff;border-radius:16px;color:var(--muted);font-size:.95rem}
+.proof-groups{display:grid;gap:1rem;margin-top:2rem}.proof-group{border:1px solid var(--line);border-radius:24px;background:#fff;overflow:hidden;box-shadow:0 16px 44px rgba(48,70,96,.06)}
+.proof-group>summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;list-style:none;padding:1.2rem 1.3rem;cursor:pointer;font-weight:800;font-family:"Space Grotesk",sans-serif;font-size:1.05rem;background:linear-gradient(145deg,#fff,#f8fbff)}
+.proof-group>summary::-webkit-details-marker{display:none}.proof-group>summary .group-meta{font-family:Manrope,sans-serif;font-weight:700;color:var(--muted);font-size:.85rem}.proof-group[open]>summary{border-bottom:1px solid var(--line)}
+.proof-stack{display:grid;gap:1.4rem;padding:1.3rem}.proof-card{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:1.35rem;align-items:start;padding:1rem;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#fff,#fbfcff)}
+.proof-image{display:grid;gap:.7rem}.proof-image button{padding:0;border:0;background:none;cursor:zoom-in}.proof-image img{border-radius:18px;transition:transform .25s ease,box-shadow .25s ease}.proof-image button:hover img{transform:translateY(-2px);box-shadow:0 18px 40px rgba(48,70,96,.13)}
+.proof-links{display:flex;justify-content:flex-end}.proof-link{display:inline-flex;align-items:center;gap:.35rem;padding:.65rem .95rem;border:1px solid var(--line);border-radius:999px;background:#fff;font-weight:700;font-size:.82rem;color:var(--text);text-decoration:none}
+.proof-content h3{margin:0 0 .7rem;font-family:"Space Grotesk",sans-serif;font-size:1.4rem;line-height:1.15}.proof-index{display:inline-flex;align-items:center;justify-content:center;width:2.15rem;height:2.15rem;border-radius:999px;background:rgba(37,99,235,.10);color:var(--accent);font-size:.85rem;font-weight:900;margin-bottom:.85rem}
+.proof-content p{margin:0 0 .8rem;color:var(--muted);line-height:1.75}.proof-list{margin:0;padding-left:1.1rem;color:var(--text);display:grid;gap:.45rem;font-size:.94rem}.proof-list li{line-height:1.65}
+.proof-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}.proof-tag{padding:.38rem .65rem;border-radius:999px;background:#f3f6fb;border:1px solid var(--line);font-size:.75rem;font-weight:700;color:var(--muted)}
+.lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:2rem;background:rgba(8,15,28,.84);z-index:1000}.lightbox.is-open{display:flex}.lightbox-inner{position:relative;max-width:min(1400px,96vw);max-height:92vh}.lightbox img{display:block;max-width:100%;max-height:92vh;border-radius:20px;box-shadow:0 24px 70px rgba(0,0,0,.35)}
+.lightbox-close{position:absolute;top:.9rem;right:.9rem;width:42px;height:42px;border:0;border-radius:999px;background:rgba(255,255,255,.95);font-size:1.5rem;cursor:pointer}.lightbox-caption{margin-top:.85rem;color:#fff;text-align:center;font-size:.95rem}
+@media(max-width:1100px){.proof-card{grid-template-columns:1fr}.proof-content h3{font-size:1.25rem}}
+@media(max-width:900px){.project-hero-grid{grid-template-columns:1fr}.project-metrics{grid-template-columns:repeat(2,1fr)}.feature-grid{grid-template-columns:1fr}.proof-group>summary{align-items:flex-start;flex-direction:column}}
+@media(max-width:580px){.project-metrics{grid-template-columns:1fr}.proof-stack{padding:1rem}.proof-card{padding:.8rem}.project-hero{padding-top:calc(var(--nav-h) + 60px)}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a><div class="scroll-progress" aria-hidden="true"></div>
+<header class="site-header"><div class="container nav-wrap">
+<a class="brand" href="../index.html"><span class="brand-mark">AS</span><span class="brand-name">Azaan Shafi</span></a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu"><span></span></button>
+<ul class="nav-links" id="main-nav"><li><a href="../index.html">Accueil</a></li><li><a href="../profil.html">Profil</a></li><li><a href="../competences.html">Compétences</a></li><li><a href="../projets-pro.html">Projets Pro</a></li><li><a class="active" href="../projets-scolaires.html">Projets techniques</a></li><li><a href="../cv.html">CV</a></li><li class="nav-cta"><a href="../contact.html">Contact</a></li></ul>
+</div></header>
+
+<main id="contenu">
+<section class="project-hero"><div class="container">
+<div class="breadcrumbs"><a href="../index.html">Accueil</a><span>/</span><a href="../projets-scolaires.html">Projets techniques</a><span>/</span><span>Debian Linux</span></div>
+<div class="project-hero-grid">
+<div>
+<div class="project-status">Projet terminé</div>
+<h1>Administration et sécurisation d’un serveur Linux</h1>
+<p class="project-lead">Laboratoire Debian 13 conçu comme un environnement d’exploitation d’entreprise : gestion des comptes et habilitations, stockage LVM/LUKS, SSH durci, services de fichiers, filtrage réseau, intranet HTTPS, automatisation et sauvegarde/restauration.</p>
+<div class="tags"><span class="tag">Debian 13</span><span class="tag">LVM / LUKS</span><span class="tag">SSH</span><span class="tag">Samba / NFS</span><span class="tag">nftables</span><span class="tag">Bash / systemd</span></div>
+<div class="button-row" style="justify-content:flex-start">
+<a class="button button-primary" href="../assets/docs/Projet_Debian_LINUX_SRV01.pdf" target="_blank" rel="noopener">Voir la documentation complète</a>
+<a class="button button-secondary" href="../projets-scolaires.html">Retour aux projets</a>
+</div>
+</div>
+<div class="hero-visual"><img src="../assets/images/projects/debian/architecture-debian-lab.png" alt="Architecture du laboratoire Debian LINUX-SRV01 et LINUX-CLT01"></div>
+</div>
+<div class="project-metrics">
+<div class="project-metric"><strong>12 missions</strong><span>admin Linux entreprise</span></div>
+<div class="project-metric"><strong>12 Go LVM</strong><span>extension à chaud</span></div>
+<div class="project-metric"><strong>DROP par défaut</strong><span>nftables</span></div>
+<div class="project-metric"><strong>Tests réels</strong><span>incident & restauration</span></div>
+</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Périmètre</div><h2>Un serveur Linux exploité comme en entreprise</h2>
+<p class="intro">Le projet ne se limite pas à installer des services. Chaque bloc a été traité comme une mission d’exploitation : mise en production, sécurisation, contrôle d’accès, incident simulé, validation fonctionnelle et automatisation.</p>
+<div class="feature-grid">
+<div class="feature-card"><h3>Identité & habilitations</h3><p>Utilisateurs, groupes métier, sudo, permissions Unix, ACL et scénario d’offboarding.</p></div>
+<div class="feature-card"><h3>Stockage & chiffrement</h3><p>LVM, extension à chaud, quotas persistants et volume de sauvegarde chiffré avec LUKS2.</p></div>
+<div class="feature-card"><h3>Accès & sécurité</h3><p>SSH par clé Ed25519, root et mots de passe désactivés, nftables et Fail2ban.</p></div>
+<div class="feature-card"><h3>Services de fichiers</h3><p>Samba pour les clients SMB et NFSv4 entre systèmes Linux avec droits différenciés.</p></div>
+<div class="feature-card"><h3>Services Web</h3><p>Nginx, Virtual Host, redirection HTTP vers HTTPS et diagnostic d’un incident de configuration.</p></div>
+<div class="feature-card"><h3>Exploitation & sauvegarde</h3><p>Morning Check Bash, timers systemd, sauvegardes tar.gz, SHA-256 et restauration ciblée.</p></div>
+</div>
+<div class="validation"><strong>Approche :</strong> chaque mission a été validée par un test réel — refus d’accès, saturation disque, bannissement SSH, port filtré, panne Nginx ou restauration de fichier — afin de démontrer le comportement du système et pas seulement sa configuration.</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Preuves techniques</div><h2>Les validations les plus représentatives</h2>
+<p class="intro">Le dossier PDF contient l’ensemble des preuves. Cette page présente une sélection des captures les plus utiles pour comprendre rapidement les compétences mobilisées.</p>
+<div class="proof-hint"><strong>Astuce :</strong> clique sur une capture pour l’agrandir. La documentation complète regroupe les 23 preuves du laboratoire.</div>
+<div class="proof-groups">
+
+<details class="proof-group" open><summary><span>1. Mise en production & stockage</span><span class="group-meta">3 preuves</span></summary><div class="proof-stack">
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/debian/01-identite-reseau-linux-srv01.png" data-lightbox-caption="Identité et configuration réseau de LINUX-SRV01"><img src="../assets/images/projects/debian/01-identite-reseau-linux-srv01.png" alt="Identité et réseau Debian"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/debian/01-identite-reseau-linux-srv01.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">01</span><h3>Mise en production du serveur</h3><p>Debian 13 est configuré en serveur minimal sur le LAN2 du laboratoire avec identité fixe et adressage statique.</p><ul class="proof-list"><li>Hostname : LINUX-SRV01</li><li>IPv4 : 192.168.90.60/24</li><li>Passerelle : 192.168.90.254</li></ul><div class="proof-tags"><span class="proof-tag">Debian 13</span><span class="proof-tag">Réseau</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/debian/02-stockage-lvm.png" data-lightbox-caption="Architecture LVM et extension du volume de données"><img src="../assets/images/projects/debian/02-stockage-lvm.png" alt="Stockage LVM Debian"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/debian/02-stockage-lvm.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">02</span><h3>LVM & extension à chaud</h3><p>Le stockage métier repose sur un volume LVM agrandi à chaud lors d’un scénario de saturation.</p><ul class="proof-list"><li>Deux PV de 8 Go et 4 Go</li><li>VG vg_data</li><li>LV lv_data porté à environ 12 Go sans reboot</li></ul><div class="proof-tags"><span class="proof-tag">LVM</span><span class="proof-tag">Extension à chaud</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/debian/04-luks-backup-chiffre.png" data-lightbox-caption="Volume de sauvegarde chiffré avec LUKS2"><img src="../assets/images/projects/debian/04-luks-backup-chiffre.png" alt="Volume LUKS2"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/debian/04-luks-backup-chiffre.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">03</span><h3>Chiffrement LUKS2</h3><p>Un disque dédié aux sauvegardes est chiffré avec LUKS2 et déverrouillé manuellement avant montage.</p><ul class="proof-list"><li>Mapping /dev/mapper/backup_crypt</li><li>Chiffrement AES-XTS</li><li>Montage sur /secure-backup</li></ul><div class="proof-tags"><span class="proof-tag">LUKS2</span><span class="proof-tag">Chiffrement</span></div></figcaption></figure>
+</div></details>
+
+<details class="proof-group"><summary><span>2. Accès, permissions & sécurité</span><span class="group-meta">3 preuves</span></summary><div class="proof-stack">
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/debian/08-durcissement-ssh.png" data-lightbox-caption="Durcissement de la configuration SSH"><img src="../assets/images/projects/debian/08-durcissement-ssh.png" alt="Durcissement SSH"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/debian/08-durcissement-ssh.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">04</span><h3>SSH par clé uniquement</h3><p>L’administration distante est limitée au groupe IT et utilise une authentification par clé publique.</p><ul class="proof-list"><li>PermitRootLogin no</li><li>PasswordAuthentication no</li><li>AllowGroups it / MaxAuthTries 3</li></ul><div class="proof-tags"><span class="proof-tag">OpenSSH</span><span class="proof-tag">Ed25519</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/debian/09-quota-utilisateur.png" data-lightbox-caption="Quota utilisateur persistant sur le volume de données"><img src="../assets/images/projects/debian/09-quota-utilisateur.png" alt="Quota utilisateur Linux"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/debian/09-quota-utilisateur.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">05</span><h3>Quotas persistants</h3><p>Le compte Emma est limité à 300 Mo en soft limit et 400 Mo en hard limit sur /data.</p><ul class="proof-list"><li>Quotas natifs ext4</li><li>Dépassement de la hard limit bloqué</li><li>Persistance validée après reboot</li></ul><div class="proof-tags"><span class="proof-tag">ext4 quota</span><span class="proof-tag">Contrôle capacité</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/debian/16-fail2ban-ssh-bannissement.png" data-lightbox-caption="Bannissement réel du client par Fail2ban"><img src="../assets/images/projects/debian/16-fail2ban-ssh-bannissement.png" alt="Fail2ban SSH"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/debian/16-fail2ban-ssh-bannissement.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">06</span><h3>Fail2ban : bannissement réel</h3><p>Des tentatives SSH refusées depuis LINUX-CLT01 déclenchent le bannissement automatique de l’adresse 192.168.90.61.</p><ul class="proof-list"><li>Jail sshd</li><li>maxretry = 3</li><li>IP bannie puis débloquée après validation</li></ul><div class="proof-tags"><span class="proof-tag">Fail2ban</span><span class="proof-tag">Bruteforce</span></div></figcaption></figure>
+</div></details>
+
+<details class="proof-group"><summary><span>3. Services de fichiers & filtrage réseau</span><span class="group-meta">3 preuves</span></summary><div class="proof-stack">
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/debian/10-samba-partages-habilitations.png" data-lightbox-caption="Partages Samba et habilitations métier"><img src="../assets/images/projects/debian/10-samba-partages-habilitations.png" alt="Partages Samba"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/debian/10-samba-partages-habilitations.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">07</span><h3>Samba avec droits métier</h3><p>Trois partages exposent RH, Direction et Commun avec des droits cohérents avec les groupes Linux.</p><ul class="proof-list"><li>RH : lecture Direction / écriture RH</li><li>Direction : réservé au groupe direction</li><li>Commun : groupe collaborateurs</li></ul><div class="proof-tags"><span class="proof-tag">Samba</span><span class="proof-tag">ACL</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/debian/13-nfs-montage-client.png" data-lightbox-caption="Montage NFSv4 depuis LINUX-CLT01"><img src="../assets/images/projects/debian/13-nfs-montage-client.png" alt="Montage NFS client"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/debian/13-nfs-montage-client.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">08</span><h3>NFSv4 entre Linux</h3><p>Le partage NFS est monté depuis LINUX-CLT01 avec cohérence du GID collaborateurs et test d’écriture réel.</p><ul class="proof-list"><li>Client autorisé : 192.168.90.61</li><li>Montage persistant via fstab</li><li>Diagnostic d’un conflit de GID</li></ul><div class="proof-tags"><span class="proof-tag">NFSv4</span><span class="proof-tag">UID / GID</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/debian/14-nftables-firewall.png" data-lightbox-caption="Pare-feu nftables avec politique DROP"><img src="../assets/images/projects/debian/14-nftables-firewall.png" alt="Pare-feu nftables"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/debian/14-nftables-firewall.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">09</span><h3>nftables : DROP par défaut</h3><p>Le serveur n’autorise que les flux nécessaires et limite SSH/NFS au poste client d’administration.</p><ul class="proof-list"><li>22/TCP depuis .61 uniquement</li><li>445/TCP pour le LAN2</li><li>2049/TCP depuis .61, 80/443 pour le LAN2</li></ul><div class="proof-tags"><span class="proof-tag">nftables</span><span class="proof-tag">Zero trust local</span></div></figcaption></figure>
+</div></details>
+
+<details class="proof-group"><summary><span>4. Web, automatisation & sauvegarde</span><span class="group-meta">3 preuves</span></summary><div class="proof-stack">
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/debian/18-intranet-https-client.png" data-lightbox-caption="Intranet Nginx accessible en HTTPS depuis le client"><img src="../assets/images/projects/debian/18-intranet-https-client.png" alt="Intranet Nginx HTTPS"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/debian/18-intranet-https-client.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">10</span><h3>Intranet Nginx en HTTPS</h3><p>Un Virtual Host interne est publié sur intranet.labo.test avec redirection HTTP vers HTTPS.</p><ul class="proof-list"><li>Ports 80/443</li><li>Certificat auto-signé de laboratoire</li><li>Incident de configuration diagnostiqué avec nginx -t et journalctl</li></ul><div class="proof-tags"><span class="proof-tag">Nginx</span><span class="proof-tag">TLS</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/debian/20-linux-morning-check.png" data-lightbox-caption="Linux Morning Check et état des services critiques"><img src="../assets/images/projects/debian/20-linux-morning-check.png" alt="Linux Morning Check"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/debian/20-linux-morning-check.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">11</span><h3>Morning Check Bash</h3><p>Un script d’exploitation contrôle stockage, LVM, mémoire, ports, services critiques et erreurs récentes.</p><ul class="proof-list"><li>Exécution automatisée par systemd timer</li><li>Détection d’un arrêt Nginx</li><li>Journal d’exploitation centralisé</li></ul><div class="proof-tags"><span class="proof-tag">Bash</span><span class="proof-tag">systemd</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/debian/23-restauration-integrite-sha256.png" data-lightbox-caption="Restauration ciblée et contrôle SHA-256"><img src="../assets/images/projects/debian/23-restauration-integrite-sha256.png" alt="Restauration et SHA-256"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/debian/23-restauration-integrite-sha256.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">12</span><h3>Sauvegarde & restauration validées</h3><p>Les données sont sauvegardées sur le volume LUKS, contrôlées par SHA-256 puis restaurées de manière ciblée après suppression volontaire.</p><ul class="proof-list"><li>Archives tar.gz horodatées</li><li>Empreinte SHA-256</li><li>Restauration du fichier restore-demo.txt</li></ul><div class="proof-tags"><span class="proof-tag">Backup</span><span class="proof-tag">Restore</span><span class="proof-tag">SHA-256</span></div></figcaption></figure>
+</div></details>
+
+</div></div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Résultat</div><h2>Compétences démontrées</h2>
+<p class="intro">Le laboratoire couvre des tâches directement transposables à l’administration d’un serveur Linux en environnement professionnel.</p>
+<div class="feature-grid">
+<div class="feature-card"><h3>Administration système</h3><p>Debian, comptes, permissions, ACL, sudo, systemd, journald et maintenance des services.</p></div>
+<div class="feature-card"><h3>Stockage</h3><p>LVM, ext4, quotas, LUKS2, montage persistant et extension à chaud.</p></div>
+<div class="feature-card"><h3>Réseau & sécurité</h3><p>SSH, nftables, Fail2ban, NFSv4, Samba et principe de moindre privilège.</p></div>
+<div class="feature-card"><h3>Web & TLS</h3><p>Nginx, Virtual Host, redirection HTTPS, certificat de laboratoire et diagnostic.</p></div>
+<div class="feature-card"><h3>Automatisation</h3><p>Scripts Bash, systemd services/timers, rapports de Morning Check et journalisation.</p></div>
+<div class="feature-card"><h3>Exploitation</h3><p>Tests fonctionnels, incidents simulés, sauvegarde, intégrité SHA-256 et restauration.</p></div>
+</div>
+</div></section>
+
+<section class="project-section"><div class="container"><div class="cta-panel">
+<div class="eyebrow">Dossier technique</div><h2>15 pages de documentation complète</h2>
+<p>Architecture, commandes, validations, incidents, limites du laboratoire et 23 preuves techniques.</p>
+<div class="button-row"><a class="button button-primary" href="../assets/docs/Projet_Debian_LINUX_SRV01.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a><a class="button button-secondary" href="../projets-scolaires.html">Voir les autres projets</a></div>
+</div></div></section>
+</main>
+
+<footer class="site-footer"><div class="container footer-grid"><div>© <span data-year>2026</span> Azaan Shafi. Portfolio professionnel.</div><div class="footer-links"><a href="../mentions-legales.html">Mentions légales</a><a href="https://github.com/azaanshafi75" target="_blank" rel="noopener">GitHub</a></div></div></footer>
+<button class="back-to-top" type="button" aria-label="Retour en haut"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></svg></button>
+<div class="lightbox" id="proof-lightbox" aria-hidden="true"><div class="lightbox-inner"><button class="lightbox-close" type="button" aria-label="Fermer">×</button><img src="" alt=""><div class="lightbox-caption"></div></div></div>
+<script src="../assets/js/site-config.js" defer></script><script src="../assets/js/main.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{const box=document.getElementById('proof-lightbox'),img=box.querySelector('img'),cap=box.querySelector('.lightbox-caption'),close=box.querySelector('.lightbox-close');document.querySelectorAll('[data-lightbox-src]').forEach(b=>b.addEventListener('click',()=>{img.src=b.dataset.lightboxSrc;img.alt=b.querySelector('img')?.alt||'Preuve technique';cap.textContent=b.dataset.lightboxCaption||'';box.classList.add('is-open');box.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}));function shut(){box.classList.remove('is-open');box.setAttribute('aria-hidden','true');img.src='';document.body.style.overflow=''}close.addEventListener('click',shut);box.addEventListener('click',e=>{if(e.target===box)shut()});document.addEventListener('keydown',e=>{if(e.key==='Escape')shut()})});
+</script>
+</body></html>

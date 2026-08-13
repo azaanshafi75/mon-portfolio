@@ -1,0 +1,19 @@
+PATCH PORTFOLIO DEBIAN — Azaan Shafi
+
+1. Décompresser le contenu à la racine de :
+   C:\Users\azaan\Documents\mon-portfolio
+
+2. Les chemins sont déjà prêts :
+   projets/debian-linux-srv01.html
+   projets-scolaires.html
+   assets/docs/Projet_Debian_LINUX_SRV01.pdf
+   assets/images/projects/debian/*
+
+3. Depuis PowerShell dans le dépôt :
+   git status
+   git add projets/debian-linux-srv01.html projets-scolaires.html assets/docs/Projet_Debian_LINUX_SRV01.pdf assets/images/projects/debian
+   git commit -m "Ajout du projet Debian Linux au portfolio"
+   git push
+
+4. Après publication :
+   https://azaanshafi75.github.io/mon-portfolio/projets/debian-linux-srv01.html

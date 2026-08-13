@@ -13,10 +13,9 @@
 <style>
 .project-status{display:inline-flex;align-items:center;gap:.45rem;padding:.48rem .72rem;border:1px solid rgba(20,150,90,.18);border-radius:999px;background:rgba(20,150,90,.08);color:#176440;font-size:.74rem;font-weight:800}
 .project-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#16a05d;box-shadow:0 0 0 4px rgba(22,160,93,.10)}
-.project-grid-single{max-width:800px}
 .project-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.25rem;position:relative;z-index:5}.project-actions .button{position:relative;z-index:6}
-.project-card .card-link::before{pointer-events:none}.projects-note{max-width:800px;margin:2rem 0 0;padding:1.15rem 1.25rem;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.76);color:var(--muted);line-height:1.7}
-.projects-note strong{color:var(--text)}
+.project-card .card-link::before{pointer-events:none}.projects-note{max-width:980px;margin:2rem 0 0;padding:1.15rem 1.25rem;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.76);color:var(--muted);line-height:1.7}.projects-note strong{color:var(--text)}
+@media(min-width:900px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
 <body>
@@ -32,11 +31,12 @@
 <div class="breadcrumbs"><a href="index.html">Accueil</a><span>/</span><span>Projets techniques</span></div>
 <div class="eyebrow">Laboratoires & réalisations</div>
 <h1>Des projets construits,<br><span class="accent">testés et documentés.</span></h1>
-<p>Des environnements techniques réalisés de bout en bout, avec validation fonctionnelle, scénarios de panne et documentation détaillée.</p>
+<p>Des environnements techniques réalisés de bout en bout, avec validation fonctionnelle, scénarios d’incident et documentation détaillée.</p>
 </div></section>
 
 <section class="section"><div class="container">
-<div class="project-grid project-grid-single">
+<div class="project-grid">
+
 <article class="card project-card" data-reveal>
 <div class="project-thumb"><img src="assets/images/projects/windows-server/architecture-force-lan.png" alt="Architecture du laboratoire Windows Server FORCE.LAN" loading="lazy" width="960" height="600"></div>
 <div class="project-card-body">
@@ -45,14 +45,24 @@
 <h3><a class="card-link" href="projets/windows-server-force-lan.html">Administration Windows Server & services d’infrastructure</a></h3>
 <p>Laboratoire FORCE.LAN complet : Active Directory, DNS, DHCP, GPO, AGDLP, services de fichiers, PowerShell, sauvegarde, IIS, RDS, Hyper-V, supervision et continuité de service avec DC02.</p>
 <div class="tags"><span class="tag">Windows Server 2022</span><span class="tag">Active Directory</span><span class="tag">PowerShell</span><span class="tag">GPO</span><span class="tag">DHCP Failover</span></div>
-<div class="project-actions">
-<a class="button button-primary" href="projets/windows-server-force-lan.html">Voir le projet →</a>
-<a class="button button-secondary" href="assets/docs/Projet_Windows_Server_FORCE_LAN.pdf" target="_blank" rel="noopener">Documentation PDF</a>
-</div>
+<div class="project-actions"><a class="button button-primary" href="projets/windows-server-force-lan.html">Voir le projet →</a><a class="button button-secondary" href="assets/docs/Projet_Windows_Server_FORCE_LAN.pdf" target="_blank" rel="noopener">Documentation PDF</a></div>
 </div>
 </article>
+
+<article class="card project-card" data-reveal>
+<div class="project-thumb"><img src="assets/images/projects/debian/architecture-debian-lab.png" alt="Architecture du laboratoire Debian LINUX-SRV01" loading="lazy" width="960" height="600"></div>
+<div class="project-card-body">
+<div class="card-top"><span class="badge">Linux & sécurité</span><span class="card-number">02</span></div>
+<div style="margin-bottom:.9rem"><span class="project-status">Projet terminé</span></div>
+<h3><a class="card-link" href="projets/debian-linux-srv01.html">Administration et sécurisation d’un serveur Linux — Debian</a></h3>
+<p>Laboratoire Debian 13 orienté exploitation : comptes et ACL, SSH durci, LVM/LUKS, quotas, Samba/NFS, nftables, Fail2ban, Nginx HTTPS, Bash/systemd et sauvegarde-restauration.</p>
+<div class="tags"><span class="tag">Debian 13</span><span class="tag">LVM / LUKS</span><span class="tag">nftables</span><span class="tag">Samba / NFS</span><span class="tag">Bash / systemd</span></div>
+<div class="project-actions"><a class="button button-primary" href="projets/debian-linux-srv01.html">Voir le projet →</a><a class="button button-secondary" href="assets/docs/Projet_Debian_LINUX_SRV01.pdf" target="_blank" rel="noopener">Documentation PDF</a></div>
 </div>
-<div class="projects-note"><strong>Les prochains projets seront publiés progressivement.</strong> Je reconstruis et documente chaque laboratoire avant de l’ajouter au portfolio afin de ne présenter que des réalisations réellement testées.</div>
+</article>
+
+</div>
+<div class="projects-note"><strong>Chaque projet publié est reconstruit et validé en laboratoire.</strong> Les pages détaillent les choix techniques, les tests fonctionnels, les incidents simulés et les preuves associées.</div>
 </div></section>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div>© <span data-year>2026</span> Azaan Shafi. Portfolio professionnel.</div><div class="footer-links"><a href="mentions-legales.html">Mentions légales</a><a href="https://github.com/azaanshafi75" target="_blank" rel="noopener">GitHub</a></div></div></footer>
