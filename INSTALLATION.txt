@@ -1,17 +1,17 @@
-PORTFOLIO - PROJET PFSENSE HA
+PACK PORTFOLIO — VPN IPSEC SITE-À-SITE
 
-1. Décompresser ce pack.
-2. Copier TOUT le contenu du dossier décompressé dans la racine du portfolio :
+1. Décompresser ce ZIP.
+2. Copier TOUT son contenu à la racine de :
    C:\Users\azaan\Documents\mon-portfolio
 3. Accepter le remplacement de projets-scolaires.html.
-4. Les autres fichiers sont nouveaux et se placeront automatiquement dans projets/, assets/docs/ et assets/images/.
-5. Puis exécuter :
-
+4. Dans PowerShell :
    cd C:\Users\azaan\Documents\mon-portfolio
    git status
    git add .
-   git commit -m "Ajout du projet pfSense HA CARP au portfolio"
+   git commit -m "Ajout du projet VPN IPsec site-a-site au portfolio"
    git push
 
-Page finale :
-https://azaanshafi75.github.io/mon-portfolio/projets/pfsense-ha-carp.html
+Nouvelle page :
+projets/vpn-ipsec-site-a-site.html
+
+Le PDF publié masque la clé pré-partagée. Les captures sélectionnées ne contiennent aucun secret.
