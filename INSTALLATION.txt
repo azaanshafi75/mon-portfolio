@@ -1,19 +1,17 @@
-PATCH PORTFOLIO DEBIAN — Azaan Shafi
+PORTFOLIO - PROJET PFSENSE HA
 
-1. Décompresser le contenu à la racine de :
+1. Décompresser ce pack.
+2. Copier TOUT le contenu du dossier décompressé dans la racine du portfolio :
    C:\Users\azaan\Documents\mon-portfolio
+3. Accepter le remplacement de projets-scolaires.html.
+4. Les autres fichiers sont nouveaux et se placeront automatiquement dans projets/, assets/docs/ et assets/images/.
+5. Puis exécuter :
 
-2. Les chemins sont déjà prêts :
-   projets/debian-linux-srv01.html
-   projets-scolaires.html
-   assets/docs/Projet_Debian_LINUX_SRV01.pdf
-   assets/images/projects/debian/*
-
-3. Depuis PowerShell dans le dépôt :
+   cd C:\Users\azaan\Documents\mon-portfolio
    git status
-   git add projets/debian-linux-srv01.html projets-scolaires.html assets/docs/Projet_Debian_LINUX_SRV01.pdf assets/images/projects/debian
-   git commit -m "Ajout du projet Debian Linux au portfolio"
+   git add .
+   git commit -m "Ajout du projet pfSense HA CARP au portfolio"
    git push
 
-4. Après publication :
-   https://azaanshafi75.github.io/mon-portfolio/projets/debian-linux-srv01.html
+Page finale :
+https://azaanshafi75.github.io/mon-portfolio/projets/pfsense-ha-carp.html

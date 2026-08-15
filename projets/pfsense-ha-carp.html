@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>pfSense haute disponibilité CARP — Azaan Shafi</title>
+<meta name="description" content="Laboratoire pfSense haute disponibilité : CARP, pfsync, XMLRPC, segmentation SERVEURS/CLIENTS, firewall, NAT et tests réels de basculement.">
+<link rel="canonical" href="https://azaanshafi75.github.io/mon-portfolio/projets/pfsense-ha-carp.html">
+<meta name="theme-color" content="#f6f8fc">
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+.project-hero{padding:calc(var(--nav-h) + 78px) 0 72px;border-bottom:1px solid var(--line)}
+.project-hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:3rem;align-items:center}
+.project-hero h1{margin:.8rem 0 1.2rem;font-family:"Space Grotesk",sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);line-height:1;letter-spacing:-.055em}
+.project-lead{color:var(--muted);font-size:1.05rem;line-height:1.8}
+.project-status{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .78rem;border-radius:999px;background:rgba(20,150,90,.08);color:#176440;font-size:.76rem;font-weight:800}
+.project-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#16a05d}
+.hero-visual img,.proof-image img{width:100%;display:block;border:1px solid var(--line);border-radius:20px;box-shadow:0 22px 60px rgba(48,70,96,.10)}
+.project-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin-top:2rem}
+.project-metric{padding:1rem;border:1px solid var(--line);border-radius:16px;background:#fff}
+.project-metric strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:1.15rem}.project-metric span{color:var(--muted);font-size:.76rem}
+.project-section{padding:86px 0;border-bottom:1px solid var(--line)}
+.project-section h2{margin:0 0 1rem;font-family:"Space Grotesk",sans-serif;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.045em}
+.project-section .intro{max-width:860px;color:var(--muted);line-height:1.8}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.feature-card{padding:1.4rem;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#fff,#f5f8fc)}
+.feature-card h3{margin:0 0 .6rem;font-family:"Space Grotesk",sans-serif;font-size:1.08rem}
+.feature-card p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.65}
+.validation{margin-top:1.5rem;padding:1.4rem 1.5rem;border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 16px 16px 0;line-height:1.75}
+.cta-panel{padding:clamp(2rem,5vw,4rem);border:1px solid rgba(37,99,235,.2);border-radius:28px;background:linear-gradient(145deg,rgba(226,237,254,.97),#fff);text-align:center}
+.cta-panel h2{margin:0 0 .8rem}.button-row{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}
+.proof-hint{margin-top:1rem;padding:1rem 1.2rem;border:1px solid rgba(37,99,235,.15);background:#f8fbff;border-radius:16px;color:var(--muted);font-size:.95rem}
+.proof-groups{display:grid;gap:1rem;margin-top:2rem}.proof-group{border:1px solid var(--line);border-radius:24px;background:#fff;overflow:hidden;box-shadow:0 16px 44px rgba(48,70,96,.06)}
+.proof-group>summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;list-style:none;padding:1.2rem 1.3rem;cursor:pointer;font-weight:800;font-family:"Space Grotesk",sans-serif;font-size:1.05rem;background:linear-gradient(145deg,#fff,#f8fbff)}
+.proof-group>summary::-webkit-details-marker{display:none}.proof-group>summary .group-meta{font-family:Manrope,sans-serif;font-weight:700;color:var(--muted);font-size:.85rem}.proof-group[open]>summary{border-bottom:1px solid var(--line)}
+.proof-stack{display:grid;gap:1.4rem;padding:1.3rem}.proof-card{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:1.35rem;align-items:start;padding:1rem;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#fff,#fbfcff)}
+.proof-image{display:grid;gap:.7rem}.proof-image button{padding:0;border:0;background:none;cursor:zoom-in}.proof-image img{border-radius:18px;transition:transform .25s ease,box-shadow .25s ease}.proof-image button:hover img{transform:translateY(-2px);box-shadow:0 18px 40px rgba(48,70,96,.13)}
+.proof-links{display:flex;justify-content:flex-end}.proof-link{display:inline-flex;align-items:center;gap:.35rem;padding:.65rem .95rem;border:1px solid var(--line);border-radius:999px;background:#fff;font-weight:700;font-size:.82rem;color:var(--text);text-decoration:none}
+.proof-content h3{margin:0 0 .7rem;font-family:"Space Grotesk",sans-serif;font-size:1.4rem;line-height:1.15}.proof-index{display:inline-flex;align-items:center;justify-content:center;width:2.15rem;height:2.15rem;border-radius:999px;background:rgba(37,99,235,.10);color:var(--accent);font-size:.85rem;font-weight:900;margin-bottom:.85rem}
+.proof-content p{margin:0 0 .8rem;color:var(--muted);line-height:1.75}.proof-list{margin:0;padding-left:1.1rem;color:var(--text);display:grid;gap:.45rem;font-size:.94rem}.proof-list li{line-height:1.65}
+.proof-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}.proof-tag{padding:.38rem .65rem;border-radius:999px;background:#f3f6fb;border:1px solid var(--line);font-size:.75rem;font-weight:700;color:var(--muted)}
+.lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:2rem;background:rgba(8,15,28,.84);z-index:1000}.lightbox.is-open{display:flex}.lightbox-inner{position:relative;max-width:min(1400px,96vw);max-height:92vh}.lightbox img{display:block;max-width:100%;max-height:92vh;border-radius:20px;box-shadow:0 24px 70px rgba(0,0,0,.35)}
+.lightbox-close{position:absolute;top:.9rem;right:.9rem;width:42px;height:42px;border:0;border-radius:999px;background:rgba(255,255,255,.95);font-size:1.5rem;cursor:pointer}.lightbox-caption{margin-top:.85rem;color:#fff;text-align:center;font-size:.95rem}
+@media(max-width:1100px){.proof-card{grid-template-columns:1fr}.proof-content h3{font-size:1.25rem}}
+@media(max-width:900px){.project-hero-grid{grid-template-columns:1fr}.project-metrics{grid-template-columns:repeat(2,1fr)}.feature-grid{grid-template-columns:1fr}.proof-group>summary{align-items:flex-start;flex-direction:column}}
+@media(max-width:580px){.project-metrics{grid-template-columns:1fr}.proof-stack{padding:1rem}.proof-card{padding:.8rem}.project-hero{padding-top:calc(var(--nav-h) + 60px)}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a><div class="scroll-progress" aria-hidden="true"></div>
+<header class="site-header"><div class="container nav-wrap">
+<a class="brand" href="../index.html"><span class="brand-mark">AS</span><span class="brand-name">Azaan Shafi</span></a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu"><span></span></button>
+<ul class="nav-links" id="main-nav"><li><a href="../index.html">Accueil</a></li><li><a href="../profil.html">Profil</a></li><li><a href="../competences.html">Compétences</a></li><li><a href="../projets-pro.html">Projets Pro</a></li><li><a class="active" href="../projets-scolaires.html">Projets techniques</a></li><li><a href="../cv.html">CV</a></li><li class="nav-cta"><a href="../contact.html">Contact</a></li></ul>
+</div></header>
+
+<main id="contenu">
+<section class="project-hero"><div class="container">
+<div class="breadcrumbs"><a href="../index.html">Accueil</a><span>/</span><a href="../projets-scolaires.html">Projets techniques</a><span>/</span><span>pfSense HA</span></div>
+<div class="project-hero-grid">
+<div>
+<div class="project-status">Projet terminé</div>
+<h1>Haute disponibilité & segmentation réseau avec pfSense</h1>
+<p class="project-lead">Déploiement d’un cluster actif/passif de deux pare-feu pfSense avec CARP, pfsync et XMLRPC. Deux réseaux internes sont protégés par des passerelles virtuelles, des règles de filtrage applicatif et un basculement automatique testé en conditions réelles.</p>
+<div class="tags"><span class="tag">pfSense 2.7.2</span><span class="tag">CARP</span><span class="tag">pfsync</span><span class="tag">XMLRPC</span><span class="tag">Firewall / NAT</span><span class="tag">VMware</span></div>
+<div class="button-row" style="justify-content:flex-start">
+<a class="button button-primary" href="../assets/docs/Projet_pfSense_HA_CARP.pdf" target="_blank" rel="noopener">Voir la documentation complète</a>
+<a class="button button-secondary" href="../projets-scolaires.html">Retour aux projets</a>
+</div>
+</div>
+<div class="hero-visual"><img src="../assets/images/projects/pfsense-ha/architecture-pfsense-ha.png" alt="Architecture du laboratoire pfSense haute disponibilité"></div>
+</div>
+<div class="project-metrics">
+<div class="project-metric"><strong>2 pfSense</strong><span>MASTER / BACKUP</span></div>
+<div class="project-metric"><strong>2 VIP CARP</strong><span>passerelles redondantes</span></div>
+<div class="project-metric"><strong>pfsync + XMLRPC</strong><span>états & configuration</span></div>
+<div class="project-metric"><strong>Failover réel</strong><span>panne & retour nominal</span></div>
+</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Périmètre</div><h2>Un pare-feu redondant, segmenté et réellement testé</h2>
+<p class="intro">Le laboratoire a d’abord été réalisé sur Proxmox VE puis reconstruit sous VMware Workstation pour reproduire et documenter entièrement la configuration. Le projet met l’accent sur la haute disponibilité, la synchronisation des deux nœuds, le cloisonnement des flux et la validation par panne réelle.</p>
+<div class="feature-grid">
+<div class="feature-card"><h3>CARP actif/passif</h3><p>Deux VIP servent de passerelles aux réseaux SERVEURS et CLIENTS. PFSENSE01 est MASTER et PFSENSE02 reste BACKUP.</p></div>
+<div class="feature-card"><h3>Synchronisation HA</h3><p>pfsync réplique les états de connexion et XMLRPC synchronise VIP, aliases et politiques firewall.</p></div>
+<div class="feature-card"><h3>Segmentation réseau</h3><p>Réseau SERVEURS 192.168.10.0/24 et réseau CLIENTS 192.168.11.0/24 séparés par pfSense.</p></div>
+<div class="feature-card"><h3>Filtrage applicatif</h3><p>HTTP, FTP, DNS et SMB autorisés vers le serveur ; SSH et les autres accès non prévus sont bloqués.</p></div>
+<div class="feature-card"><h3>NAT & Internet</h3><p>Les réseaux internes conservent une sortie Internet via le WAN VMware tout en respectant la politique inter-réseaux.</p></div>
+<div class="feature-card"><h3>Tests de panne</h3><p>Arrêt réel du primaire, prise de rôle MASTER par le secondaire, maintien de la VIP puis retour automatique à l’état nominal.</p></div>
+</div>
+<div class="validation"><strong>Résultat :</strong> lors de l’arrêt de PFSENSE01-HA, PFSENSE02-HA devient MASTER automatiquement et la passerelle virtuelle reste joignable. Au redémarrage du primaire, les rôles MASTER/BACKUP sont restaurés sans modification des postes.</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Preuves techniques</div><h2>Configuration, sécurité et basculement</h2>
+<p class="intro">Les captures ci-dessous montrent les éléments les plus représentatifs. Le dossier PDF détaille l’ensemble de la construction et des validations.</p>
+<div class="proof-hint"><strong>Astuce :</strong> clique sur une capture pour l’agrandir et lire les adresses, règles et états CARP.</div>
+<div class="proof-groups">
+
+<details class="proof-group" open><summary><span>1. Architecture & haute disponibilité</span><span class="group-meta">4 preuves</span></summary><div class="proof-stack">
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/pfsense-ha/01-vmware-lab.png" data-lightbox-caption="Les quatre VM du laboratoire pfSense HA"><img src="../assets/images/projects/pfsense-ha/01-vmware-lab.png" alt="VM du laboratoire pfSense HA"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/pfsense-ha/01-vmware-lab.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">01</span><h3>Laboratoire virtualisé</h3><p>Deux pare-feu, un serveur Debian et un poste Windows constituent l’environnement de validation.</p><ul class="proof-list"><li>PFSENSE01-HA et PFSENSE02-HA</li><li>LINUX-SRV01-PF</li><li>CLT01-PF</li></ul><div class="proof-tags"><span class="proof-tag">VMware</span><span class="proof-tag">HA</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/pfsense-ha/03-pfsync-xmlrpc.png" data-lightbox-caption="Synchronisation pfsync et XMLRPC vers PFSENSE02-HA"><img src="../assets/images/projects/pfsense-ha/03-pfsync-xmlrpc.png" alt="Configuration pfsync XMLRPC"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/pfsense-ha/03-pfsync-xmlrpc.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">02</span><h3>pfsync & XMLRPC</h3><p>Le réseau SYNC dédié 172.31.255.0/29 assure les échanges HA entre les deux pare-feu.</p><ul class="proof-list"><li>Peer pfsync : 172.31.255.2</li><li>Synchronisation XMLRPC vers le secondaire</li><li>Interface dédiée SYNC</li></ul><div class="proof-tags"><span class="proof-tag">pfsync</span><span class="proof-tag">XMLRPC</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/pfsense-ha/04a-carp-master.png" data-lightbox-caption="PFSENSE01-HA en état MASTER"><img src="../assets/images/projects/pfsense-ha/04a-carp-master.png" alt="CARP MASTER sur PFSENSE01"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/pfsense-ha/04a-carp-master.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">03</span><h3>VIP CARP sur le primaire</h3><p>Les deux passerelles virtuelles sont détenues par PFSENSE01-HA en fonctionnement nominal.</p><ul class="proof-list"><li>192.168.10.1/24 - CARP-SERVEURS</li><li>192.168.11.1/24 - CARP-CLIENTS</li><li>État MASTER</li></ul><div class="proof-tags"><span class="proof-tag">CARP</span><span class="proof-tag">MASTER</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/pfsense-ha/04b-carp-backup.png" data-lightbox-caption="PFSENSE02-HA en état BACKUP"><img src="../assets/images/projects/pfsense-ha/04b-carp-backup.png" alt="CARP BACKUP sur PFSENSE02"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/pfsense-ha/04b-carp-backup.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">04</span><h3>Nœud secondaire prêt au basculement</h3><p>Le second pare-feu possède les mêmes VIP mais reste en BACKUP jusqu’à la défaillance du primaire.</p><div class="proof-tags"><span class="proof-tag">CARP</span><span class="proof-tag">BACKUP</span></div></figcaption></figure>
+</div></details>
+
+<details class="proof-group"><summary><span>2. Segmentation & filtrage applicatif</span><span class="group-meta">4 preuves</span></summary><div class="proof-stack">
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/pfsense-ha/05-regles-clients.png" data-lightbox-caption="Politique firewall du réseau CLIENTS"><img src="../assets/images/projects/pfsense-ha/05-regles-clients.png" alt="Règles firewall CLIENTS"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/pfsense-ha/05-regles-clients.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">05</span><h3>Politique CLIENTS → SERVEURS</h3><p>Les règles sont ordonnées selon le principe du premier match afin d’autoriser uniquement les services nécessaires.</p><ul class="proof-list"><li>Services applicatifs explicitement autorisés</li><li>SSH TCP/22 explicitement bloqué</li><li>Internet autorisé après les règles de cloisonnement</li></ul><div class="proof-tags"><span class="proof-tag">Firewall</span><span class="proof-tag">Least privilege</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/pfsense-ha/06-tests-ports.png" data-lightbox-caption="Tests de ports depuis le réseau CLIENTS"><img src="../assets/images/projects/pfsense-ha/06-tests-ports.png" alt="Tests de ports Windows"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/pfsense-ha/06-tests-ports.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">06</span><h3>Validation depuis le poste client</h3><p>Les tests PowerShell confirment le comportement attendu de la politique réseau.</p><ul class="proof-list"><li>HTTP 80 : autorisé</li><li>SMB 445 : autorisé</li><li>SSH 22 : bloqué</li></ul><div class="proof-tags"><span class="proof-tag">PowerShell</span><span class="proof-tag">Tests réseau</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/pfsense-ha/09a-log-blocage-ssh.png" data-lightbox-caption="Journal pfSense de la règle Bloquer SSH"><img src="../assets/images/projects/pfsense-ha/09a-log-blocage-ssh.png" alt="Log pfSense SSH bloqué"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/pfsense-ha/09a-log-blocage-ssh.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">07</span><h3>Blocage SSH journalisé</h3><p>Le log pfSense identifie explicitement la tentative de 192.168.11.10 vers 192.168.10.10:22 et la règle de blocage associée.</p><div class="proof-tags"><span class="proof-tag">Logs</span><span class="proof-tag">TCP/22</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/pfsense-ha/10-regles-synchronisees-pfsense02.png" data-lightbox-caption="Règles CLIENTS synchronisées sur PFSENSE02-HA"><img src="../assets/images/projects/pfsense-ha/10-regles-synchronisees-pfsense02.png" alt="Règles synchronisées sur PFSENSE02"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/pfsense-ha/10-regles-synchronisees-pfsense02.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">08</span><h3>Règles répliquées sur le secondaire</h3><p>La politique CLIENTS est présente sur PFSENSE02-HA, ce qui permet de conserver le même niveau de sécurité après basculement.</p><div class="proof-tags"><span class="proof-tag">XMLRPC</span><span class="proof-tag">Réplication</span></div></figcaption></figure>
+</div></details>
+
+<details class="proof-group"><summary><span>3. Basculement & continuité de service</span><span class="group-meta">3 preuves</span></summary><div class="proof-stack">
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/pfsense-ha/08-basculement-pfsense02-master.png" data-lightbox-caption="Basculement : PFSENSE02 devient MASTER pendant que la VIP continue de répondre"><img src="../assets/images/projects/pfsense-ha/08-basculement-pfsense02-master.png" alt="Basculement CARP vers PFSENSE02"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/pfsense-ha/08-basculement-pfsense02-master.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">09</span><h3>Panne réelle du primaire</h3><p>PFSENSE01-HA est arrêté. PFSENSE02-HA devient MASTER et la VIP 192.168.11.1 reprend les réponses après une interruption très courte.</p><ul class="proof-list"><li>Prise de rôle automatique</li><li>VIP conservée côté client</li><li>Continuité observée par ping</li></ul><div class="proof-tags"><span class="proof-tag">Failover</span><span class="proof-tag">Continuité</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/pfsense-ha/11-retour-etat-normal.png" data-lightbox-caption="Retour à l’état nominal MASTER/BACKUP"><img src="../assets/images/projects/pfsense-ha/11-retour-etat-normal.png" alt="Retour état normal pfSense HA"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/pfsense-ha/11-retour-etat-normal.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">10</span><h3>Retour automatique à l’état nominal</h3><p>Après redémarrage du primaire, PFSENSE01-HA redevient MASTER et PFSENSE02-HA revient en BACKUP pour les deux VIP.</p><div class="proof-tags"><span class="proof-tag">Recovery</span><span class="proof-tag">MASTER/BACKUP</span></div></figcaption></figure>
+<figure class="proof-card"><div class="proof-image"><button data-lightbox-src="../assets/images/projects/pfsense-ha/07b-services-ecoute.png" data-lightbox-caption="Services applicatifs réellement en écoute sur le serveur Debian"><img src="../assets/images/projects/pfsense-ha/07b-services-ecoute.png" alt="Services Debian en écoute"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/pfsense-ha/07b-services-ecoute.png" target="_blank">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">11</span><h3>Services de validation réels</h3><p>Apache, FTP, SSH, DNS et Samba sont réellement exposés par le serveur Debian et servent de cibles au filtrage pfSense.</p><div class="proof-tags"><span class="proof-tag">Debian 13</span><span class="proof-tag">HTTP / SMB / DNS / FTP / SSH</span></div></figcaption></figure>
+</div></details>
+
+</div></div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Résultat</div><h2>Compétences démontrées</h2>
+<p class="intro">Le projet combine administration réseau, sécurité, haute disponibilité et diagnostic d’incidents dans un environnement virtualisé cohérent.</p>
+<div class="feature-grid">
+<div class="feature-card"><h3>Haute disponibilité</h3><p>CARP, VIP, rôles MASTER/BACKUP, pfsync et scénarios de basculement.</p></div>
+<div class="feature-card"><h3>Sécurité réseau</h3><p>Politique firewall ordonnée, aliases, journalisation et segmentation inter-réseaux.</p></div>
+<div class="feature-card"><h3>Routage & NAT</h3><p>Passerelles virtuelles, sortie Internet et diagnostic des flux LAN/WAN.</p></div>
+<div class="feature-card"><h3>Synchronisation</h3><p>XMLRPC pour la réplication des VIP, aliases et règles vers le nœud secondaire.</p></div>
+<div class="feature-card"><h3>Validation</h3><p>Test-NetConnection, ICMP, logs firewall, arrêt réel du primaire et retour nominal.</p></div>
+<div class="feature-card"><h3>Dépannage</h3><p>VMnet, conflits d’adressage, routes, NAT, states et ordre des règles pfSense.</p></div>
+</div>
+</div></section>
+
+<section class="project-section"><div class="container"><div class="cta-panel">
+<div class="eyebrow">Dossier technique</div><h2>15 pages de documentation complète</h2>
+<p>Architecture, configuration HA, segmentation, tests applicatifs, basculement CARP, incidents rencontrés et validations finales.</p>
+<div class="button-row"><a class="button button-primary" href="../assets/docs/Projet_pfSense_HA_CARP.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a><a class="button button-secondary" href="../projets-scolaires.html">Voir les autres projets</a></div>
+</div></div></section>
+</main>
+
+<footer class="site-footer"><div class="container footer-grid"><div>© <span data-year>2026</span> Azaan Shafi. Portfolio professionnel.</div><div class="footer-links"><a href="../mentions-legales.html">Mentions légales</a><a href="https://github.com/azaanshafi75" target="_blank" rel="noopener">GitHub</a></div></div></footer>
+<button class="back-to-top" type="button" aria-label="Retour en haut"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></svg></button>
+<div class="lightbox" id="proof-lightbox" aria-hidden="true"><div class="lightbox-inner"><button class="lightbox-close" type="button" aria-label="Fermer">×</button><img src="" alt=""><div class="lightbox-caption"></div></div></div>
+<script src="../assets/js/site-config.js" defer></script><script src="../assets/js/main.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{const box=document.getElementById('proof-lightbox'),img=box.querySelector('img'),cap=box.querySelector('.lightbox-caption'),close=box.querySelector('.lightbox-close');document.querySelectorAll('[data-lightbox-src]').forEach(b=>b.addEventListener('click',()=>{img.src=b.dataset.lightboxSrc;img.alt=b.querySelector('img')?.alt||'Preuve technique';cap.textContent=b.dataset.lightboxCaption||'';box.classList.add('is-open');box.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}));function shut(){box.classList.remove('is-open');box.setAttribute('aria-hidden','true');img.src='';document.body.style.overflow=''}close.addEventListener('click',shut);box.addEventListener('click',e=>{if(e.target===box)shut()});document.addEventListener('keydown',e=>{if(e.key==='Escape')shut()})});
+</script>
+</body></html>
