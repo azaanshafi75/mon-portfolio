@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gestion de parc & support IT avec GLPI — Azaan Shafi</title>
+<meta name="description" content="Laboratoire GLPI 11 : inventaire natif, Agent 1.16, ITIL, SLA, Helpdesk Self-Service, base de connaissances, MFA, reporting et sauvegarde SMB automatisée.">
+<link rel="canonical" href="https://azaanshafi75.github.io/mon-portfolio/projets/glpi-gestion-parc-helpdesk.html">
+<meta name="theme-color" content="#f6f8fc">
+<meta property="og:type" content="website"><meta property="og:title" content="Gestion de parc & support IT avec GLPI — Azaan Shafi"><meta property="og:description" content="Inventaire, Helpdesk ITIL, SLA, MFA, reporting, connaissances et sauvegarde SMB automatisée avec GLPI 11."><meta property="og:url" content="https://azaanshafi75.github.io/mon-portfolio/projets/glpi-gestion-parc-helpdesk.html"><meta property="og:image" content="https://azaanshafi75.github.io/mon-portfolio/assets/images/projects/glpi/00-architecture-glpi.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+.project-hero{padding:calc(var(--nav-h) + 78px) 0 72px;border-bottom:1px solid var(--line)}
+.project-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center}
+.project-hero h1{margin:.8rem 0 1.2rem;font-family:"Space Grotesk",sans-serif;font-size:clamp(2.8rem,6vw,5.25rem);line-height:1;letter-spacing:-.055em}
+.project-lead{color:var(--muted);font-size:1.05rem;line-height:1.8}
+.project-status{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .78rem;border-radius:999px;background:rgba(20,150,90,.08);color:#176440;font-size:.76rem;font-weight:800}
+.project-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#16a05d}
+.hero-visual img,.proof-image img{width:100%;display:block;border:1px solid var(--line);border-radius:20px;box-shadow:0 22px 60px rgba(48,70,96,.10)}
+.project-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin-top:2rem}
+.project-metric{padding:1rem;border:1px solid var(--line);border-radius:16px;background:#fff}.project-metric strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:1.15rem}.project-metric span{color:var(--muted);font-size:.76rem}
+.project-section{padding:86px 0;border-bottom:1px solid var(--line)}
+.project-section h2{margin:0 0 1rem;font-family:"Space Grotesk",sans-serif;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.045em}
+.project-section .intro{max-width:900px;color:var(--muted);line-height:1.8}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}.feature-card{padding:1.4rem;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#fff,#f5f8fc)}.feature-card h3{margin:0 0 .6rem;font-family:"Space Grotesk",sans-serif;font-size:1.08rem}.feature-card p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.65}
+.validation{padding:1.4rem 1.5rem;border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 16px 16px 0;line-height:1.75}
+.flow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.7rem;margin:2rem 0}.flow-step{padding:1rem;border:1px solid var(--line);border-radius:16px;background:#fff;text-align:center}.flow-step strong{display:block;font-size:.88rem}.flow-step span{display:block;color:var(--muted);font-size:.75rem;margin-top:.3rem}
+.proof-hint{margin-top:1rem;padding:1rem 1.2rem;border:1px solid rgba(37,99,235,.15);background:#f8fbff;border-radius:16px;color:var(--muted);font-size:.95rem}
+.proof-groups{display:grid;gap:1rem;margin-top:2rem}.proof-group{border:1px solid var(--line);border-radius:24px;background:#fff;overflow:hidden;box-shadow:0 16px 44px rgba(48,70,96,.06)}.proof-group>summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;list-style:none;padding:1.2rem 1.3rem;cursor:pointer;font-weight:800;font-family:"Space Grotesk",sans-serif;font-size:1.05rem;background:linear-gradient(145deg,#fff,#f8fbff)}.proof-group>summary::-webkit-details-marker{display:none}.proof-group>summary .group-meta{font-family:Manrope,sans-serif;font-weight:700;color:var(--muted);font-size:.85rem}.proof-group[open]>summary{border-bottom:1px solid var(--line)}
+.proof-stack{display:grid;gap:1.4rem;padding:1.3rem}.proof-card{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:1.35rem;align-items:start;padding:1rem;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#ffffff,#fbfcff)}.proof-image{display:grid;gap:.7rem}.proof-image button{padding:0;border:0;background:none;cursor:zoom-in}.proof-image img{border-radius:18px;transition:transform .25s ease,box-shadow .25s ease}.proof-image button:hover img{transform:translateY(-2px);box-shadow:0 18px 40px rgba(48,70,96,.13)}.proof-links{display:flex;justify-content:flex-end}.proof-link{display:inline-flex;align-items:center;gap:.35rem;padding:.65rem .95rem;border:1px solid var(--line);border-radius:999px;background:#fff;font-weight:700;font-size:.82rem;color:var(--text);text-decoration:none}.proof-content h3{margin:0 0 .7rem;font-family:"Space Grotesk",sans-serif;font-size:1.4rem;line-height:1.15}.proof-index{display:inline-flex;align-items:center;justify-content:center;width:2.15rem;height:2.15rem;border-radius:999px;background:rgba(37,99,235,.10);color:var(--accent);font-size:.85rem;font-weight:900;margin-bottom:.85rem}.proof-content p{margin:0 0 .8rem;color:var(--muted);line-height:1.75}.proof-list{margin:0;padding-left:1.1rem;color:var(--text);display:grid;gap:.45rem;font-size:.94rem}.proof-list li{line-height:1.65}.proof-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}.proof-tag{padding:.38rem .65rem;border-radius:999px;background:#f3f6fb;border:1px solid var(--line);font-size:.75rem;font-weight:700;color:var(--muted)}
+.cta-panel{padding:clamp(2rem,5vw,4rem);border:1px solid rgba(37,99,235,.2);border-radius:28px;background:linear-gradient(145deg,rgba(226,237,254,.97),#fff);text-align:center}.cta-panel h2{margin:0 0 .8rem}.button-row{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}
+.lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:2rem;background:rgba(8,15,28,.84);z-index:1000}.lightbox.is-open{display:flex}.lightbox-inner{position:relative;max-width:min(1400px,96vw);max-height:92vh}.lightbox img{display:block;max-width:100%;max-height:92vh;border-radius:20px;box-shadow:0 24px 70px rgba(0,0,0,.35)}.lightbox-close{position:absolute;top:.9rem;right:.9rem;width:42px;height:42px;border:0;border-radius:999px;background:rgba(255,255,255,.95);font-size:1.5rem;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.18)}.lightbox-caption{margin-top:.85rem;color:#fff;text-align:center;font-size:.95rem;line-height:1.5}
+@media(max-width:1100px){.proof-card{grid-template-columns:1fr}.proof-content h3{font-size:1.25rem}.flow{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:900px){.project-hero-grid{grid-template-columns:1fr}.project-metrics{grid-template-columns:repeat(2,1fr)}.feature-grid{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.proof-group>summary{align-items:flex-start;flex-direction:column}}
+@media(max-width:580px){.project-metrics{grid-template-columns:1fr}.proof-stack{padding:1rem}.proof-card{padding:.8rem}.project-hero{padding-top:calc(var(--nav-h) + 60px)}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a><div class="scroll-progress" aria-hidden="true"></div>
+<header class="site-header"><div class="container nav-wrap">
+<a class="brand" href="../index.html"><span class="brand-mark">AS</span><span class="brand-name">Azaan Shafi</span></a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu"><span></span></button>
+<ul class="nav-links" id="main-nav"><li><a href="../index.html">Accueil</a></li><li><a href="../profil.html">Profil</a></li><li><a href="../competences.html">Compétences</a></li><li><a href="../projets-pro.html">Projets Pro</a></li><li><a class="active" href="../projets-scolaires.html">Projets techniques</a></li><li><a href="../cv.html">CV</a></li><li class="nav-cta"><a href="../contact.html">Contact</a></li></ul>
+</div></header>
+
+<main id="contenu">
+<section class="project-hero"><div class="container">
+<div class="breadcrumbs"><a href="../index.html">Accueil</a><span>/</span><a href="../projets-scolaires.html">Projets techniques</a><span>/</span><span>GLPI</span></div>
+<div class="project-hero-grid">
+<div>
+<div class="project-status">Projet terminé</div>
+<h1>Gestion de parc informatique & support IT avec GLPI</h1>
+<p class="project-lead">Déploiement d’un laboratoire GLPI 11 orienté gestion de parc et Helpdesk : inventaire natif, rôles Self-Service/Technician, ITIL, SLA, traitement d’incident, base de connaissances, MFA, reporting et sauvegarde SMB automatisée.</p>
+<div class="tags"><span class="tag">GLPI 11.0.8</span><span class="tag">Agent 1.16</span><span class="tag">ITIL / SLA</span><span class="tag">MFA</span><span class="tag">Samba / SMB</span></div>
+<div class="button-row" style="justify-content:flex-start"><a class="button button-primary" href="../assets/docs/Projet_GLPI_Gestion_Parc_Helpdesk.pdf" target="_blank" rel="noopener">Voir la documentation complète</a><a class="button button-secondary" href="../projets-scolaires.html">Retour aux projets</a></div>
+</div>
+<div class="hero-visual"><img src="../assets/images/projects/glpi/00-architecture-glpi.png" alt="Architecture logique du laboratoire GLPI"></div>
+</div>
+<div class="project-metrics">
+<div class="project-metric"><strong>GLPI 11</strong><span>plateforme ITSM</span></div>
+<div class="project-metric"><strong>30 min / 4 h</strong><span>TTO / TTR du SLA</span></div>
+<div class="project-metric"><strong>2 rôles</strong><span>Self-Service + Technician</span></div>
+<div class="project-metric"><strong>Hebdomadaire</strong><span>backup SMB automatisé</span></div>
+</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Périmètre</div><h2>Un workflow Helpdesk de bout en bout</h2>
+<p class="intro">Le laboratoire reproduit les missions courantes d’un support informatique : inventorier le matériel, organiser les utilisateurs et les droits, qualifier un incident, respecter les niveaux de service, tracer le diagnostic, communiquer avec l’utilisateur, résoudre puis capitaliser la connaissance.</p>
+<div class="feature-grid">
+<div class="feature-card"><h3>Inventaire du parc</h3><p>GLPI Agent 1.16 et GLPI Native Inventory remontent automatiquement le poste Windows, ses composants, logiciels, volumes et interfaces.</p></div>
+<div class="feature-card"><h3>Organisation & rôles</h3><p>Groupes UTILISATEURS et SUPPORT-IT, profils Self-Service et Technician, séparation claire des capacités utilisateur, support et administration.</p></div>
+<div class="feature-card"><h3>ITIL & SLA</h3><p>Catégorie Réseau &gt; Accès réseau, urgence/impact/priorité et niveaux de service TTO 30 minutes / TTR 4 heures sur calendrier 24/7.</p></div>
+<div class="feature-card"><h3>Traitement d’incident</h3><p>Ticket lié au demandeur et à son équipement, prise en charge, tâche de diagnostic, suivi public, solution, validation et clôture.</p></div>
+<div class="feature-card"><h3>Connaissances & sécurité</h3><p>Base de connaissances interne, FAQ Self-Service et authentification multifacteur du compte d’administration.</p></div>
+<div class="feature-card"><h3>Reporting & sauvegarde</h3><p>Statistiques mensuelles par technicien et sauvegarde MariaDB compressée vers BACKUP-SRV01 via CIFS/SMB, planifiée par cron.</p></div>
+</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Cycle ITSM</div><h2>De l’inventaire à la capitalisation</h2>
+<p class="intro">Le scénario fonctionnel suit un incident réseau depuis sa création par l’utilisateur jusqu’à sa clôture, avec séparation des responsabilités entre le demandeur et le technicien.</p>
+<div class="flow">
+<div class="flow-step"><strong>Inventaire</strong><span>poste remonté par Agent 1.16</span></div>
+<div class="flow-step"><strong>Ticket</strong><span>incident créé en Self-Service</span></div>
+<div class="flow-step"><strong>Qualification</strong><span>catégorie + impact + urgence</span></div>
+<div class="flow-step"><strong>Prise en charge</strong><span>technicien + SLA</span></div>
+<div class="flow-step"><strong>Diagnostic</strong><span>tâche + suivi public</span></div>
+<div class="flow-step"><strong>Résolution</strong><span>solution approuvée</span></div>
+<div class="flow-step"><strong>Capitalisation</strong><span>KB + FAQ</span></div>
+</div>
+<div class="validation"><strong>Validation réalisée :</strong> le ticket « Impossible d’accéder à une ressource réseau » a été créé par le demandeur, associé à son poste inventorié, pris en charge par le technicien, traité avec une tâche et un suivi, résolu, approuvé par l’utilisateur puis clôturé. Les connaissances ont ensuite été réutilisées dans une procédure interne et une FAQ Self-Service.</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Preuves techniques</div><h2>Des validations visibles et reproductibles</h2>
+<p class="intro">Les captures ci-dessous regroupent les étapes clés du laboratoire : inventaire, configuration ITIL, traitement du ticket, sécurité, reporting et sauvegarde distante.</p>
+<div class="proof-hint"><strong>Astuce :</strong> clique sur une capture pour l’agrandir et lire les champs GLPI, les statuts du ticket et les commandes de sauvegarde.</div>
+<div class="proof-groups">
+
+<details class="proof-group" open>
+<summary><span>1. Inventaire, rôles et organisation</span><span class="group-meta">3 preuves</span></summary>
+<div class="proof-stack">
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/01_Inventaire_Ordi-D-Azaan.png" data-lightbox-caption="Fiche inventaire du poste Ordi-D-Azaan"><img src="../assets/images/projects/glpi/01_Inventaire_Ordi-D-Azaan.png" alt="Fiche GLPI du poste Ordi-D-Azaan"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/01_Inventaire_Ordi-D-Azaan.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">01</span><h3>Inventaire natif du poste Windows</h3><p>Le poste Lenovo est remonté par GLPI Native Inventory et enrichi avec son statut, sa localisation, son utilisateur et son groupe.</p><ul class="proof-list"><li>Poste Ordi-D-Azaan en production</li><li>Utilisateur Stark Kanan / groupe UTILISATEURS</li><li>Composants, volumes, logiciels, ports réseau et antivirus inventoriés</li></ul><div class="proof-tags"><span class="proof-tag">GLPI Agent</span><span class="proof-tag">Native Inventory</span><span class="proof-tag">Parc</span></div></figcaption></figure>
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/02_Profil_Self-Service.png" data-lightbox-caption="Droits du profil Self-Service"><img src="../assets/images/projects/glpi/02_Profil_Self-Service.png" alt="Droits du profil Self-Service dans GLPI"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/02_Profil_Self-Service.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">02</span><h3>Profil Self-Service</h3><p>Le demandeur dispose uniquement des capacités nécessaires pour créer et suivre ses propres tickets et accéder à ses éléments.</p><ul class="proof-list"><li>Création de ticket autorisée</li><li>Consultation de ses tickets</li><li>Accès limité à ses propres éléments du parc</li></ul><div class="proof-tags"><span class="proof-tag">RBAC</span><span class="proof-tag">Self-Service</span></div></figcaption></figure>
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/03_Categorie_ITIL_Acces_reseau.png" data-lightbox-caption="Catégorie ITIL Accès réseau"><img src="../assets/images/projects/glpi/03_Categorie_ITIL_Acces_reseau.png" alt="Catégorie ITIL Accès réseau et groupe SUPPORT-IT"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/03_Categorie_ITIL_Acces_reseau.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">03</span><h3>Catégorisation ITIL</h3><p>La catégorie enfant « Accès réseau » est rattachée à Réseau et au groupe responsable SUPPORT-IT.</p><ul class="proof-list"><li>Visible pour les incidents</li><li>Accessible depuis l’interface simplifiée</li><li>Responsabilité fonctionnelle confiée à SUPPORT-IT</li></ul><div class="proof-tags"><span class="proof-tag">ITIL</span><span class="proof-tag">SUPPORT-IT</span></div></figcaption></figure>
+
+</div></details>
+
+<details class="proof-group">
+<summary><span>2. SLA et création de l’incident</span><span class="group-meta">2 preuves</span></summary>
+<div class="proof-stack">
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/04_SLA_TTO_TTR.png" data-lightbox-caption="SLA TTO 30 minutes et TTR 4 heures"><img src="../assets/images/projects/glpi/04_SLA_TTO_TTR.png" alt="Niveaux de service TTO et TTR dans GLPI"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/04_SLA_TTO_TTR.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">04</span><h3>Niveaux de service</h3><p>Deux SLA encadrent la prise en charge et la résolution de l’incident sur un calendrier 24 heures sur 24, 7 jours sur 7.</p><ul class="proof-list"><li>TTO : prise en charge sous 30 minutes</li><li>TTR : résolution sous 4 heures</li><li>Calendrier 24/7</li></ul><div class="proof-tags"><span class="proof-tag">SLA</span><span class="proof-tag">TTO</span><span class="proof-tag">TTR</span></div></figcaption></figure>
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/05_Ticket_Nouveau.png" data-lightbox-caption="Ticket réseau nouvellement créé"><img src="../assets/images/projects/glpi/05_Ticket_Nouveau.png" alt="Ticket GLPI nouvellement créé"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/05_Ticket_Nouveau.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">05</span><h3>Incident créé depuis le Self-Service</h3><p>Le ticket contient le demandeur, la catégorie réseau, le niveau d’urgence et le contexte matériel associé au poste inventorié.</p><ul class="proof-list"><li>Demandeur Stark Kanan</li><li>Catégorie Réseau &gt; Accès réseau</li><li>Équipement Ordi-D-Azaan associé</li></ul><div class="proof-tags"><span class="proof-tag">Ticket</span><span class="proof-tag">Self-Service</span></div></figcaption></figure>
+
+</div></details>
+
+<details class="proof-group">
+<summary><span>3. Prise en charge, résolution et connaissances</span><span class="group-meta">4 preuves</span></summary>
+<div class="proof-stack">
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/06_Tache_et_Suivi.png" data-lightbox-caption="Tâche technique et suivi public"><img src="../assets/images/projects/glpi/06_Tache_et_Suivi.png" alt="Tâche technique et suivi public dans le ticket GLPI"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/06_Tache_et_Suivi.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">06</span><h3>Diagnostic et communication</h3><p>Le technicien formalise le diagnostic dans une tâche de 15 minutes et publie un suivi visible par le demandeur.</p><ul class="proof-list"><li>Vérification IP, passerelle, DNS et accès à la ressource</li><li>Tâche de 15 minutes affectée au technicien</li><li>Suivi public de prise en charge</li></ul><div class="proof-tags"><span class="proof-tag">N1/N2</span><span class="proof-tag">Traçabilité</span></div></figcaption></figure>
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/07_Ticket_Clos_Solution.png" data-lightbox-caption="Ticket clos avec solution approuvée"><img src="../assets/images/projects/glpi/07_Ticket_Clos_Solution.png" alt="Ticket GLPI clos après approbation de la solution"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/07_Ticket_Clos_Solution.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">07</span><h3>Résolution et clôture</h3><p>La solution est documentée par le technicien puis approuvée par l’utilisateur, ce qui clôt le ticket et conserve toute la chronologie.</p><ul class="proof-list"><li>Statut final Clos</li><li>Solution technique visible dans le fil</li><li>Approbation enregistrée par Stark Kanan</li></ul><div class="proof-tags"><span class="proof-tag">Résolu</span><span class="proof-tag">Clos</span></div></figcaption></figure>
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/08_Base_Connaissances_Interne.png" data-lightbox-caption="Procédure interne de diagnostic réseau"><img src="../assets/images/projects/glpi/08_Base_Connaissances_Interne.png" alt="Article interne de base de connaissances GLPI"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/08_Base_Connaissances_Interne.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">08</span><h3>Base de connaissances interne</h3><p>La résolution est capitalisée sous forme de procédure technique réutilisable par l’équipe support.</p><ul class="proof-list"><li>Symptôme et vérifications structurés</li><li>Procédure de résolution</li><li>Validation de retour au service</li></ul><div class="proof-tags"><span class="proof-tag">Knowledge Base</span><span class="proof-tag">SUPPORT-IT</span></div></figcaption></figure>
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/09_FAQ_Self-Service.png" data-lightbox-caption="FAQ accessible depuis le Self-Service"><img src="../assets/images/projects/glpi/09_FAQ_Self-Service.png" alt="FAQ GLPI visible par l’utilisateur Self-Service"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/09_FAQ_Self-Service.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">09</span><h3>FAQ utilisateur</h3><p>Une version simplifiée des premiers gestes de diagnostic est publiée dans la FAQ et visible depuis l’interface Self-Service.</p><ul class="proof-list"><li>Article visible par les utilisateurs</li><li>Premières vérifications avant ticket</li><li>Autonomie de premier niveau</li></ul><div class="proof-tags"><span class="proof-tag">FAQ</span><span class="proof-tag">Self-Service</span></div></figcaption></figure>
+
+</div></details>
+
+<details class="proof-group">
+<summary><span>4. Sécurité et reporting</span><span class="group-meta">2 preuves</span></summary>
+<div class="proof-stack">
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/10_MFA_Admin.png" data-lightbox-caption="Authentification à deux facteurs du compte administrateur"><img src="../assets/images/projects/glpi/10_MFA_Admin.png" alt="Écran MFA du compte administrateur GLPI"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/10_MFA_Admin.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">10</span><h3>MFA administrateur</h3><p>Le compte d’administration est protégé par un deuxième facteur après authentification par mot de passe.</p><ul class="proof-list"><li>Code temporaire à six chiffres</li><li>Codes de secours conservés hors documentation</li><li>Séparation des profils utilisateur, technicien et administrateur</li></ul><div class="proof-tags"><span class="proof-tag">2FA</span><span class="proof-tag">Sécurité</span></div></figcaption></figure>
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/11_Reporting_Technicien.png" data-lightbox-caption="Rapport mensuel par technicien assigné"><img src="../assets/images/projects/glpi/11_Reporting_Technicien.png" alt="Statistiques GLPI par technicien assigné"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/11_Reporting_Technicien.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">11</span><h3>Reporting du support</h3><p>Le module Statistiques agrège les tickets par technicien sur le mois afin de fournir une vue synthétique de l’activité.</p><ul class="proof-list"><li>Période du 1er au 29 août 2026</li><li>Critère : technicien assigné</li><li>Tickets ouverts, résolus et fermés visibles</li></ul><div class="proof-tags"><span class="proof-tag">Reporting</span><span class="proof-tag">Statistiques</span></div></figcaption></figure>
+
+</div></details>
+
+<details class="proof-group">
+<summary><span>5. Sauvegarde distante SMB</span><span class="group-meta">3 preuves</span></summary>
+<div class="proof-stack">
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/12_Backup_Serveur_Distant.png" data-lightbox-caption="Sauvegarde SQL compressée présente sur BACKUP-SRV01"><img src="../assets/images/projects/glpi/12_Backup_Serveur_Distant.png" alt="Fichier de sauvegarde GLPI sur BACKUP-SRV01"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/12_Backup_Serveur_Distant.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">12</span><h3>Copie distante sur BACKUP-SRV01</h3><p>La base MariaDB est exportée puis compressée avant d’être stockée sur un serveur Debian distinct via Samba/CIFS.</p><ul class="proof-list"><li>Destination 192.168.90.30</li><li>Partage BACKUP-GLPI</li><li>Fichier .sql.gz présent sur le serveur distant</li></ul><div class="proof-tags"><span class="proof-tag">Samba</span><span class="proof-tag">CIFS</span><span class="proof-tag">MariaDB</span></div></figcaption></figure>
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/13_Log_Backup.png" data-lightbox-caption="Journal d’exécution de la sauvegarde GLPI"><img src="../assets/images/projects/glpi/13_Log_Backup.png" alt="Journal de sauvegarde GLPI indiquant une réussite"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/13_Log_Backup.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">13</span><h3>Journalisation de la sauvegarde</h3><p>Le script écrit un journal horodaté afin de confirmer le début et la réussite de chaque export.</p><ul class="proof-list"><li>Début de sauvegarde enregistré</li><li>Chemin du fichier final tracé</li><li>Résultat « Sauvegarde réussie »</li></ul><div class="proof-tags"><span class="proof-tag">Bash</span><span class="proof-tag">Log</span></div></figcaption></figure>
+
+<figure class="proof-card"><div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/glpi/14_Cron_Backup.png" data-lightbox-caption="Planification cron hebdomadaire"><img src="../assets/images/projects/glpi/14_Cron_Backup.png" alt="Crontab de la sauvegarde GLPI hebdomadaire"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/glpi/14_Cron_Backup.png" target="_blank" rel="noopener">Ouvrir l'image</a></div></div><figcaption class="proof-content"><span class="proof-index">14</span><h3>Automatisation hebdomadaire</h3><p>La tâche cron exécute le script de sauvegarde chaque dimanche à 02:00.</p><ul class="proof-list"><li>Script /usr/local/sbin/glpi-backup.sh</li><li>Planification 0 2 * * 0</li><li>Exécution automatisée chaque semaine</li></ul><div class="proof-tags"><span class="proof-tag">cron</span><span class="proof-tag">Automatisation</span></div></figcaption></figure>
+
+</div></details>
+
+</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Compétences</div><h2>Ce que ce laboratoire démontre</h2>
+<div class="feature-grid">
+<div class="feature-card"><h3>Gestion de parc</h3><p>Déploiement d’un agent, inventaire matériel/logiciel, affectation d’un poste à un utilisateur, localisation et organisation.</p></div>
+<div class="feature-card"><h3>Support ITSM</h3><p>Qualification d’incident, impact/urgence/priorité, SLA, prise en charge, tâches, suivis, solution, validation et clôture.</p></div>
+<div class="feature-card"><h3>Administration GLPI</h3><p>Profils, groupes, catégories ITIL, base de connaissances, FAQ, MFA et exploitation des statistiques.</p></div>
+<div class="feature-card"><h3>Linux & base de données</h3><p>GLPI sous Debian 13 avec Apache, PHP et MariaDB, export mariadb-dump et script Bash de sauvegarde.</p></div>
+<div class="feature-card"><h3>Partage SMB</h3><p>Serveur Debian Samba distinct, compte dédié, montage CIFS et stockage des sauvegardes hors de GLPI-SRV01.</p></div>
+<div class="feature-card"><h3>Automatisation</h3><p>Journalisation du backup et programmation hebdomadaire par cron pour rendre l’exploitation répétable.</p></div>
+</div>
+</div></section>
+
+<section class="project-section"><div class="container"><div class="cta-panel"><div class="eyebrow">Documentation</div><h2>Consulter le dossier technique complet</h2><p>Le PDF de 15 pages détaille l’architecture, les étapes de configuration, le workflow d’incident, les validations, les limites et la sauvegarde distante.</p><div class="button-row"><a class="button button-primary" href="../assets/docs/Projet_GLPI_Gestion_Parc_Helpdesk.pdf" target="_blank" rel="noopener">Ouvrir le PDF</a><a class="button button-secondary" href="../projets-scolaires.html">Voir tous les projets</a></div></div></div></section>
+</main>
+
+<div class="lightbox" id="project-lightbox" aria-hidden="true"><div class="lightbox-inner"><button class="lightbox-close" type="button" aria-label="Fermer">×</button><img src="" alt=""><div class="lightbox-caption"></div></div></div>
+<footer class="site-footer"><div class="container footer-grid"><div>© <span data-year>2026</span> Azaan Shafi. Portfolio professionnel.</div><div class="footer-links"><a href="../mentions-legales.html">Mentions légales</a><a href="https://github.com/azaanshafi75" target="_blank" rel="noopener">GitHub</a></div></div></footer>
+<button class="back-to-top" type="button" aria-label="Retour en haut"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></svg></button>
+<script src="../assets/js/site-config.js" defer></script><script src="../assets/js/main.js" defer></script>
+<script>
+(function(){const lightbox=document.getElementById('project-lightbox');if(!lightbox)return;const img=lightbox.querySelector('img');const caption=lightbox.querySelector('.lightbox-caption');const close=()=>{lightbox.classList.remove('is-open');lightbox.setAttribute('aria-hidden','true');img.src='';caption.textContent='';document.body.style.overflow=''};document.querySelectorAll('[data-lightbox-src]').forEach(btn=>{btn.addEventListener('click',()=>{img.src=btn.dataset.lightboxSrc;img.alt=btn.dataset.lightboxCaption||'Capture du projet GLPI';caption.textContent=btn.dataset.lightboxCaption||'';lightbox.classList.add('is-open');lightbox.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'})});lightbox.querySelector('.lightbox-close').addEventListener('click',close);lightbox.addEventListener('click',e=>{if(e.target===lightbox)close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lightbox.classList.contains('is-open'))close()})})();
+</script>
+</body></html>
