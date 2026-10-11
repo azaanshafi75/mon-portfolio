@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Réseau Cisco Force.LAB — Azaan Shafi</title>
+<meta name="description" content="Laboratoire Cisco Packet Tracer Force.LAB : réseau multisite redondant avec VLAN, EtherChannel, HSRPv2, OSPF, NAT, ACL, IPv6 et recette de 12 tests.">
+<link rel="canonical" href="https://azaanshafi75.github.io/mon-portfolio/projets/cisco-forcelab-multisite.html">
+<meta name="theme-color" content="#f6f8fc">
+<link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml"><link rel="manifest" href="../manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+.project-hero{padding:calc(var(--nav-h) + 78px) 0 72px;border-bottom:1px solid var(--line)}
+.project-hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:3rem;align-items:center}
+.project-hero h1{margin:.8rem 0 1.2rem;font-family:"Space Grotesk",sans-serif;font-size:clamp(2.8rem,6vw,5.5rem);line-height:1;letter-spacing:-.055em}
+.project-lead{color:var(--muted);font-size:1.05rem;line-height:1.8}
+.project-status{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .78rem;border-radius:999px;background:rgba(20,150,90,.08);color:#176440;font-size:.76rem;font-weight:800}
+.project-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#16a05d}
+.hero-visual img,.project-shot img,.proof-image img{width:100%;display:block;border:1px solid var(--line);border-radius:20px;box-shadow:0 22px 60px rgba(48,70,96,.10)}
+.project-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;margin-top:2rem}
+.project-metric{padding:1rem;border:1px solid var(--line);border-radius:16px;background:#fff}
+.project-metric strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:1.15rem}
+.project-metric span{color:var(--muted);font-size:.76rem}
+.project-section{padding:86px 0;border-bottom:1px solid var(--line)}
+.project-section h2{margin:0 0 1rem;font-family:"Space Grotesk",sans-serif;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.045em}
+.project-section .intro{max-width:860px;color:var(--muted);line-height:1.8}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.feature-card{padding:1.4rem;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#fff,#f5f8fc)}
+.feature-card h3{margin:0 0 .6rem;font-family:"Space Grotesk",sans-serif;font-size:1.08rem}
+.feature-card p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.65}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:2rem}
+.project-shot figcaption{padding:.75rem .2rem 0;color:var(--muted);font-size:.8rem;line-height:1.5}
+.validation{padding:1.4rem 1.5rem;border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 16px 16px 0;line-height:1.75}
+.cta-panel{padding:clamp(2rem,5vw,4rem);border:1px solid rgba(37,99,235,.2);border-radius:28px;background:linear-gradient(145deg,rgba(226,237,254,.97),#fff);text-align:center}
+.cta-panel h2{margin:0 0 .8rem}
+.button-row{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}
+
+.proof-hint{margin-top:1rem;padding:1rem 1.2rem;border:1px solid rgba(37,99,235,.15);background:#f8fbff;border-radius:16px;color:var(--muted);font-size:.95rem}
+.proof-groups{display:grid;gap:1rem;margin-top:2rem}
+.proof-group{border:1px solid var(--line);border-radius:24px;background:#fff;overflow:hidden;box-shadow:0 16px 44px rgba(48,70,96,.06)}
+.proof-group > summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;list-style:none;padding:1.2rem 1.3rem;cursor:pointer;font-weight:800;font-family:"Space Grotesk",sans-serif;font-size:1.05rem;background:linear-gradient(145deg,#fff,#f8fbff)}
+.proof-group > summary::-webkit-details-marker{display:none}
+.proof-group > summary .group-meta{font-family:Manrope,sans-serif;font-weight:700;color:var(--muted);font-size:.85rem}
+.proof-group[open] > summary{border-bottom:1px solid var(--line)}
+.proof-stack{display:grid;gap:1.4rem;padding:1.3rem}
+.proof-card{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:1.35rem;align-items:start;padding:1rem;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#ffffff,#fbfcff)}
+.proof-image{display:grid;gap:.7rem}
+.proof-image button{padding:0;border:0;background:none;cursor:zoom-in}
+.proof-image img{border-radius:18px;transition:transform .25s ease, box-shadow .25s ease}
+.proof-image button:hover img{transform:translateY(-2px);box-shadow:0 18px 40px rgba(48,70,96,.13)}
+.proof-links{display:flex;justify-content:flex-end}
+.proof-link{display:inline-flex;align-items:center;gap:.35rem;padding:.65rem .95rem;border:1px solid var(--line);border-radius:999px;background:#fff;font-weight:700;font-size:.82rem;color:var(--text);text-decoration:none}
+.proof-content h3{margin:0 0 .7rem;font-family:"Space Grotesk",sans-serif;font-size:1.4rem;line-height:1.15}
+.proof-index{display:inline-flex;align-items:center;justify-content:center;width:2.15rem;height:2.15rem;border-radius:999px;background:rgba(37,99,235,.10);color:var(--accent);font-size:.85rem;font-weight:900;margin-bottom:.85rem}
+.proof-content p{margin:0 0 .8rem;color:var(--muted);line-height:1.75}
+.proof-list{margin:0;padding-left:1.1rem;color:var(--text);display:grid;gap:.45rem;font-size:.94rem}
+.proof-list li{line-height:1.65}
+.proof-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.proof-tag{padding:.38rem .65rem;border-radius:999px;background:#f3f6fb;border:1px solid var(--line);font-size:.75rem;font-weight:700;color:var(--muted)}
+.lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:2rem;background:rgba(8,15,28,.84);z-index:1000}
+.lightbox.is-open{display:flex}
+.lightbox-inner{position:relative;max-width:min(1400px,96vw);max-height:92vh}
+.lightbox img{display:block;max-width:100%;max-height:92vh;border-radius:20px;box-shadow:0 24px 70px rgba(0,0,0,.35)}
+.lightbox-close{position:absolute;top:.9rem;right:.9rem;width:42px;height:42px;border:0;border-radius:999px;background:rgba(255,255,255,.95);font-size:1.5rem;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+.lightbox-caption{margin-top:.85rem;color:#fff;text-align:center;font-size:.95rem;line-height:1.5}
+
+.proof-code{margin:0;padding:1.1rem 1.2rem;border-radius:18px;background:#0f172a;color:#e2e8f0;font:600 .7rem/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-x:auto;white-space:pre}
+.project-section code{padding:.1rem .35rem;border-radius:6px;background:#eef3fb;font-size:.9em}
+@media(max-width:1100px){.proof-card{grid-template-columns:1fr}.proof-content h3{font-size:1.25rem}}
+@media(max-width:900px){.project-hero-grid{grid-template-columns:1fr}.project-metrics{grid-template-columns:repeat(2,1fr)}.feature-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.proof-group > summary{align-items:flex-start;flex-direction:column}}
+@media(max-width:580px){.project-metrics{grid-template-columns:1fr}.proof-stack{padding:1rem}.proof-card{padding:.8rem}.project-hero{padding-top:calc(var(--nav-h) + 60px)}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a><div class="scroll-progress" aria-hidden="true"></div>
+<header class="site-header"><div class="container nav-wrap">
+<a class="brand" href="../index.html"><span class="brand-mark">AS</span><span class="brand-name">Azaan Shafi</span></a>
+<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu"><span></span></button>
+<ul class="nav-links" id="main-nav"><li><a href="../index.html">Accueil</a></li><li><a href="../profil.html">Profil</a></li><li><a href="../competences.html">Compétences</a></li><li><a href="../projets-pro.html">Projets Pro</a></li><li><a class="active" href="../projets-scolaires.html">Projets techniques</a></li><li><a href="../cv.html">CV</a></li><li class="nav-cta"><a href="../contact.html">Contact</a></li></ul>
+</div></header>
+
+<main id="contenu">
+<section class="project-hero"><div class="container">
+<div class="breadcrumbs"><a href="../index.html">Accueil</a><span>/</span><a href="../projets-scolaires.html">Projets techniques</a><span>/</span><span>Réseau Cisco Force.LAB</span></div>
+<div class="project-hero-grid">
+<div>
+<div class="project-status">Projet terminé</div>
+<h1>Réseau d’entreprise multisite redondant et sécurisé</h1>
+<p class="project-lead">Laboratoire Cisco Packet Tracer Force.LAB : un siège à Paris, une agence à Lyon et un accès Internet, configurés entièrement en ligne de commande puis validés par une recette de 12 tests, dont des coupures réelles d’un cœur de réseau et du lien WAN principal.</p>
+<div class="tags"><span class="tag">Cisco IOS</span><span class="tag">VLAN / EtherChannel</span><span class="tag">HSRPv2</span><span class="tag">OSPFv2 / OSPFv3</span><span class="tag">NAT / ACL</span><span class="tag">IPv6</span></div>
+<div class="button-row" style="justify-content:flex-start">
+<a class="button button-primary" href="../assets/docs/Projet_Cisco_ForceLAB_Multisite.pdf" target="_blank" rel="noopener">Voir la documentation complète</a>
+<a class="button button-secondary" href="../projets-scolaires.html">Retour aux projets</a>
+</div>
+</div>
+<div class="hero-visual"><img src="../assets/images/projects/cisco-forcelab/topologie-forcelab.webp" alt="Topologie du réseau Force.LAB : Internet, siège de Paris et agence de Lyon" width="1021" height="657"></div>
+</div>
+
+<div class="project-metrics">
+<div class="project-metric"><strong>9 équipements</strong><span>routeurs et switchs configurés en CLI</span></div>
+<div class="project-metric"><strong>2 sites</strong><span>siège et agence, double WAN</span></div>
+<div class="project-metric"><strong>Double pile</strong><span>IPv4 et IPv6 de bout en bout</span></div>
+<div class="project-metric"><strong>12 / 12</strong><span>tests de recette validés</span></div>
+</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Périmètre</div><h2>Un réseau CCNA complet, pas des labs isolés</h2>
+<p class="intro">L’objectif était de réunir dans un seul réseau cohérent les notions du programme CCNA 200-301. Le projet a été mené en 15 phases, chacune donnée sous forme de cahier des charges sans les commandes : j’ai écrit chaque configuration, vérifié chaque fonction avec les commandes <code>show</code>, puis testé de bout en bout avant de passer à la suite.</p>
+<div class="feature-grid">
+<div class="feature-card"><h3>Commutation</h3><p>VLAN, trunks 802.1Q avec VLAN natif dédié, EtherChannel LACP et PAgP, Rapid PVST+ aligné sur les passerelles HSRP.</p></div>
+<div class="feature-card"><h3>Redondance</h3><p>Deux cœurs Catalyst 3650 en HSRPv2 avec partage de charge, double liaison WAN avec route statique flottante.</p></div>
+<div class="feature-card"><h3>Routage</h3><p>Inter-VLAN par SVI au siège et router-on-a-stick à l’agence, OSPFv2 en zone 0 avec interfaces passives, OSPFv3 pour IPv6.</p></div>
+<div class="feature-card"><h3>Services IP</h3><p>DHCP centralisé avec relais, DNS interne et public, PAT pour les utilisateurs et NAT statique pour publier le serveur web.</p></div>
+<div class="feature-card"><h3>Sécurité</h3><p>SSH v2 filtré par ACL, ACL anti-usurpation sur Internet, DHCP snooping, Port Security, Wi-Fi invité isolé.</p></div>
+<div class="feature-card"><h3>IPv6 et supervision</h3><p>SLAAC au siège, DHCPv6 sans état à l’agence, horloge NTP et journaux Syslog centralisés sur un serveur.</p></div>
+</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Preuves techniques</div><h2>Configurations et tests, preuve par preuve</h2>
+<p class="intro">Les preuves sont regroupées par thème. Les sorties de commandes sont reprises telles qu’elles s’affichent sur les équipements ; les mots de passe et la clé Wi-Fi sont masqués.</p>
+<div class="proof-hint"><strong>Astuce :</strong> cliquez sur une capture pour l’agrandir.</div>
+
+<div class="proof-groups">
+
+<details class="proof-group" open>
+<summary><span>1. Architecture et redondance</span><span class="group-meta">3 preuves</span></summary>
+<div class="proof-stack">
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/cisco-forcelab/topologie-forcelab.webp" data-lightbox-caption="Topologie finale Force.LAB dans Cisco Packet Tracer"><img src="../assets/images/projects/cisco-forcelab/topologie-forcelab.webp" alt="Topologie Force.LAB" loading="lazy" width="1021" height="657"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/cisco-forcelab/topologie-forcelab.webp" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">01</span><h3>Topologie en trois zones</h3><p>Le siège est construit autour de deux cœurs reliés à chaque switch d’accès ; l’agence est reliée par deux liaisons série. Chaque VLAN a son /24, avec la passerelle toujours en .1.</p><ul class="proof-list"><li>Siège : VLAN 10 Admin, 20 Tech, 30 Serveurs, 40 Wi-Fi salariés, 50 Wi-Fi invités, 99 Management</li><li>Agence : VLAN 20 et 99 derrière R-BR</li><li>Adresses publiques prises dans les plages de documentation</li></ul><div class="proof-tags"><span class="proof-tag">Plan d’adressage</span><span class="proof-tag">VLAN</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><pre class="proof-code">CORE1#show standby brief
+                     P indicates configured to preempt.
+Interface   Grp  Pri P State    Active          Standby         Virtual IP
+Vl10        10   110 P Active   local           10.10.10.3      10.10.10.1
+Vl20        20   100 P Standby  10.10.20.3      local           10.10.20.1
+Vl30        30   110 P Active   local           10.10.30.3      10.10.30.1
+Vl40        40   100 P Standby  10.10.40.3      local           10.10.40.1
+Vl50        50   110 P Active   local           10.10.50.3      10.10.50.1
+Vl99        99   110 P Active   local           10.10.99.3      10.10.99.1</pre></div>
+<figcaption class="proof-content"><span class="proof-index">02</span><h3>Passerelles redondantes HSRPv2</h3><p>Chaque VLAN a une adresse virtuelle .1 portée par l’un des deux cœurs. La charge est partagée et la racine Spanning Tree de chaque VLAN est le cœur actif HSRP, pour que le trafic ne fasse aucun détour.</p><ul class="proof-list"><li>CORE1 actif pour les VLAN 10, 30, 50 et 99</li><li>CORE2 actif pour les VLAN 20 et 40</li><li>Préemption : le cœur prioritaire reprend son rôle à son retour</li></ul><div class="proof-tags"><span class="proof-tag">HSRPv2</span><span class="proof-tag">Rapid PVST+</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><pre class="proof-code">R-HQ#show ip ospf neighbor
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+10.255.255.2      1   FULL/DR         00:00:35    10.0.0.2        GigabitEthernet0/1
+10.255.255.3      1   FULL/DR         00:00:35    10.0.0.6        GigabitEthernet0/2
+10.255.255.4      0   FULL/  -        00:00:30    10.0.0.10       Serial0/3/0
+
+R-BR : ip route 0.0.0.0 0.0.0.0 10.0.0.13 200</pre></div>
+<figcaption class="proof-content"><span class="proof-index">03</span><h3>OSPF et WAN de secours</h3><p>R-HQ forme trois voisinages : les deux cœurs et l’agence par le WAN principal. Le WAN de secours reste hors d’OSPF et porte une route statique flottante, qui n’entre en jeu que si le lien principal tombe.</p><ul class="proof-list"><li>Router-id fixé sur Loopback0, interfaces passives par défaut</li><li>Route flottante en distance administrative 200, au-dessus d’OSPF (110)</li><li>Testé : S0/3/0 coupée, l’agence passe par S0/3/1</li></ul><div class="proof-tags"><span class="proof-tag">OSPFv2</span><span class="proof-tag">Route flottante</span></div></figcaption>
+</figure>
+
+</div>
+</details>
+
+<details class="proof-group">
+<summary><span>2. Services IP et accès Internet</span><span class="group-meta">2 preuves</span></summary>
+<div class="proof-stack">
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/cisco-forcelab/dhcp-pc-tech1.webp" data-lightbox-caption="PC-TECH1 reçoit sa configuration IP par DHCP"><img src="../assets/images/projects/cisco-forcelab/dhcp-pc-tech1.webp" alt="Configuration DHCP de PC-TECH1" loading="lazy" width="1053" height="370"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/cisco-forcelab/dhcp-pc-tech1.webp" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">04</span><h3>DHCP centralisé avec relais</h3><p>Tous les pools du siège sont sur le routeur R-HQ. Les SVI des cœurs relaient les requêtes vers sa loopback, joignable par les deux cœurs ; l’agence garde un pool local pour rester autonome.</p><ul class="proof-list"><li>PC-TECH1 obtient 10.10.20.23</li><li>Passerelle : l’adresse virtuelle HSRP 10.10.20.1</li><li>DNS : le serveur interne 10.10.30.10</li></ul><div class="proof-tags"><span class="proof-tag">DHCP</span><span class="proof-tag">ip helper-address</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/cisco-forcelab/nat-statique-pc-ext.webp" data-lightbox-caption="Depuis Internet, PC-EXT ouvre www.force.lab"><img src="../assets/images/projects/cisco-forcelab/nat-statique-pc-ext.webp" alt="Page intranet ouverte depuis Internet" loading="lazy" width="1047" height="393"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/cisco-forcelab/nat-statique-pc-ext.webp" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">05</span><h3>Publication du serveur web par NAT statique</h3><p>Un poste situé sur Internet ouvre www.force.lab : le DNS public renvoie l’adresse 203.0.113.5, que R-HQ traduit vers le serveur interne SRV-WEB.</p><ul class="proof-list"><li>NAT statique 10.10.30.10 vers 203.0.113.5</li><li>PAT sur le pool 203.0.113.1 à .4 pour les utilisateurs</li><li>ACL anti-usurpation en entrée sur l’interface Internet</li></ul><div class="proof-tags"><span class="proof-tag">NAT / PAT</span><span class="proof-tag">DNS</span></div></figcaption>
+</figure>
+
+</div>
+</details>
+
+<details class="proof-group">
+<summary><span>3. Sécurité, Wi-Fi et supervision</span><span class="group-meta">3 preuves</span></summary>
+<div class="proof-stack">
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/cisco-forcelab/wifi-ap1-staff.webp" data-lightbox-caption="Point d'accès AP-1 : SSID salariés en WPA2-PSK AES"><img src="../assets/images/projects/cisco-forcelab/wifi-ap1-staff.webp" alt="Configuration Wi-Fi de AP-1" loading="lazy" width="1050" height="426"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/cisco-forcelab/wifi-ap1-staff.webp" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">06</span><h3>Wi-Fi salariés et invités séparés</h3><p>Deux SSID dans deux VLAN distincts. Les invités sont isolés par l’ACL GUEST-ISOLATION, appliquée en entrée du VLAN 50 sur les deux cœurs : ils sortent sur Internet mais n’atteignent aucun réseau interne.</p><ul class="proof-list"><li>FORCELAB-STAFF en VLAN 40, FORCELAB-GUEST en VLAN 50</li><li>WPA2-PSK avec chiffrement AES, canaux 6 et 11</li><li>Testé : l’invité atteint Internet, pas le serveur interne</li></ul><div class="proof-tags"><span class="proof-tag">Wi-Fi</span><span class="proof-tag">ACL étendue</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/cisco-forcelab/banniere-authentification.webp" data-lightbox-caption="Bannière légale et authentification par compte local"><img src="../assets/images/projects/cisco-forcelab/banniere-authentification.webp" alt="Bannière et authentification sur un équipement" loading="lazy" width="888" height="228"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/cisco-forcelab/banniere-authentification.webp" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">07</span><h3>Sécurisation des équipements et des ports</h3><p>Chaque équipement exige un compte local et n’accepte l’administration à distance qu’en SSH v2, depuis les seuls VLAN Admin et Management. Les ports d’accès sont protégés contre les branchements non prévus.</p><ul class="proof-list"><li>ACL standard sur les lignes VTY</li><li>Port Security en sticky, DHCP snooping, BPDU Guard</li><li>Testé : un portable branché à la place du serveur met le port en err-disabled</li></ul><div class="proof-tags"><span class="proof-tag">SSH</span><span class="proof-tag">Port Security</span></div></figcaption>
+</figure>
+
+<figure class="proof-card">
+<div class="proof-image"><button type="button" data-lightbox-src="../assets/images/projects/cisco-forcelab/syslog-srv-infra.webp" data-lightbox-caption="Journaux des équipements reçus par SRV-INFRA"><img src="../assets/images/projects/cisco-forcelab/syslog-srv-infra.webp" alt="Serveur Syslog SRV-INFRA" loading="lazy" width="1918" height="889"></button><div class="proof-links"><a class="proof-link" href="../assets/images/projects/cisco-forcelab/syslog-srv-infra.webp" target="_blank" rel="noopener">Ouvrir l'image</a></div></div>
+<figcaption class="proof-content"><span class="proof-index">08</span><h3>Journaux centralisés et horodatés</h3><p>Tous les équipements envoient leurs journaux à SRV-INFRA et y prennent l’heure par NTP. Les premières lignes datent de 1993, l’horloge par défaut avant la synchronisation, ce qui montre pourquoi le NTP est indispensable pour corréler des événements.</p><ul class="proof-list"><li>logging et ntp server vers 10.10.30.20</li><li>Chaque message identifie l’équipement émetteur</li><li>LLDP activé en complément de CDP</li></ul><div class="proof-tags"><span class="proof-tag">Syslog</span><span class="proof-tag">NTP</span></div></figcaption>
+</figure>
+
+</div>
+</details>
+
+</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Recette</div><h2>Des pannes réellement provoquées</h2>
+<p class="intro">La recette a été écrite avant les tests : accès aux services par nom, sortie Internet des deux sites, isolement des invités, filtrage SSH, IPv6 sans NAT, Port Security et journaux. Les 12 tests ont donné le résultat attendu.</p>
+<div class="validation"><strong>Tests de coupure :</strong> l’interface Vlan10 de CORE1 a été arrêtée pendant un ping continu ; après quelques pertes, CORE2 a repris l’adresse 10.10.10.1 et le ping a continué. Le lien WAN principal a ensuite été coupé : l’agence est passée sur la liaison de secours grâce à la route flottante et a gardé l’accès au siège et à Internet.</div>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="eyebrow">Dépannage</div><h2>Ce que le projet m’a appris à diagnostiquer</h2>
+<p class="intro">Plusieurs incidents ont été résolus pendant la construction : conflits d’adresses HSRP entre les versions 1 et 2, routage inter-VLAN oublié sur un cœur, EtherChannel suspendu par un mauvais ordre de configuration, postes en 169.254 à cause de l’option 82 du DHCP snooping, et IPv6 perdu une fois sur deux tant que CEF était désactivé. Le contrôleur Wi-Fi prévu au départ saturait Packet Tracer ; il a été remplacé par deux points d’accès autonomes qui offrent le même service aux utilisateurs.</p>
+</div></section>
+
+<section class="project-section"><div class="container">
+<div class="cta-panel">
+<div class="eyebrow">Dossier technique</div>
+<h2>Consulter le projet en détail</h2>
+<p class="intro" style="margin:0 auto">La documentation complète présente l’architecture, le plan d’adressage, les choix de conception, les configurations, la recette et le dépannage du réseau Force.LAB.</p>
+<div class="button-row"><a class="button button-primary" href="../assets/docs/Projet_Cisco_ForceLAB_Multisite.pdf" target="_blank" rel="noopener">Ouvrir le PDF complet</a></div>
+</div>
+</div></section>
+</main>
+
+
+<footer class="site-footer"><div class="container footer-grid"><div>© <span data-year>2026</span> Azaan Shafi. Portfolio professionnel.</div><div class="footer-links"><a href="../mentions-legales.html">Mentions légales</a><a href="https://github.com/azaanshafi75" target="_blank" rel="noopener">GitHub</a></div></div></footer>
+<button class="back-to-top" type="button" aria-label="Retour en haut"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></svg></button>
+<div class="lightbox" id="proofLightbox" aria-hidden="true"><div class="lightbox-inner"><button class="lightbox-close" type="button" aria-label="Fermer">×</button><img src="" alt=""><div class="lightbox-caption"></div></div></div>
+<script src="../assets/js/site-config.js" defer></script><script src="../assets/js/main.js" defer></script>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const lightbox = document.getElementById('proofLightbox');
+  if (!lightbox) return;
+  const img = lightbox.querySelector('img');
+  const caption = lightbox.querySelector('.lightbox-caption');
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  const openers = document.querySelectorAll('[data-lightbox-src]');
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    img.src = '';
+    caption.textContent = '';
+  };
+
+  openers.forEach(opener => {
+    opener.addEventListener('click', () => {
+      img.src = opener.getAttribute('data-lightbox-src');
+      img.alt = opener.querySelector('img')?.alt || '';
+      caption.textContent = opener.getAttribute('data-lightbox-caption') || '';
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+});
+</script>
+</body></html>
