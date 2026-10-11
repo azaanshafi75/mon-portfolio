@@ -16,6 +16,53 @@
 .project-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.25rem;position:relative;z-index:5}.project-actions .button{position:relative;z-index:6}
 .project-card .card-link::before{pointer-events:none}.projects-note{max-width:980px;margin:2rem 0 0;padding:1.15rem 1.25rem;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.76);color:var(--muted);line-height:1.7}.projects-note strong{color:var(--text)}
 @media(min-width:900px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ===== Affichage dynamique ===== */
+.pf-stats{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.8rem}
+.pf-stat{min-width:150px;padding:.9rem 1.15rem;border:1px solid var(--line);border-radius:16px;background:var(--surface);backdrop-filter:blur(8px)}
+.pf-stat strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:2rem;line-height:1;color:var(--accent-strong)}
+.pf-stat span{font-size:.78rem;font-weight:700;color:var(--muted)}
+.pf-marquee{margin-top:2rem;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.pf-track{display:flex;gap:.6rem;width:max-content;animation:pf-scroll 45s linear infinite}
+.pf-marquee:hover .pf-track{animation-play-state:paused}
+.pf-track span{padding:.42rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:.76rem;font-weight:800;color:var(--muted);white-space:nowrap}
+@keyframes pf-scroll{to{transform:translateX(-50%)}}
+.pf-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.6rem;position:sticky;top:calc(var(--nav-h) + 8px);z-index:20;padding:.7rem;border:1px solid var(--line);border-radius:18px;background:var(--surface);backdrop-filter:blur(14px)}
+.pf-filters{display:flex;flex-wrap:wrap;gap:.45rem}
+.pf-filters button{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .85rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);font:inherit;font-size:.78rem;font-weight:800;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
+.pf-filters button:hover{transform:translateY(-1px);border-color:var(--line-strong)}
+.pf-filters button.active{background:linear-gradient(135deg,var(--accent),var(--accent-strong));border-color:transparent;color:#fff;box-shadow:0 8px 22px rgba(50,126,232,.25)}
+.pf-filters button em{font-style:normal;font-size:.68rem;padding:.05rem .42rem;border-radius:999px;background:rgba(127,140,160,.16)}
+.pf-filters button.active em{background:rgba(255,255,255,.25)}
+.pf-count{font-size:.8rem;font-weight:700;color:var(--muted);padding-right:.4rem}
+.project-card{position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,opacity .3s,border-color .3s}
+.project-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(50,126,232,.10),transparent 45%)}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(16,32,51,.14);border-color:var(--line-strong)}
+.project-card:hover::after{opacity:1}
+.project-card.pf-out{opacity:0;transform:scale(.96)}
+.project-card .tags .tag{transition:transform .2s,background .2s}
+.project-card:hover .tags .tag{background:var(--accent-soft)}
+.project-card.featured{border-color:var(--line-strong)}
+.pf-new{position:absolute;top:14px;left:14px;z-index:3;padding:.32rem .7rem;border-radius:999px;background:linear-gradient(135deg,#16a05d,#0f8a4d);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 6px 18px rgba(22,160,93,.3);animation:pf-pulse 2.4s ease-in-out infinite}
+@keyframes pf-pulse{50%{box-shadow:0 6px 18px rgba(22,160,93,.3),0 0 0 7px rgba(22,160,93,.0),0 0 0 4px rgba(22,160,93,.18)}}
+@media(min-width:900px){
+ .project-card.featured{grid-column:1/-1;grid-template-rows:none;grid-template-columns:1.1fr 1fr}
+ .project-card.featured .project-thumb{border-bottom:0;border-right:1px solid var(--line);min-height:340px}
+ .project-card.featured .project-thumb img{height:100%!important}
+ .project-card.featured .project-card-body{padding:2rem;display:flex;flex-direction:column;justify-content:center}
+ .project-card.featured h3{font-size:1.45rem}
+}
+.js .project-grid [data-reveal]{transition-delay:calc(var(--i,0) * 70ms)}
+.project-card[hidden]{display:none!important}
+.pf-section{padding-top:1rem}
+@media(max-width:640px){
+ .pf-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+ .pf-stat{min-width:0;padding:.7rem .6rem}.pf-stat strong{font-size:1.5rem}.pf-stat span{font-size:.66rem;line-height:1.3;display:block}
+ .pf-toolbar{padding:.5rem;border-radius:14px}
+ .pf-filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%}.pf-filters::-webkit-scrollbar{display:none}
+ .pf-filters button{flex:0 0 auto}.pf-count{display:none}
+}
+@media(prefers-reduced-motion:reduce){.pf-track{animation:none}.pf-new{animation:none}.project-card,.project-card:hover{transition:none;transform:none}}
 </style>
 </head>
 <body>
@@ -32,13 +79,42 @@
 <div class="eyebrow">Études, laboratoires & réalisations</div>
 <h1>Des projets conçus,<br><span class="accent">réalisés et documentés.</span></h1>
 <p>Des études d’architecture et des environnements techniques menés avec une démarche documentée : conception, mise en œuvre, tests, diagnostic et validation selon la nature de chaque projet.</p>
+
+<div class="pf-stats">
+<div class="pf-stat"><strong data-count="9">0</strong><span>projets documentés</span></div>
+<div class="pf-stat"><strong data-count="9">0</strong><span>dossiers techniques PDF</span></div>
+<div class="pf-stat"><strong data-count-tags>0</strong><span>technologies mises en œuvre</span></div>
+</div>
+<div class="pf-marquee" aria-hidden="true"><div class="pf-track"></div></div>
 </div></section>
 
-<section class="section"><div class="container">
+<section class="section pf-section"><div class="container">
+<div class="pf-toolbar">
+<div class="pf-filters" role="group" aria-label="Filtrer les projets">
+<button type="button" class="active" data-pf="all">Tous <em></em></button>
+<button type="button" data-pf="reseau">Réseau <em></em></button>
+<button type="button" data-pf="systemes">Systèmes <em></em></button>
+<button type="button" data-pf="securite">Sécurité <em></em></button>
+<button type="button" data-pf="supervision">Supervision & ITSM <em></em></button>
+</div>
+<div class="pf-count" aria-live="polite"></div>
+</div>
 <div class="project-grid">
 
 
-<article class="card project-card" data-reveal>
+<article class="card project-card featured" data-reveal data-cat="reseau securite">
+<span class="pf-new">Nouveau</span><div class="project-thumb"><img src="assets/images/projects/cisco-forcelab/architecture-forcelab.png" alt="Architecture du réseau Cisco Force.LAB multisite" loading="lazy" width="1600" height="1000" style="height:182px;object-fit:contain"></div>
+<div class="project-card-body">
+<div class="card-top"><span class="badge">Réseau Cisco</span><span class="card-number">09</span></div>
+<div style="margin-bottom:.9rem"><span class="project-status">Projet terminé</span></div>
+<h3><a class="card-link" href="projets/cisco-forcelab-multisite.html">Réseau d’entreprise multisite redondant & sécurisé — Cisco</a></h3>
+<p>Laboratoire Packet Tracer Force.LAB configuré en ligne de commande : siège et agence, VLAN, EtherChannel, HSRPv2, OSPF, double WAN, DHCP, NAT/PAT, ACL, Port Security, Wi-Fi invité isolé, IPv6 et recette de 12 tests.</p>
+<div class="tags"><span class="tag">Cisco IOS</span><span class="tag">HSRPv2</span><span class="tag">OSPF</span><span class="tag">NAT / ACL</span><span class="tag">IPv6</span></div>
+<div class="project-actions"><a class="button button-primary" href="projets/cisco-forcelab-multisite.html">Voir le projet →</a><a class="button button-secondary" href="assets/docs/Projet_Cisco_ForceLAB_Multisite.pdf" target="_blank" rel="noopener">Documentation PDF</a></div>
+</div>
+</article>
+
+<article class="card project-card" data-reveal data-cat="reseau systemes">
 <div class="project-thumb"><img src="assets/images/projects/projet-one/00-architecture-globale.webp" alt="Architecture globale du projet One multi-bâtiments" loading="lazy" width="960" height="600"></div>
 <div class="project-card-body">
 <div class="card-top"><span class="badge">Architecture SI & gestion de projet</span><span class="card-number">01</span></div>
@@ -50,8 +126,7 @@
 </div>
 </article>
 
-
-<article class="card project-card" data-reveal>
+<article class="card project-card" data-reveal data-cat="systemes">
 <div class="project-thumb"><img src="assets/images/projects/windows-server/architecture-force-lan.png" alt="Architecture du laboratoire Windows Server FORCE.LAN" loading="lazy" width="960" height="600"></div>
 <div class="project-card-body">
 <div class="card-top"><span class="badge">Systèmes & infrastructure</span><span class="card-number">02</span></div>
@@ -63,7 +138,7 @@
 </div>
 </article>
 
-<article class="card project-card" data-reveal>
+<article class="card project-card" data-reveal data-cat="systemes securite">
 <div class="project-thumb"><img src="assets/images/projects/debian/architecture-debian-lab.png" alt="Architecture du laboratoire Debian LINUX-SRV01" loading="lazy" width="960" height="600"></div>
 <div class="project-card-body">
 <div class="card-top"><span class="badge">Linux & sécurité</span><span class="card-number">03</span></div>
@@ -75,7 +150,7 @@
 </div>
 </article>
 
-<article class="card project-card" data-reveal>
+<article class="card project-card" data-reveal data-cat="reseau securite">
 <div class="project-thumb"><img src="assets/images/projects/pfsense-ha/architecture-pfsense-ha.png" alt="Architecture du laboratoire pfSense haute disponibilité" loading="lazy" width="960" height="600"></div>
 <div class="project-card-body">
 <div class="card-top"><span class="badge">Réseau & sécurité</span><span class="card-number">04</span></div>
@@ -87,7 +162,7 @@
 </div>
 </article>
 
-<article class="card project-card" data-reveal>
+<article class="card project-card" data-reveal data-cat="reseau securite">
 <div class="project-thumb"><img src="assets/images/projects/vpn-ipsec/01-architecture-vpn-ipsec.png" alt="Architecture du VPN IPsec site-à-site entre VMware Workstation et ESXi" loading="lazy" width="960" height="600"></div>
 <div class="project-card-body">
 <div class="card-top"><span class="badge">Réseau & cybersécurité</span><span class="card-number">05</span></div>
@@ -99,7 +174,7 @@
 </div>
 </article>
 
-<article class="card project-card" data-reveal>
+<article class="card project-card" data-reveal data-cat="supervision">
 <div class="project-thumb"><img src="assets/images/projects/zabbix/02-dashboard-supervision.png" alt="Tableau de bord du laboratoire de supervision Zabbix" loading="lazy" width="960" height="600"></div>
 <div class="project-card-body">
 <div class="card-top"><span class="badge">Supervision & exploitation</span><span class="card-number">06</span></div>
@@ -111,7 +186,7 @@
 </div>
 </article>
 
-<article class="card project-card" data-reveal>
+<article class="card project-card" data-reveal data-cat="supervision">
 <div class="project-thumb"><img src="assets/images/projects/glpi/07_Ticket_Clos_Solution.png" alt="Ticket GLPI clos avec tâche, suivi et solution approuvée" loading="lazy" width="960" height="600"></div>
 <div class="project-card-body">
 <div class="card-top"><span class="badge">ITSM & support</span><span class="card-number">07</span></div>
@@ -123,7 +198,7 @@
 </div>
 </article>
 
-<article class="card project-card" data-reveal>
+<article class="card project-card" data-reveal data-cat="supervision">
 <div class="project-thumb"><img src="assets/images/projects/zabbix-glpi/09-ticket-glpi-resolu.webp" alt="Ticket GLPI résolu automatiquement après récupération Zabbix" loading="lazy" width="960" height="600"></div>
 <div class="project-card-body">
 <div class="card-top"><span class="badge">Automatisation & ITSM</span><span class="card-number">08</span></div>
@@ -134,18 +209,6 @@
 <div class="project-actions"><a class="button button-primary" href="projets/automatisation-zabbix-glpi.html">Voir le projet →</a><a class="button button-secondary" href="assets/docs/Projet_Zabbix_GLPI_Automatisation_Incidents.pdf" target="_blank" rel="noopener">Documentation PDF</a></div>
 </div>
 </article>
-
-<article class="card project-card" data-reveal>
-<div class="project-thumb"><img src="assets/images/projects/cisco-forcelab/architecture-forcelab.png" alt="Architecture du réseau Cisco Force.LAB multisite" loading="lazy" width="1600" height="1000" style="height:182px;object-fit:contain"></div>
-<div class="project-card-body">
-<div class="card-top"><span class="badge">Réseau Cisco</span><span class="card-number">09</span></div>
-<div style="margin-bottom:.9rem"><span class="project-status">Projet terminé</span></div>
-<h3><a class="card-link" href="projets/cisco-forcelab-multisite.html">Réseau d’entreprise multisite redondant & sécurisé — Cisco</a></h3>
-<p>Laboratoire Packet Tracer Force.LAB configuré en ligne de commande : siège et agence, VLAN, EtherChannel, HSRPv2, OSPF, double WAN, DHCP, NAT/PAT, ACL, Port Security, Wi-Fi invité isolé, IPv6 et recette de 12 tests.</p>
-<div class="tags"><span class="tag">Cisco IOS</span><span class="tag">HSRPv2</span><span class="tag">OSPF</span><span class="tag">NAT / ACL</span><span class="tag">IPv6</span></div>
-<div class="project-actions"><a class="button button-primary" href="projets/cisco-forcelab-multisite.html">Voir le projet →</a><a class="button button-secondary" href="assets/docs/Projet_Cisco_ForceLAB_Multisite.pdf" target="_blank" rel="noopener">Documentation PDF</a></div>
-</div>
-</article>
 </div>
 <div class="projects-note"><strong>Chaque projet indique clairement sa nature : étude de conception ou réalisation technique en laboratoire.</strong> Les pages distinguent les choix étudiés des configurations réellement mises en œuvre et présentent les preuves, tests ou livrables adaptés à chaque contexte.</div>
 </div></section>
@@ -153,4 +216,29 @@
 <footer class="site-footer"><div class="container footer-grid"><div>© <span data-year>2026</span> Azaan Shafi. Portfolio professionnel.</div><div class="footer-links"><a href="mentions-legales.html">Mentions légales</a><a href="https://github.com/azaanshafi75" target="_blank" rel="noopener">GitHub</a></div></div></footer>
 <button class="back-to-top" type="button" aria-label="Retour en haut"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></svg></button>
 <script src="assets/js/site-config.js" defer></script><script src="assets/js/main.js" defer></script>
+<script>
+(function(){
+var grid=document.querySelector('.project-grid'),cards=[].slice.call(grid.querySelectorAll('.project-card'));
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+cards.forEach(function(c,i){c.style.setProperty('--i',i%2);
+ c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});});
+// technologies (bandeau + compteur)
+var seen={},tags=[];document.querySelectorAll('.project-card .tag').forEach(function(t){var k=t.textContent.trim();if(!seen[k]){seen[k]=1;tags.push(k);}});
+var track=document.querySelector('.pf-track');if(track){var h=tags.map(function(t){return '<span>'+t+'</span>';}).join('');track.innerHTML=h+h;}
+var ct=document.querySelector('[data-count-tags]');if(ct)ct.dataset.count=tags.length;
+// compteurs animés
+document.querySelectorAll('[data-count]').forEach(function(el){var n=+el.dataset.count;if(reduce){el.textContent=n;return;}
+ var t0=null;function step(ts){t0=t0||ts;var p=Math.min((ts-t0)/1200,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);});
+// filtres
+var btns=document.querySelectorAll('[data-pf]'),count=document.querySelector('.pf-count');
+function match(c,f){return f==='all'||c.dataset.cat.split(' ').indexOf(f)>-1;}
+btns.forEach(function(b){b.querySelector('em').textContent=cards.filter(function(c){return match(c,b.dataset.pf);}).length;});
+function apply(f){var n=0;cards.forEach(function(c){if(match(c,f))n++;});count.textContent=n+' projet'+(n>1?'s':'')+' affiché'+(n>1?'s':'');
+ cards.forEach(function(c){if(!match(c,f)){c.classList.add('pf-out');setTimeout(function(){c.hidden=true;},reduce?0:250);}});
+ setTimeout(function(){cards.forEach(function(c){if(match(c,f)){c.hidden=false;c.classList.add('is-visible');requestAnimationFrame(function(){c.classList.remove('pf-out');});}});},reduce?0:260);}
+btns.forEach(function(b){b.addEventListener('click',function(){btns.forEach(function(x){x.classList.toggle('active',x===b);});apply(b.dataset.pf);
+ var top=document.querySelector('.pf-toolbar').getBoundingClientRect().top;if(top<0||top>window.innerHeight/2)document.querySelector('.pf-toolbar').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});});});
+apply('all');
+})();
+</script>
 </body></html>
