@@ -22,22 +22,39 @@
 
   <style>
     html, body { height: 100%; }
+    :root { --cv-bar-h: 64px; }
     body.cv-viewer-page { overflow: hidden; }
     .cv-viewer-main {
       height: 100dvh;
       padding-top: var(--nav-h);
       background: #e9eef5;
     }
+    .cv-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      height: var(--cv-bar-h);
+      padding: 0 16px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+    .cv-bar span { color: var(--muted); font-size: .85rem; }
     .cv-frame {
       display: block;
       width: 100%;
-      height: calc(100dvh - var(--nav-h));
+      height: calc(100dvh - var(--nav-h) - var(--cv-bar-h));
       border: 0;
       background: #e9eef5;
     }
     @media (max-width: 760px) {
       .cv-viewer-main { padding-top: var(--nav-h); }
-      .cv-frame { height: calc(100dvh - var(--nav-h)); }
+      .cv-frame { display: none; }
+      body.cv-viewer-page { overflow: auto; }
+      .cv-bar { height: auto; flex-direction: column; padding: 48px 16px; border: 0; background: transparent; text-align: center; }
+      .cv-bar .button { width: 100%; max-width: 340px; justify-content: center; }
+      .cv-bar span { order: -1; }
     }
   </style>
 </head>
@@ -68,13 +85,18 @@
   </header>
 
   <main id="contenu" class="cv-viewer-main">
+    <div class="cv-bar">
+      <span>CV au format PDF, une page</span>
+      <a class="button button-primary button-small" href="assets/documents/CV_AZAAN_SHAFI.pdf?v=20261011" download="CV_Azaan_Shafi.pdf">Télécharger le CV (PDF)</a>
+      <a class="button button-secondary button-small" href="assets/documents/CV_AZAAN_SHAFI.pdf?v=20261011" target="_blank" rel="noopener">Ouvrir dans un nouvel onglet</a>
+    </div>
     <iframe
       class="cv-frame"
-      src="assets/documents/CV_AZAAN_SHAFI.pdf?v=20260902#zoom=115&toolbar=1&navpanes=0"
+      src="assets/documents/CV_AZAAN_SHAFI.pdf?v=20261011#zoom=115&toolbar=1&navpanes=0"
       title="CV d’Azaan Shafi">
       <p>
         Votre navigateur ne peut pas afficher le PDF.
-        <a href="assets/documents/CV_AZAAN_SHAFI.pdf?v=20260902">Ouvrir le CV</a>.
+        <a href="assets/documents/CV_AZAAN_SHAFI.pdf?v=20261011">Ouvrir le CV</a>.
       </p>
     </iframe>
   </main>
